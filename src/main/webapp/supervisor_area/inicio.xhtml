@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <link rel="shortcut icon" type="image/png" href="https://th.bing.com/th/id/R.b72899abe5a66ad2f32d1ba682590a87?rik=IRpRO6prIiKk0w&amp;pid=ImgRaw&amp;r=0"/>
+    <title>Inicio administrador</title>
+</h:head>
+<style>
+    .personalizeIcon {
+        color: white;
+        background-color: lightgray;
+        width: 30px;
+        height: 20px;
+        padding-left: 7px;
+        border-radius: 5px;
+    }
+
+    .contenedor {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+
+
+    }
+
+    .vertical-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin: 40px;
+        border-right: 1px solid black;
+        flex-wrap: wrap;
+    }
+
+    .horizontal-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: start;
+        flex-wrap: wrap;
+    }
+
+</style>
+<h:body>
+    <div class="contenedor">
+        <div class="vertical-content">
+            <h:panelGrid columns="2" id="panelgrif" styleClass="showcase-text-align-center"
+                         columnClasses="ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3">
+                <p:card style="width: 25em;  box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
+                    <f:facet name="header">
+                        <p:avatar style="background-color: lightcoral; color: white;" label="Dr" styleClass="p-mr-2" size="xlarge"/>
+                    </f:facet>
+                    <f:facet name="title">
+                        Bienvenid@ "Nombre y apellido del doctor"
+                    </f:facet>
+                    <f:facet name="subtitle">
+                        Puede obtener mas informacion de los doctores asignados a su area haciendo click en el icono
+                        <i class="pi pi-folder-open personalizeIcon" />
+                        <p:divider/>
+                    </f:facet>
+                    <p>Al lado se muestran la lista de doctor@s correspondientes a su area <i
+                            class="pi pi-arrow-circle-right"/></p>
+                </p:card>
+            </h:panelGrid>
+        </div>
+        <div class="horizontal-content">
+            <ui:repeat value="#{doctoresAreaList.doctorList}" var="dr"  >
+                <p:card style="width: 25em ; margin: 10px; box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);
+ -webkit-box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);
+ -moz-box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);">
+                    <f:facet name="header">
+                        <p:avatar label="#{dr.nombreDoctor.substring(0,1)}#{dr.apellidoDoctor.substring(0,1)}" styleClass="p-mr-2" size="xlarge"/>
+                    </f:facet>
+                    <f:facet name="title">
+                         Doctor/a : #{dr.nombreDoctor} #{dr.apellidoDoctor}
+                        <p:divider/>
+                    </f:facet>
+                    <f:facet name="subtitle">
+                        #{dr.idArea.nombreArea}
+                    </f:facet>
+                    <p><b>Usuario : </b> #{dr.usuario} </p>
+                    <p><b>Correo :</b>
+                        <link href="#"> #{dr.correoDoctor} </link>
+                    </p>
+                    <p><b>Estado: </b> Activo </p>
+                    <f:facet name="footer">
+                        <p:commandButton icon="pi pi-folder-open" value="Informacion"/>
+                    </f:facet>
+                </p:card>
+            </ui:repeat>
+        </div>
+
+    </div>
+
+</h:body>
+</html>
