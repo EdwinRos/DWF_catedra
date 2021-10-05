@@ -19,7 +19,7 @@ import java.util.List;
 @Scope(value = "session")
 @Component(value = "doctoresAreaList")
 @ELBeanName(value = "doctoresAreaList")
-@Join(path = "/administradorInicio", to = "/supervisor_area/inicio.jsf")
+@Join(path = "/administradorInicio.do", to = "/supervisor_area/inicio.jsf")
 public class supervisorController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class supervisorController {
     @RequestAction
     @IgnorePostback
     public void loadData(){
-         area.setAreaId(2);
+         area.setAreaId(1);
          doctorList = doctorRepository.findByIdArea(area);
      }
 

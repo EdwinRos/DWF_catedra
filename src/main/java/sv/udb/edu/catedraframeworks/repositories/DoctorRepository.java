@@ -10,4 +10,5 @@ public interface DoctorRepository extends JpaRepository <Doctor, Integer> {
 
     List<Doctor> findByIdArea(Area i);
 
+
 }

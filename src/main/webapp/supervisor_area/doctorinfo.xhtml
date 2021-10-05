@@ -57,48 +57,25 @@
 -webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
                     <f:facet name="header">
-                        <p:avatar style="background-color: lightcoral; color: white;" label="Dr" styleClass="p-mr-2"
+                        <p:avatar style="background-color: lightseagreen; color: white;" label="#{doctorInfo.doctor.nombreDoctor.substring(0,1)} #{doctorInfo.doctor.apellidoDoctor.substring(0,1)}" styleClass="p-mr-2"
                                   size="xlarge"/>
                     </f:facet>
                     <f:facet name="title">
-                        Bienvenid@ "Nombre y apellido del doctor"
+                        Doctor: #{doctorInfo.doctor.nombreDoctor} #{doctorInfo.doctor.apellidoDoctor}
+                        <p:divider />
                     </f:facet>
                     <f:facet name="subtitle">
-                        Puede obtener mas informacion de los doctores asignados a su area haciendo click en el icono
-                        <i class="pi pi-folder-open personalizeIcon"/>
-                        <p:divider/>
+                         Se detalla la informacion del doctor del area: #{doctorInfo.doctor.idArea.nombreArea}
                     </f:facet>
-                    <p>Al lado se muestran la lista de doctor@s correspondientes a su area <i
-                            class="pi pi-arrow-circle-right"/></p>
+                    <p><b>Edad: </b>#{doctorInfo.edad}</p>
+                    <p><b>DUI: </b> #{doctorInfo.doctor.duiDoctor} </p>
+                    <p><b>Estado: </b> #{doctorInfo.doctor.estado == 1? "Activo" : "Inactivo"} </p>
+                    <p><b>Fecha de ingreso: </b> #{doctorInfo.doctor.fechaRegistro}</p>
                 </p:card>
             </h:panelGrid>
         </div>
         <div class="horizontal-content">
-            <ui:repeat value="#{doctoresAreaList.doctorList}" var="dr">
-                    <p:card style="width: 25em ; margin: 10px; box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);
- -webkit-box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);
- -moz-box-shadow: 10px 8px 16px -3px rgba(0,0,0,0.75);">
-                        <f:facet name="header">
-                            <p:avatar label="#{dr.nombreDoctor.substring(0,1)}#{dr.apellidoDoctor.substring(0,1)}"
-                                      styleClass="p-mr-2" size="xlarge"/>
-                        </f:facet>
-                        <f:facet name="title" class="titulo">
-                            Doctor/a : #{dr.nombreDoctor} #{dr.apellidoDoctor}
-                            <p:divider/>
-                        </f:facet>
-                        <f:facet name="subtitle">
-                            #{dr.idArea.nombreArea}
-                        </f:facet>
-                        <p><b>Usuario : </b> #{dr.usuario} </p>
-                        <p><b>Correo :</b>
-                            <link href="#"> #{dr.correoDoctor} </link>
-                        </p>
-                        <p><b>Estado: </b> Activo </p>
-                        <f:facet name="footer">
-                            <p:button icon="pi pi-folder-open" href="/informacion" value="Informacion del doctor"/>
-                        </f:facet>
-                    </p:card>
-            </ui:repeat>
+
         </div>
 
     </div>
