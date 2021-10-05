@@ -95,7 +95,10 @@
                         </p>
                         <p><b>Estado: </b> Activo </p>
                         <f:facet name="footer">
-                            <p:button icon="pi pi-folder-open" href="/informacion" value="Informacion del doctor"/>
+                            <p:button icon="pi pi-folder-open" href="/informacion" value="Informacion del doctor">
+                                   <f:param value="#{dr.doctorId}" name="drId" />
+                            </p:button>
+
                         </f:facet>
                     </p:card>
             </ui:repeat>
