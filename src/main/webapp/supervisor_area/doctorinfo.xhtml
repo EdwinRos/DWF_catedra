@@ -69,11 +69,10 @@
                     </f:facet>
                     <p><b>Edad: </b>#{doctorInfo.edad}</p>
                     <p><b>DUI: </b> #{doctorInfo.doctor.duiDoctor} </p>
-                    <p><b>Estado: </b> #{doctorInfo.doctor.estado == 1? "Activo" : "Inactivo"} </p>
+                    <p><b>Estado: </b> #{doctorInfo.doctor.estado==1?'Activo':'Inactivo'} </p>
                     <p><b>Fecha de ingreso: </b> #{doctorInfo.doctor.fechaRegistro}</p>
                 </p:card>
             </h:panelGrid>
-            <p:button icon="pi pi-arrow-left" styleClass="rounded-button ui-button-secondary" />
         </div>
         <div class="horizontal-content">
             <div class="ui-card">
@@ -82,7 +81,9 @@
                         Lista de citas a este doctor
                     </f:facet>
                     <p:column headerText="Paciente">
-                        <h:outputText value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente}"  />
+                        <div>
+                            <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="large" style="background-color: lightpink; color:#fff" shape="circle" /><h:outputText value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente}"  />
+                        </div>
                     </p:column>
                     <p:column headerText="extras consulta">
                          <h:outputText value="#{cts.extras}" />
@@ -91,7 +92,9 @@
                         <h:outputText value="#{cts.fechaCita}" />
                     </p:column>
                     <p:column headerText="Expediente del paciente">
-                        <p:commandButton type="button" icon="pi pi-file" value="Expediente Paciente" styleClass="rounded-button ui-button-help" />
+                        <p:button href="/perfilpacientesupervisor"  icon="pi pi-file" value="Expediente Paciente" styleClass="rounded-button ui-button-help" >
+                            <f:param name="idPaciente" value="#{cts.idPaciente.pacienteId}" />
+                        </p:button>
                     </p:column>
                 </p:dataTable>
             </div>

@@ -32,7 +32,7 @@ public class Paciente {
             strategy = GenerationType.IDENTITY
 //            generator = "paciente_sequence"
     )
-    private Long pacienteId;
+    private Integer pacienteId;
 
     @Column(
             name = "nombre_paciente",
@@ -47,6 +47,14 @@ public class Paciente {
             columnDefinition = "VARCHAR(70)"
     )
     private String apellidoPaciente;
+
+    @Column(
+            name = "sexo",
+            nullable = false,
+            columnDefinition = "CHAR(1)"
+    )
+    private String sexo;
+
 
     @Column(
             name = "usuario",
@@ -111,7 +119,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String nombrePaciente, String apellidoPaciente, String usuario, String password, String telefono, String correoPaciente, String duiPaciente, Date fechaNacimiento, Integer estado) {
+    public Paciente(String nombrePaciente, String apellidoPaciente, String usuario, String password, String telefono, String correoPaciente, String duiPaciente, Date fechaNacimiento, Integer estado, String sexo) {
         this.nombrePaciente = nombrePaciente;
         this.apellidoPaciente = apellidoPaciente;
         this.usuario = usuario;
@@ -121,13 +129,22 @@ public class Paciente {
         this.duiPaciente = duiPaciente;
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
+        this.sexo = sexo;
     }
 
-    public Long getPacienteId() {
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public Integer getPacienteId() {
         return pacienteId;
     }
 
-    public void setPacienteId(Long pacienteId) {
+    public void setPacienteId(Integer pacienteId) {
         this.pacienteId = pacienteId;
     }
 

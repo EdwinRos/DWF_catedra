@@ -47,6 +47,7 @@ public class supervisorInfoDoctor {
         doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
         doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());
         doctor.setIdArea(miDoctor.get().getIdArea());
+        doctor.setEstado(miDoctor.get().getEstado());
         doctor.setCorreoDoctor(miDoctor.get().getCorreoDoctor());
         doctor.setDuiDoctor(miDoctor.get().getDuiDoctor());
         doctor.setFechaRegistro(miDoctor.get().getFechaRegistro());
