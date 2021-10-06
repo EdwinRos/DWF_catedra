@@ -11,11 +11,17 @@
 <h:body>
    <h:form>
        <p:outputLabel value="nombre"/>
-
        <p:inputText value="#{AdminDoctorControler.doctor.nombreDoctor}" />
+       
        <p:outputLabel value="apellido"/>
        <p:inputText value="#{AdminDoctorControler.doctor.apellidoDoctor}" />
+       
+       <p:outputLabel value="Usuario"/>
+       <p:inputText value="#{AdminDoctorControler.doctor.usuario}" />
 
+	  <p:outputLabel value="Correo"/>
+       <p:inputText type="email" value="#{AdminDoctorControler.doctor.apellidoDoctor}" />
+       
        <div class="p-field p-col-12 p-md-4">
            <p:outputLabel for="@next" value="Basic"/>
            <p:selectOneMenu id="option" value="#{AdminDoctorControler.area.areaId}">

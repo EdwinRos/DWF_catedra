@@ -74,8 +74,8 @@ public class AdministradorDoctorController {
 
 	  
 	  public String delete() {
-		  
-		  
+		  doctorRepository.delete(doctor);
+		  doctor = new Doctor();
 		  return "/registroDoctor.xhtml?faces-redirect=true";
 	  }
 	  
