@@ -53,7 +53,7 @@ public class Doctor {
     @Column(
             name = "usuario",
             nullable = false,
-            columnDefinition = "VARCHAR(10)"
+            columnDefinition = "VARCHAR(30)"
     )
     private String usuario;
 
