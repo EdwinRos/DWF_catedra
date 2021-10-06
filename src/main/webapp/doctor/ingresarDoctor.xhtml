@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="content">
+        <h:form id="productForm">
+            <p:panel header="Detalles administrador">
+                <h:panelGrid columns="1">
+                    <p:outputLabel for="usuario" value="Nombre: "/>
+                    <p:inputText id="usuario" value=""/>
+                    <p:outputLabel for="contra" value="Apellido: "/>
+                    <p:inputText id="contra" value=""/>
+                      <p:outputLabel for="contra" value="Correo Electronico: "/>
+                    <p:inputText id="contra" value=""/>
+                      <p:outputLabel for="contra" value="DUI: "/>
+                    <p:inputText id="contra" value=""/>
+                      <p:outputLabel for="contra" value="Usuario: "/>
+                    <p:inputText id="contra" value=""/>
+                      <p:outputLabel for="contra" value="Contraseña: "/>
+                    <p:inputText id="contra" value=""/>
+                      <p:outputLabel for="contra" value="Fecha Nacimiento: "/>
+                    <p:inputText id="contra" value=""/>
+
+                                       
+                    <h:commandButton value="Guardar Registro" action="#{}"/>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</html>
