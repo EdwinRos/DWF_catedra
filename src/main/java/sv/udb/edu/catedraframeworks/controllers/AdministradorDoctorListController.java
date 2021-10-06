@@ -19,7 +19,7 @@ import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 @Component(value = "doctorList")
 @ELBeanName(value = "doctorList")
 @Join(path = "/listadoDoctor", to = "/listDoctor.jsf")
-public class DoctorListController {
+public class AdministradorDoctorListController {
 	
 	 @Autowired
 	    private DoctorRepository doctorRepository;
