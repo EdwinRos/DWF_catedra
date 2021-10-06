@@ -14,11 +14,11 @@ import java.util.Date;
                 ),
                 @UniqueConstraint(
                         name = "dui_doctor_unico",
-                        columnNames = "dui_doctor"
+                        columnNames = "dui"
                 ),
                 @UniqueConstraint(
                         name = "correo_doctor_unico",
-                        columnNames = "correo_doctor"
+                        columnNames = "correo"
                 )
         }
 )
@@ -31,14 +31,14 @@ public class Doctor {
     private Integer doctorId;
 
     @Column(
-            name = "nombre_doctor",
+            name = "nombre",
             nullable = false,
             columnDefinition = "VARCHAR(70)"
     )
     private String nombreDoctor;
 
     @Column(
-            name = "apellido_doctor",
+            name = "apellido",
             nullable = false,
             columnDefinition = "VARCHAR(70)"
     )
@@ -65,14 +65,14 @@ public class Doctor {
     private String password ;
 
     @Column(
-            name = "dui_doctor",
+            name = "dui",
             nullable = false,
             columnDefinition = "VARCHAR(10)"
     )
     private String duiDoctor;
 
     @Column(
-            name = "correo_doctor",
+            name = "correo",
             nullable = false,
             columnDefinition = "VARCHAR(70)"
     )

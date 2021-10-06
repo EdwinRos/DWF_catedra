@@ -12,7 +12,7 @@ public class Area {
     private Integer areaId;
 
     @Column(
-            name = "nombre_area",
+            name = "nombre",
             columnDefinition = "VARCHAR(50)",
             nullable = false
     )

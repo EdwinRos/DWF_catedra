@@ -14,14 +14,14 @@ public class Citas {
     private Integer citasId;
 
     @Column(
-            name = "fecha_cita",
+            name = "fecha",
             nullable = false,
             columnDefinition = "DATE"
     )
     private Date fechaCita;
 
     @Column(
-            name = "hora_cita",
+            name = "hora",
             nullable = false,
             updatable = false,
             columnDefinition = "TIME"

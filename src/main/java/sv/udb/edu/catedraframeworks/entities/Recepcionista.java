@@ -12,14 +12,14 @@ public class Recepcionista {
     private Integer recepcionistaId;
 
     @Column(
-            name = "nombre_repecionista",
+            name = "nombre",
             nullable = false,
             columnDefinition = "VARCHAR(80)"
     )
     private String nombreRecepcionista;
 
     @Column(
-            name = "apellido_recepcionista",
+            name = "apellido",
             nullable = false,
             columnDefinition = "VARCHAR(80)"
     )
