@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+	<title>Registro de Doctores</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:panel header="Listado de Doctores">
+			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}">
+				<p:column>
+					<f:facet name="header">Nombre</f:facet>
+					<h:outputText value="#{doc.nombreDoctor}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Apellido</f:facet>
+					<h:outputText value="#{doc.apellidoDoctor}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Correo</f:facet>
+					<h:outputText value="#{doc.correoDoctor}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">DUI</f:facet>
+					<h:outputText value="#{doc.duiDoctor}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Usuario</f:facet>
+					<h:outputText value="#{doc.usuario}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Area</f:facet>
+					<h:outputText value="#{doc.idArea.nombreArea}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">Fecha Nacimiento</f:facet>
+					<h:outputText value="#{doc.fechaNacimiento}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Estado</f:facet>
+					<h:outputText value="#{doc.estado}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Operaciones</f:facet>
+					<p:commandButton value="Eliminar" styleClass="ui-button-danger"
+						action="#{AdminDoctorControler.deleteDoctor}">
+						<f:param name="idDoctor" value="#{doc.doctorId}" />
+					</p:commandButton>
+
+								
+					
+					<p:button value="actualizar" href="/updatedoctor" styleclass="ui-button-warning">
+						<f:param name="IdDoctor" value="#{doc.doctorId}" />
+					</p:button>
+
+				</p:column>
+
+			</p:dataTable>
+
+
+
+		</p:panel>
+
+	</h:form>
+
+</h:body>
+</html>

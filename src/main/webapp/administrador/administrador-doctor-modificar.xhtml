@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+	<title></title>
+</h:head>
+<h:body>
+	<h:form>
+
+		<h:outputLabel value="Nombre: "/>
+		<h:inputHidden id="nombre"  />
+		<h:inputText value="#{AdminDoctorUpdate.doctor.nombreDoctor}" />
+		
+		<h:outputLabel value="Apellido: "/>
+		<h:inputHidden id="apellido"/>
+		<h:inputText value="#{AdminDoctorUpdate.doctor.apellidoDoctor}"/>	
+
+		<h:outputLabel value="Correo Electronico: "/>
+		<h:inputHidden id="correo" />
+		<h:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}" />
+
+		<h:outputLabel value="Usuario: "/>
+		<h:inputHidden id="usuario"/>
+		<h:inputText  value="#{AdminDoctorUpdate.doctor.usuario}"/>
+
+		<h:outputLabel value="DUI: " />
+		<h:inputHidden id="dui" />
+		<h:inputText value="#{AdminDoctorUpdate.doctor.duiDoctor}"/>
+		
+		<!--  <h:outputLabel value="Area: " />
+		<h:inputHidden id="area" />
+		<h:inputText  value="#{AdminDoctorUpdate.idArea.nombreArea}"/> -->
+
+		 
+		
+		<h:outputLabel value="Fecha de Nacimiento: "/>
+		<h:inputHidden id="fechaNacimiento"/>
+		<h:inputText  value="#{AdminDoctorUpdate.doctor.fechaNacimiento}"/>
+
+		<h:outputLabel value="Estado: " />
+		<h:inputHidden id="estado" />
+		<h:inputText value="#{AdminDoctorUpdate.doctor.estado}" />
+
+	</h:form>
+	<p:commandButton value="Actualizar"
+		action="#{AdminDoctorUpdate.loadDoctor}" />
+
+
+</h:body>
+</html>
