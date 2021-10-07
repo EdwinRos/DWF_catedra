@@ -18,7 +18,7 @@ import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 @Scope(value = "session")
 @Component(value = "doctorList")
 @ELBeanName(value = "doctorList")
-@Join(path = "/listadoDoctor", to = "/listDoctor.jsf")
+@Join(path = "/listadoDoctor", to = "/administrador/administrador-listado-doctores.jsf")
 public class AdministradorDoctorListController {
 	
 	 @Autowired
