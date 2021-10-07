@@ -14,8 +14,11 @@ import sv.udb.edu.catedraframeworks.entities.Area;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
 import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
+import sv.udb.edu.catedraframeworks.utils.Emails;
 import sv.udb.edu.catedraframeworks.utils.HashSha1;
+import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
+import javax.mail.MessagingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
@@ -23,72 +26,72 @@ import java.util.List;
 @Scope(value = "session")
 @Component(value = "AdminDoctorControler")
 @ELBeanName(value = "AdminDoctorControler")
-@Join(path = "/administradoringresardoctor", to="/administrador/ingresardoctor.jsf")
+@Join(path = "/administradoringresardoctor", to = "/administrador/ingresardoctor.jsf")
 public class AdministradorDoctorController {
 
-	  @Autowired
-	  private DoctorRepository doctorRepository;
-	  Doctor doctor = new Doctor();
+    @Autowired
+    private DoctorRepository doctorRepository;
+    Doctor doctor = new Doctor();
 
-	  @Autowired
-	  private AreaRepository areaRepository;
-	  private List<Area> areas;
+    @Autowired
+    private AreaRepository areaRepository;
+    private List<Area> areas;
 
-	  Area area = new Area();
-
-
+    Area area = new Area();
 
 
-	  public String nuevoDoctor() throws NoSuchAlgorithmException {
-	  	//String contraRamdom = metodo que te va a regresar el string al azar
+    public String nuevoDoctor() throws NoSuchAlgorithmException, MessagingException {
+        HashSha1 hasSha1 = new HashSha1();
+        RamdomString ramdomString = new RamdomString();
+
+        String contraRamdom = ramdomString.password();
+
+        doctor.setEstado(1);
+        doctor.setDuiDoctor("12102548-5");
+        doctor.setFechaNacimiento(new Date(2000, 04, 25));
+        doctor.setIdArea(area);
+        doctor.setPassword(hasSha1.hashPassword(contraRamdom));
+
+        SendMail(doctor, contraRamdom);
+
+        doctorRepository.save(doctor);
 
 
+        doctor = new Doctor();
 
-	  	HashSha1 hasSha1 = new HashSha1();
+        return "/ingresardoctor.xhtml?faces-redirect=true";
 
+    }
 
+    protected void SendMail(Doctor doc, String password) throws MessagingException{
+        Emails emails = new Emails();
+        emails.docotorEmail(doc.getCorreoDoctor(), doc.getUsuario(), password, doc.getNombreDoctor(), doc.getApellidoDoctor());
+    }
 
-	  	 doctor.setEstado(1);
-	  	 doctor.setDuiDoctor("11002548-5");
-	  	 doctor.setCorreoDoctor("prueba4.mail.com");
-	  	 doctor.setUsuario("prueba3");
-	  	 doctor.setFechaRegistro(new Date());
-	  	 doctor.setFechaNacimiento(new Date(1975,11,29));
-	  	 doctor.setIdArea(area);
-	  	 doctor.setPassword(hasSha1.hashPassword("12345"));
-		  doctorRepository.save(doctor);
-		  //metodo para enviar email
-		  doctor = new Doctor();
-  		    	  
-		  return "/ingresardoctor.xhtml?faces-redirect=true";
-		  
-	  }
-
-	@Deferred
-	@RequestAction
-	@IgnorePostback
-	public void loadAreas(){
-	  	areas = areaRepository.findAll();
-	}
+    @Deferred
+    @RequestAction
+    @IgnorePostback
+    public void loadAreas() {
+        areas = areaRepository.findAll();
+    }
 
 
-	  
-	  public String delete() {
-		  doctorRepository.delete(doctor);
-		  doctor = new Doctor();
-		  return "/registroDoctor.xhtml?faces-redirect=true";
-	  }
-	  
-	  
-	  public Doctor getDoctor() {
-		  return doctor;
-	  }
+    public String delete() {
+        doctorRepository.delete(doctor);
+        doctor = new Doctor();
+        return "/registroDoctor.xhtml?faces-redirect=true";
+    }
 
-	public List<Area> getAreas() {
-		return areas;
-	}
 
-	public Area getArea() {
-		return area;
-	}
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public List<Area> getAreas() {
+        return areas;
+    }
+
+    public Area getArea() {
+        return area;
+    }
 }
