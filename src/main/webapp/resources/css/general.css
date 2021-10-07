@@ -1,0 +1,11 @@
+html, body {
+	background: #d5d5d5;
+}
+
+.text-base {
+	color: #495057 !important;
+}
+
+.width-max-content {
+	max-width: max-content !important;
+}

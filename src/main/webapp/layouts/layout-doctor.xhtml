@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+      <h:head>
+      		<title>Doctores</title>
+      		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+      		<h:outputStylesheet library="css" name="general.css" />
+      </h:head>
+	<h:body>
+		<div class="card">
+		    <h:form>
+		        <p:growl id="messages"/>
+		        <p:menubar>
+		            <p:menuitem value="Inicio" icon="pi pi-home" url="/doctor/home" />
+		            <p:menuitem value="Pacientes" icon="pi pi-users" url="/doctor/pacientes" />
+		
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
+		    </h:form>
+		</div>
+		<section class="py-3">
+			<div class="container">
+				<ui:insert name="content" />
+			</div>
+		</section>
+	</h:body>
+</html>
