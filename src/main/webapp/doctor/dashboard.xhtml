@@ -62,7 +62,9 @@
 										    </div>
 										    
 										    <div class="w-100">
-										    	<p:commandButton icon="pi pi-eye" value="Ver cita" />
+										    	<p:button icon="pi pi-eye" href="/cita/detalles" value="Ver detalles" styleClass="rounded-button" >
+										    		<f:param value="#{cita.citasId}" name="citaId" />
+										    	</p:button>
 										    </div>									
 										</p:card>
 									</div>
