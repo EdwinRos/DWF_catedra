@@ -1,74 +1,97 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:f="http://java.sun.com/jsf/core" xmlns:P="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:P="http://java.sun.com/jsf/html">
 <h:head>
+	<!-- CSS only -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+		crossorigin="anonymous" />
 
 	<title>Actualizar doctor</title>
 </h:head>
 <h:body>
-	<h:form id="updateForm" prependId="false">
-	<div class="card">
-		<div class="ui-fluid">
-			<div class="p-field p-grid">
-				<h:inputHidden value="#{AdminDoctorUpdate.doctor.doctorId}" />
-				<p:outputLabel value="Nombres" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText  value="#{AdminDoctorUpdate.doctor.nombreDoctor}" type="text" />
+	<div class="d-flex justify-content-center align-items-center">
+		<h:form id="updateForm" prependId="false"
+			class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
+			<h5 style="text-align: center;">Actualizacion de Datos</h5>
+			<div class="ui-fluid">
+				<div class="p-field p-grid">
+					<h:inputHidden value="#{AdminDoctorUpdate.doctor.doctorId}" />
+					<p:outputLabel value="Nombres" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.nombreDoctor}"
+							type="text" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Apellidos" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.apellidoDoctor}"
+							type="text" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Correo del doctor" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}"
+							type="text" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="usuario" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.usuario}"
+							type="text" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="DUI" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.duiDoctor}"
+							type="text" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Area " />
+					<div class="p-col-12 p-md-10">
+						<p:selectOneMenu value="#{AdminDoctorUpdate.area.areaId}">
+							<f:selectItems value="#{AdminDoctorUpdate.areas}" var="ar"
+								itemLabel="#{ar.nombreArea}" itemValue="#{ar.areaId}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Fecha de nacimiento" />
+					<div class="p-col-12 p-md-10">
+						<p:datePicker id="buttonbar"
+							value="#{AdminDoctorUpdate.doctor.fechaNacimiento}"
+							showButtonBar="true" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Estado " />
+					<div class="p-col-12 p-md-10">
+						<p:selectOneMenu value="#{AdminDoctorUpdate.doctor.estado}">
+							<f:selectItem itemValue="2" itemLabel="Inactivo" />
+							<f:selectItem itemValue="1" itemLabel="Activo" />
+						</p:selectOneMenu>
+					</div>
 				</div>
 			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Apellidos" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText  value="#{AdminDoctorUpdate.doctor.apellidoDoctor}" type="text" />
+			<div class="d-flex justify-content-center align-items-center">
+			<p:commandButton id="btn1" value="Guardar"
+				action="#{AdminDoctorUpdate.updateDoctor}"
+				styleClass="ui-button-raised ui-button-success" />
 				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Correo del doctor" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}" type="text" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="usuario" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText  value="#{AdminDoctorUpdate.doctor.usuario}" type="text" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="DUI" />
-				<div class="p-col-12 p-md-10">
-					<p:inputText  value="#{AdminDoctorUpdate.doctor.duiDoctor}" type="text" />
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Area " />
-				<div class="p-col-12 p-md-10">
-					<p:selectOneMenu value="#{AdminDoctorUpdate.area.areaId}"  >
-						<f:selectItems value="#{AdminDoctorUpdate.areas}" var="ar" itemLabel="#{ar.nombreArea}" itemValue="#{ar.areaId}"  />
-					</p:selectOneMenu>
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Fecha de nacimiento" />
-				<div class="p-col-12 p-md-10">
-					<p:datePicker id="buttonbar" value="#{AdminDoctorUpdate.doctor.fechaNacimiento}" showButtonBar="true"/>
-				</div>
-			</div>
-			<div class="p-field p-grid">
-				<p:outputLabel value="Estado " />
-				<div class="p-col-12 p-md-10">
-					<p:selectOneMenu  value="#{AdminDoctorUpdate.doctor.estado}" >
-						<f:selectItem itemValue="2" itemLabel="Inactivo" />
-						<f:selectItem itemValue="1" itemLabel="Activo" />
-					</p:selectOneMenu >
-				</div>
-			</div>
-			<h:commandButton id="btn1" value="Guardar" action="#{AdminDoctorUpdate.updateDoctor}" />
-		</div>
+			
+
+		</h:form>
 	</div>
-	</h:form>
 </h:body>
 </html>
