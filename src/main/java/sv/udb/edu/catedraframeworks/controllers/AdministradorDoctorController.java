@@ -16,6 +16,7 @@ import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 import sv.udb.edu.catedraframeworks.utils.Emails;
 import sv.udb.edu.catedraframeworks.utils.HashSha1;
+import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
 import javax.mail.MessagingException;
@@ -47,8 +48,6 @@ public class AdministradorDoctorController {
         String contraRamdom = ramdomString.password();
 
         doctor.setEstado(1);
-        doctor.setDuiDoctor("12102548-5");
-        doctor.setFechaNacimiento(new Date(2000, 04, 25));
         doctor.setIdArea(area);
         doctor.setPassword(hasSha1.hashPassword(contraRamdom));
 
@@ -76,11 +75,14 @@ public class AdministradorDoctorController {
     }
 
 
-    public String delete() {
-        doctorRepository.delete(doctor);
-        doctor = new Doctor();
-        return "/registroDoctor.xhtml?faces-redirect=true";
-    }
+    public String deleteDoctor() {
+		  int id = Integer.valueOf(JsfUtil.getRequest().getParameter("idDoctor"));
+		  doctorRepository.deleteById(id);
+		  doctor = new Doctor();
+		  
+		  return "/administrador-listado-doctores.xhtml?faces-redirect=true";
+	  }
+	  
 
 
     public Doctor getDoctor() {

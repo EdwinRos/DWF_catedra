@@ -10,17 +10,24 @@
 </h:head>
 <h:body>
    <h:form>
-       <p:outputLabel value="nombre"/>
+       <p:outputLabel value="Nombre: "/>
        <p:inputText value="#{AdminDoctorControler.doctor.nombreDoctor}" />
        
-       <p:outputLabel value="apellido"/>
+       <p:outputLabel value="Apellido: "/>
        <p:inputText value="#{AdminDoctorControler.doctor.apellidoDoctor}" />
        
-       <p:outputLabel value="Usuario"/>
+       <p:outputLabel value="Usuario: "/>
        <p:inputText value="#{AdminDoctorControler.doctor.usuario}" />
 
-	  <p:outputLabel value="Correo"/>
+	  <p:outputLabel value="Correo: "/>
        <p:inputText type="email" value="#{AdminDoctorControler.doctor.correoDoctor}" />
+       
+       <p:outputLabel  value="DUI: "/>
+       <p:inputText value="#{AdminDoctorControler.doctor.duiDoctor}"/>
+       
+           
+        <p:outputLabel value="Fecha de Nacimiento"/>
+            <p:calendar value="#{AdminDoctorControler.doctor.fechaNacimiento}" showOn="button"/>
 
        <div class="p-field p-col-12 p-md-4">
            <p:outputLabel for="@next" value="Basic"/>
@@ -33,7 +40,7 @@
            </p:selectOneMenu>
        </div>
 
-       <p:commandButton value="ingresar" action="#{AdminDoctorControler.nuevoDoctor}" />
+       <p:commandButton value="Ingresar" action="#{AdminDoctorControler.nuevoDoctor}" />
    </h:form>
 </h:body>
 </html>
