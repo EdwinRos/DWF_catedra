@@ -1,6 +1,7 @@
 package sv.udb.edu.catedraframeworks.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
@@ -15,6 +16,8 @@ import sv.udb.edu.catedraframeworks.entities.Citas;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
 import sv.udb.edu.catedraframeworks.repositories.CitasRepository;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
+import sv.udb.edu.catedraframeworks.utils.ActualAge;
+import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 
 @Scope(value = "session")
 @Component(value = "doctorController")
@@ -30,17 +33,33 @@ public class DoctorController {
 	
 	@Autowired
     private CitasRepository citasRepository;
-    private List<Citas> citas ;
+    private List<Citas> citas;
 	
     @Deferred
     @RequestAction
     @IgnorePostback
     public void loadData() {
+    	ActualAge edadActual = new ActualAge();
     	
+    	 Optional<Doctor> miDoctor = doctorRepository.findById(1);
+    	 
+    	 doctor.setDoctorId(miDoctor.get().getDoctorId());
+    	 doctor.setUsuario(miDoctor.get().getUsuario());
+         doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
+         doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());
+         doctor.setIdArea(miDoctor.get().getIdArea());
+         doctor.setEstado(miDoctor.get().getEstado());
+         doctor.setCorreoDoctor(miDoctor.get().getCorreoDoctor());
+         doctor.setDuiDoctor(miDoctor.get().getDuiDoctor());
+         doctor.setFechaRegistro(miDoctor.get().getFechaRegistro());
+         doctor.setIdArea(miDoctor.get().getIdArea());         
+         edad = edadActual.getActualDate(miDoctor.get().getFechaNacimiento());
+    	
+    	citasDoctor();
     }
     
-    protected void citasDoctor(Doctor doctor) {
-    	
+    protected void citasDoctor() {
+    	citas = citasRepository.findAll(); 
     }
 	
     public Doctor getDoctor() {
