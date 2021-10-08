@@ -16,6 +16,35 @@ import javax.mail.internet.MimeMessage;
 
 public class Emails {
 
+    public void pacienteEmail(String destinatario, String usuario, String pacPassword, String nombres, String apellidos) throws MessagingException {
+        String nombreApellido = nombres + " " + apellidos;
+        String pacContra = pacPassword;
+        String usser = usuario;
+
+        String correoDestino = destinatario;
+        String host = "smtp.gmail.com";
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587");
+
+        final String myAccountEmail = "hospitallasalud01@gmail.com";
+        final String password = "huaqlnpubzphtxdy";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+
+        Message message = sendDoctorEmail(session, myAccountEmail, correoDestino, usser, nombreApellido, pacContra);
+        Transport.send(message);
+
+    }
+
+
     public void docotorEmail(String destinatario, String usuario, String Drpassword, String nombres, String apellidos) throws MessagingException {
         String nombreApellido = nombres + " " + apellidos;
         String drContra = Drpassword;
