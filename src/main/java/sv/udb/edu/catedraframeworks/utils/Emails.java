@@ -175,7 +175,7 @@ public class Emails {
                     "  <tr>\n" +
                     "    <td class=\"v-text-align\" style=\"padding-right: 0px;padding-left: 0px;\" align=\"left\">\n" +
                     "      \n" +
-                    "      <img align=\"left\" border=\"0\" src=\"https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 17%;max-width: 47.6px;\" width=\"47.6\" class=\"v-src-width v-src-max-width\"/>\n" +
+                    "      <img align=\"left\" border=\"0\" src=\"https://images.pexels.com/photos/7723513/pexels-photo-7723513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 17%;max-width: 47.6px;\" width=\"47.6\" class=\"v-src-width v-src-max-width\"/>\n" +
                     "      \n" +
                     "    </td>\n" +
                     "  </tr>\n" +
