@@ -17,7 +17,23 @@
 	                    </f:facet>
 	                    <div class="row">
 	                    	<div class="col-12">
-	                    		
+	                    		<p:dataTable id="tabla" var="exp" value="#{pacienteExpedienteController.expediente}" rows="10"
+				                     paginator="true"
+				                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				                     rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+									<p:column>
+										<f:facet name="header">Registro</f:facet>
+										<h:outputText value="#{exp.registros}" />
+									</p:column>
+					
+									<p:column>
+										<f:facet name="header">Fecha de registro</f:facet>
+										<h:outputText value="#{exp.fechaRegistro}" >
+										    <f:convertDateTime pattern="yyyy-MM-dd" />
+										</h:outputText>
+									</p:column>
+								</p:dataTable>
 	                    	</div>
 	                    </div>
      				</p:card>
@@ -26,29 +42,37 @@
      				<h:panelGrid columns="1" id="panelgrif2" >
 						<p:card styleClass="w-100">
 							<f:facet name="header">
-							<!-- #{doctorPerfilController.doctor.nombreDoctor.substring(0,1)} #{doctorPerfilController.doctor.apellidoDoctor.substring(0,1)} -->
-		                        <p:avatar style="background-color: lightseagreen; color: white;" label=""  size="xlarge"/>
+		                        <p:avatar style="background-color: lightseagreen; color: white;" label="#{pacienteExpedienteController.paciente.nombrePaciente.substring(0,1)} #{pacienteExpedienteController.paciente.apellidoPaciente.substring(0,1)}"  size="xlarge"/>
 		                    </f:facet>
 		                    <f:facet name="title">
 		                    	<center>
-		                    		<!-- #{pacienteExpedienteController.paciente.nombrePaciente} -->
+		                    		#{pacienteExpedienteController.paciente.nombrePaciente}
 		                    		<br/>
-		                    		<!-- #{doctorPerfilController.doctor.apellidoDoctor}-->
+		                    		#{pacienteExpedienteController.paciente.apellidoPaciente}
 		                    	</center>
 		                    	<p:divider />
 		                    </f:facet>
 		                    <center>
-		                    	<!-- #{pacienteExpedienteController.edad} -->
-		                    	<!-- <p><b>#{doctorPerfilController.doctor.usuario}</b></p>
-			                    <p>#{doctorPerfilController.doctor.idArea.nombreArea}</p>
-		                    	<p>#{doctorPerfilController.doctor.correoDoctor}</p>
-		                    	<p>#{doctorPerfilController.doctor.duiDoctor}</p>-->
-			                    <p>
-				                    <b>Fecha de ingreso: </b>
-				                    <!--  <h:outputText value="20-09-1999" >
+		                    	<p>
+	      							<c:choose>
+	      								<c:when test="${pacienteExpedienteController.paciente.sexo == 'M'}">
+	      									Masculino
+	      								</c:when>
+	      								<c:when test="${pacienteExpedienteController.paciente.sexo == 'F'}">
+	      									Femenino
+	      								</c:when>
+	      								<c:otherwise>
+	      									Sin especificar
+	      								</c:otherwise>
+	      							</c:choose>
+	      						</p>
+	      						<p>
+				                    <h:outputText value="#{pacienteExpedienteController.paciente.fechaNacimiento}" >
 									    <f:convertDateTime pattern="yyyy-MM-dd" />
-									</h:outputText>-->
+									</h:outputText> (#{pacienteExpedienteController.edad} años)
 			                    </p>
+			                    <p>#{pacienteExpedienteController.paciente.duiPaciente}</p>
+		                    	<p>#{pacienteExpedienteController.paciente.telefono}</p>
 		                    </center>
 						</p:card>
 					</h:panelGrid>
