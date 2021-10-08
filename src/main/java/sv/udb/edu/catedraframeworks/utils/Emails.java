@@ -175,7 +175,7 @@ public class Emails {
                     "  <tr>\n" +
                     "    <td class=\"v-text-align\" style=\"padding-right: 0px;padding-left: 0px;\" align=\"left\">\n" +
                     "      \n" +
-                    "      <img align=\"left\" border=\"0\" src=\"https://images.pexels.com/photos/7723513/pexels-photo-7723513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 17%;max-width: 47.6px;\" width=\"47.6\" class=\"v-src-width v-src-max-width\"/>\n" +
+                    "      <img align=\"left\" border=\"0\" src=\"https://uxwing.com/wp-content/themes/uxwing/download/21-medical-science-lab/medical.png\" alt=\"Logo\" title=\"Logo\" style=\"outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 17%;max-width: 47.6px;\" width=\"47.6\" class=\"v-src-width v-src-max-width\"/>\n" +
                     "      \n" +
                     "    </td>\n" +
                     "  </tr>\n" +
@@ -222,7 +222,7 @@ public class Emails {
                     "\n" +
                     "<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n" +
                     "  <div class=\"u-row\" style=\"Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n" +
-                    "    <div style=\"border-collapse: collapse;display: table;width: 100%;background-image: url('https://www.tekcrispy.com/wp-content/uploads/2017/08/Resonancia-Magnetica.jpg');background-repeat: repeat;background-position: center top;background-color: transparent;\">\n" +
+                    "    <div style=\"border-collapse: collapse;display: table;width: 100%;background-image: url('https://images.pexels.com/photos/7723513/pexels-photo-7723513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');background-repeat: repeat;background-position: center top;background-color: transparent;\">\n" +
                     "      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:600px;\"><tr style=\"background-image: url('images/image-2.jpeg');background-repeat: repeat;background-position: center top;background-color: transparent;\"><![endif]-->\n" +
                     "      \n" +
                     "<!--[if (mso)|(IE)]><td align=\"center\" width=\"600\" style=\"width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;\" valign=\"top\"><![endif]-->\n" +
@@ -250,11 +250,11 @@ public class Emails {
                     "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 30px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                     "        \n" +
                     "  <div class=\"v-text-align\" style=\"color: #ffffff; line-height: 170%; text-align: center; word-wrap: break-word;\">\n" +
-                    "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \"" + nombreapellido + "\"<br />se detallan su usuario y contrase&ntilde;a para poder</span></p>\n" +
+                    "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \"nombres y apellidos\"<br />se detallan su usuario y contrase&ntilde;a para poder</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">ingresar a su perfil de medico, sera un gusto contar con<br />usted en nuestra familia.</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" " + usuario + " \"</span></strong></p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" " + passwordDr + " \"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" \"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" \"</span></strong></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "  </div>\n" +
