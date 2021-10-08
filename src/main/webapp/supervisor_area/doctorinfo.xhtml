@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <link rel="shortcut icon" type="image/png"
           href="https://th.bing.com/th/id/R.b72899abe5a66ad2f32d1ba682590a87?rik=IRpRO6prIiKk0w&amp;pid=ImgRaw&amp;r=0"/>
@@ -46,6 +46,18 @@
         flex-wrap: wrap;
     }
 
+    .girl {
+        background-color: lightpink;
+        color: #fff
+    }
+    .man{
+        background-color: dodgerblue;
+        color: white;
+    }
+    .x{
+        background-color: mediumpurple ;
+        color: white;
+    }
 
 </style>
 <h:body>
@@ -57,15 +69,17 @@
 -webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
                     <f:facet name="header">
-                        <p:avatar style="background-color: lightseagreen; color: white;" label="#{doctorInfo.doctor.nombreDoctor.substring(0,1)} #{doctorInfo.doctor.apellidoDoctor.substring(0,1)}" styleClass="p-mr-2"
+                        <p:avatar style="background-color: lightseagreen; color: white;"
+                                  label="#{doctorInfo.doctor.nombreDoctor.substring(0,1)} #{doctorInfo.doctor.apellidoDoctor.substring(0,1)}"
+                                  styleClass="p-mr-2"
                                   size="xlarge"/>
                     </f:facet>
                     <f:facet name="title">
                         Doctor: #{doctorInfo.doctor.nombreDoctor} #{doctorInfo.doctor.apellidoDoctor}
-                        <p:divider />
+                        <p:divider/>
                     </f:facet>
                     <f:facet name="subtitle">
-                         Se detalla la informacion del doctor del area: #{doctorInfo.doctor.idArea.nombreArea}
+                        Se detalla la informacion del doctor del area: #{doctorInfo.doctor.idArea.nombreArea}
                     </f:facet>
                     <p><b>Edad: </b>#{doctorInfo.edad}</p>
                     <p><b>DUI: </b> #{doctorInfo.doctor.duiDoctor} </p>
@@ -76,24 +90,30 @@
         </div>
         <div class="horizontal-content">
             <div class="ui-card">
-                <p:dataTable id="citasTable" var="cts" value="#{doctorInfo.citas}" emptyMessage="No hay registros asociados" >
+                <p:dataTable id="citasTable" var="cts" value="#{doctorInfo.citas}"
+                             emptyMessage="No hay registros asociados">
                     <f:facet name="header">
                         Lista de citas a este doctor
                     </f:facet>
                     <p:column headerText="Paciente">
                         <div>
-                            <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="large" style="background-color: lightpink; color:#fff" shape="circle" /><h:outputText value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente}"  />
+                            <p:avatar icon="pi pi-user"  styleClass="p-mr-2" size="large" shape="circle"/>
+                            <h:outputText value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente} #{cts.idPaciente.sexo}"/>
                         </div>
                     </p:column>
+                    <p:column headerText="Sexo">
+                        <h:outputText value="#{cts.idPaciente.sexo == 'M'?'Masculino':'Femenino'}" />
+                    </p:column>
                     <p:column headerText="extras consulta">
-                         <h:outputText value="#{cts.extras}" />
+                        <h:outputText value="#{cts.extras}"/>
                     </p:column>
                     <p:column headerText="fecha cita">
-                        <h:outputText value="#{cts.fechaCita}" />
+                        <h:outputText value="#{cts.fechaCita}"/>
                     </p:column>
                     <p:column headerText="Expediente del paciente">
-                        <p:button href="/perfilpacientesupervisor"  icon="pi pi-file" value="Expediente Paciente" styleClass="rounded-button ui-button-help" >
-                            <f:param name="idPaciente" value="#{cts.idPaciente.pacienteId}" />
+                        <p:button href="/perfilpacientesupervisor" icon="pi pi-file" value="Expediente Paciente"
+                                  styleClass="rounded-button ui-button-help">
+                            <f:param name="idPaciente" value="#{cts.idPaciente.pacienteId}"/>
                         </p:button>
                     </p:column>
                 </p:dataTable>

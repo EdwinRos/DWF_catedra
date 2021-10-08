@@ -48,6 +48,7 @@ public class SupervisorPaciente {
         paciente.setTelefono(miPaciente.get().getTelefono());
         paciente.setFechaRegistro(miPaciente.get().getFechaRegistro());
         paciente.setEstado(miPaciente.get().getEstado());
+        paciente.setSexo(miPaciente.get().getSexo());
         edad = edadActual.getActualDate(miPaciente.get().getFechaNacimiento());
 
         loadListOfRecords(paciente);

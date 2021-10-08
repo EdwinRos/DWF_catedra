@@ -14,6 +14,20 @@ public class Citas {
     private Integer citasId;
 
     @Column(
+            name = "codigo_cita",
+            nullable = false,
+            columnDefinition = "VARCHAR(10)"
+    )
+    private String codigoCita;
+
+    @Column(
+            name = "titulo",
+            nullable = false,
+            columnDefinition = "VARCHAR(50)"
+    )
+    private String titulo;
+
+    @Column(
             name = "fecha",
             nullable = false,
             columnDefinition = "DATE"
@@ -53,12 +67,30 @@ public class Citas {
     public Citas() {
     }
 
-    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente) {
+    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente, String codigoCita, String titulo) {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.extras = extras;
         this.idDoctor = idDoctor;
         this.idPaciente = idPaciente;
+        this.codigoCita = codigoCita;
+        this.titulo = titulo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getCodigoCita() {
+        return codigoCita;
+    }
+
+    public void setCodigoCita(String codigoCita) {
+        this.codigoCita = codigoCita;
     }
 
     public Integer getCitasId() {
@@ -109,12 +141,12 @@ public class Citas {
         this.idPaciente = idPaciente;
     }
 
-
-
     @Override
     public String toString() {
         return "Citas{" +
                 "citasId=" + citasId +
+                ", codigoCita='" + codigoCita + '\'' +
+                ", titulo='" + titulo + '\'' +
                 ", fechaCita=" + fechaCita +
                 ", horaCita=" + horaCita +
                 ", extras='" + extras + '\'' +

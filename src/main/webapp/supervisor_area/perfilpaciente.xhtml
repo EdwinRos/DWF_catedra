@@ -34,8 +34,12 @@
         align-items: start;
     }
 
-    .header {
+    .header1{
         color: lightpink;
+    }
+
+    .header2{
+        color: lightskyblue;
     }
 
     .cardContent {
@@ -45,7 +49,7 @@
         align-items: start;
     }
 
-    .customChip {
+    .customChipGirl {
         border: 1px solid lightpink;
         color: white;
         background-color: lightpink;
@@ -54,7 +58,18 @@
         padding-right: 5px;
         width: fit-content;
     }
-    .customChipInva{
+
+    .customChipMan {
+        border: 1px solid lightskyblue;
+        color: white;
+        background-color: lightskyblue;
+        border-radius: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: fit-content;
+    }
+
+    .customChipInva {
         border: 1px solid indianred;
         color: white;
         background-color: indianred;
@@ -63,12 +78,26 @@
         padding-right: 5px;
         width: fit-content;
     }
-    .infoP{
+
+    .customChipVa {
+        border: 1px solid indianred;
+        color: white;
+        background-color: indianred;
+        border-radius: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: fit-content;
+    }
+
+    .infoP {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: start;
         flex-wrap: wrap;
+    }
+    .prueba{
+        background-color: orange;
     }
 </style>
 <h:body>
@@ -82,7 +111,7 @@
                     <f:facet name="header">
                         <p:avatar
                                 label="#{pacienteAd.paciente.nombrePaciente.substring(0,1)}#{pacienteAd.paciente.apellidoPaciente.substring(0,1)}"
-                                style="background-color: lightpink; color: white; align-content: center;" size="xlarge"
+                                size="xlarge"
                                 shape="circle"/>
                     </f:facet>
                     <f:facet name="title">
@@ -93,11 +122,11 @@
                         <p><b>Edad del paciente:</b> #{pacienteAd.edad}</p>
                     </f:facet>
                     <div class="infoP">
-                    <p class="customChip">N. Registros: #{pacienteAd.expedientes.size()}</p>
-                    <p class="customChip">Correo: #{pacienteAd.paciente.correoPaciente}</p>
-                    <p class="customChip">Edad: #{pacienteAd.edad}</p>
-                    <p class="#{pacienteAd.paciente.estado==1? 'customChip': 'customChipInva'}">Estado: #{pacienteAd.paciente.estado==1? 'Activo': 'Inactivo'}</p>
-                    <p class="customChip">N. Contacto: #{pacienteAd.paciente.telefono}</p>
+                        <p class="#{pacienteAd.paciente.sexo=='M'?'customChipMan':'customChipGirl'}">N. Registros: #{pacienteAd.expedientes.size()}</p>
+                        <p class="#{pacienteAd.paciente.sexo=='M'?'customChipMan':'customChipGirl'}">Correo: #{pacienteAd.paciente.correoPaciente}</p>
+                        <p class="#{pacienteAd.paciente.sexo=='M'?'customChipMan':'customChipGirl'}">Edad: #{pacienteAd.edad}</p>
+                        <p class="#{pacienteAd.paciente.estado==1? 'customChipVa': 'customChipInva'}">Estado: #{pacienteAd.paciente.estado==1? 'Activo': 'Inactivo'}</p>
+                        <p class="#{pacienteAd.paciente.sexo=='M'?'customChipMan':'customChipGirl'}">N. Contacto: #{pacienteAd.paciente.telefono}</p>
                     </div>
                     <f:facet name="footer">
                         <p>
@@ -108,26 +137,26 @@
             </h:panelGrid>
         </div>
         <div class="horizontal-content">
-                       <p:card>
-                           <f:facet name="title">
-                               Expediente del paciente #{pacienteAd.paciente.nombrePaciente} #{pacienteAd.paciente.apellidoPaciente}
-                           </f:facet>
-                           <ui:repeat value="#{pacienteAd.expedientes}" var="ex">
-                               <div class="cardContent">
-                                   <div class="avatar">
-                                       <h:panelGrid columns="2" id="panelgrid" styleClass="showcase-text-align-center"
-                                                    columnClasses="ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3">
-                                       <p:avatar label="EX" styleClass="p-mr-2" size="xlarge" shape="circle" />
-                                       </h:panelGrid>
-                                   </div>
-                                   <div class="info">
-                                       <h3 class="header">Fecha de cita: #{ex.fechaRegistro}</h3>
-                                       <p>#{ex.registros}</p>
-                                       <p:divider/>
-                                   </div>
-                               </div>
-                           </ui:repeat>
-                       </p:card>
+            <p:card>
+                <f:facet name="title">
+                    Expediente del paciente #{pacienteAd.paciente.nombrePaciente} #{pacienteAd.paciente.apellidoPaciente}
+                </f:facet>
+                <ui:repeat value="#{pacienteAd.expedientes}" var="ex">
+                    <div class="cardContent">
+                        <div class="avatar">
+                            <h:panelGrid columns="2" id="panelgrid" styleClass="showcase-text-align-center"
+                                         columnClasses="ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3">
+                                <p:avatar label="EX" styleClass="p-mr-2" size="xlarge" shape="circle"/>
+                            </h:panelGrid>
+                        </div>
+                        <div class="info">
+                            <h3 class="#{pacienteAd.paciente.sexo=='M'?'header2':'header1'}">Fecha de cita: #{ex.fechaRegistro}</h3>
+                            <p>#{ex.registros}</p>
+                            <p:divider/>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </p:card>
         </div>
     </div>
 </h:body>
