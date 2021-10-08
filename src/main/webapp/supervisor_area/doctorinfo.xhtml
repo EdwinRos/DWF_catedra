@@ -50,12 +50,14 @@
         background-color: lightpink;
         color: #fff
     }
-    .man{
+
+    .man {
         background-color: dodgerblue;
         color: white;
     }
-    .x{
-        background-color: mediumpurple ;
+
+    .x {
+        background-color: mediumpurple;
         color: white;
     }
 
@@ -76,6 +78,7 @@
                     </f:facet>
                     <f:facet name="title">
                         Doctor: #{doctorInfo.doctor.nombreDoctor} #{doctorInfo.doctor.apellidoDoctor}
+                        <p:rating value="#{doctorInfo.nota}" readonly="true"/>
                         <p:divider/>
                     </f:facet>
                     <f:facet name="subtitle">
@@ -85,6 +88,27 @@
                     <p><b>DUI: </b> #{doctorInfo.doctor.duiDoctor} </p>
                     <p><b>Estado: </b> #{doctorInfo.doctor.estado==1?'Activo':'Inactivo'} </p>
                     <p><b>Fecha de ingreso: </b> #{doctorInfo.doctor.fechaRegistro}</p>
+                </p:card>
+            </h:panelGrid>
+            <h:panelGrid columns="2" id="inputMessage" styleClass="showcase-text-align-center"
+                         columnClasses="ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3, ui-g-12 ui-md-6 ui-lg-3">
+                <p:card style="width: 25em;  box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
+                    <h:form>
+                        <div>
+                            <f:facet name="header">
+                                Ingresar observaciones al doctor
+                            </f:facet>
+                        </div>
+                        <p:inputTextarea rows="6" cols="33" value="#{doctorInfo.observacionesDoctor.observacion}"/>
+                        <p:separator/>
+                        <p:commandButton icon="pi pi-send" action="#{doctorInfo.enviarMensaje}" type="submit"
+                                         value="Enviar" styleClass="rounded-button ui-button-help"/>
+                        <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate/>
+                        </p:messages>
+                    </h:form>
                 </p:card>
             </h:panelGrid>
         </div>
@@ -97,12 +121,13 @@
                     </f:facet>
                     <p:column headerText="Paciente">
                         <div>
-                            <p:avatar icon="pi pi-user"  styleClass="p-mr-2" size="large" shape="circle"/>
-                            <h:outputText value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente} #{cts.idPaciente.sexo}"/>
+                            <p:avatar icon="pi pi-user" styleClass="p-mr-2" size="large" shape="circle"/>
+                            <h:outputText
+                                    value="#{cts.idPaciente.nombrePaciente} #{cts.idPaciente.apellidoPaciente} #{cts.idPaciente.sexo}"/>
                         </div>
                     </p:column>
                     <p:column headerText="Sexo">
-                        <h:outputText value="#{cts.idPaciente.sexo == 'M'?'Masculino':'Femenino'}" />
+                        <h:outputText value="#{cts.idPaciente.sexo == 'M'?'Masculino':'Femenino'}"/>
                     </p:column>
                     <p:column headerText="extras consulta">
                         <h:outputText value="#{cts.extras}"/>
@@ -118,9 +143,30 @@
                     </p:column>
                 </p:dataTable>
             </div>
+            <div class="ui-card">
+                <h:form>
+                    <p:dataTable var="obser" value="#{doctorInfo.observacionPacienteDoctorList}" rows="5"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                 rowsPerPageTemplate="5,10,{ShowAll|'All'}"
+                                 emptyMessage="Sin observaciones de parte de pacientes">
+
+                        <p:column headerText="Fecha de registro">
+                            <h:outputText value="#{obser.fechaRegistro}"/>
+                        </p:column>
+
+                        <p:column headerText="Observacion">
+                            <h:outputText value="#{obser.observacion}"/>
+                        </p:column>
+
+                        <p:column headerText="calificacion">
+                            <p:rating value="#{obser.recordDoctor}" readonly="true"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </div>
         </div>
-
     </div>
-
 </h:body>
 </html>
