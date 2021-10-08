@@ -45,18 +45,18 @@ public class ObservacionPacienteDoctor {
             name = "id_doctor",
             nullable = false
     )
-    private Doctor idPaciente;
+    private Doctor idDoctor;
     //getters/setters/constructors
 
 
     public ObservacionPacienteDoctor() {
     }
 
-    public ObservacionPacienteDoctor(int recordDoctor, String observacion, int estado, Doctor idPaciente) {
+    public ObservacionPacienteDoctor(int recordDoctor, String observacion, int estado, Doctor idDoctor) {
         this.recordDoctor = recordDoctor;
         this.observacion = observacion;
         this.estado = estado;
-        this.idPaciente = idPaciente;
+        this.idDoctor = idDoctor;
     }
 
     public Integer getId() {
@@ -100,11 +100,11 @@ public class ObservacionPacienteDoctor {
     }
 
     public Doctor getIdPaciente() {
-        return idPaciente;
+        return idDoctor;
     }
 
     public void setIdPaciente(Doctor idPaciente) {
-        this.idPaciente = idPaciente;
+        this.idDoctor = idPaciente;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class ObservacionPacienteDoctor {
                 ", observacion='" + observacion + '\'' +
                 ", fechaRegistro=" + fechaRegistro +
                 ", estado=" + estado +
-                ", idPaciente=" + idPaciente +
+                ", idPaciente=" + idDoctor +
                 '}';
     }
 }
