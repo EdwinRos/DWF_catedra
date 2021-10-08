@@ -12,11 +12,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 import sv.udb.edu.catedraframeworks.entities.Citas;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
+import sv.udb.edu.catedraframeworks.entities.ObservacionPacienteDoctor;
+import sv.udb.edu.catedraframeworks.entities.ObservacionesDoctor;
 import sv.udb.edu.catedraframeworks.repositories.CitasRepository;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
+import sv.udb.edu.catedraframeworks.repositories.ObservacionPacienteDoctorRepository;
+import sv.udb.edu.catedraframeworks.repositories.ObservacionesDoctorRepository;
 import sv.udb.edu.catedraframeworks.utils.ActualAge;
 import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +41,18 @@ public class supervisorInfoDoctor {
     private CitasRepository citasRepository;
     private List<Citas> citas ;
 
+    @Autowired
+    private ObservacionesDoctorRepository observacionesDoctorRepository;
+    ObservacionesDoctor observacionesDoctor = new ObservacionesDoctor();
+
+    @Autowired
+    private ObservacionPacienteDoctorRepository observacionPacienteDoctorRepository;
+    List<ObservacionPacienteDoctor> observacionPacienteDoctorList;
+    int nota = 0;
+
+
+
+
     @Deferred
     @RequestAction
     @IgnorePostback
@@ -52,7 +70,46 @@ public class supervisorInfoDoctor {
         doctor.setDuiDoctor(miDoctor.get().getDuiDoctor());
         doctor.setFechaRegistro(miDoctor.get().getFechaRegistro());
          edad = actualAge.getActualDate(miDoctor.get().getFechaNacimiento());
+
+         //carga de datos al doctor
          loadCitasDelDoctor(doctor);
+         loadRating(doctor);
+
+
+    }
+
+
+
+    public void enviarMensaje(){
+        observacionesDoctor.setIdDoctor(doctor);
+        observacionesDoctor.setEstado(1);
+        observacionesDoctorRepository.save(observacionesDoctor);
+        observacionesDoctor = new ObservacionesDoctor();
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito","Mensaje enviado!!"));
+    }
+
+
+
+    protected void loadRating(Doctor dr){
+        int total =0;
+        observacionPacienteDoctorList = observacionPacienteDoctorRepository.getObservacionPacienteDoctorByIdDoctor(dr);
+
+        for (ObservacionPacienteDoctor items: observacionPacienteDoctorList
+             ) {
+             total += items.getRecordDoctor();
+        }
+
+        nota = total/observacionPacienteDoctorList.size();
+
+
+    }
+
+    public List<ObservacionPacienteDoctor> getObservacionPacienteDoctorList() {
+        return observacionPacienteDoctorList;
+    }
+
+    public int getNota() {
+        return nota;
     }
 
     protected  void loadCitasDelDoctor(Doctor doctor){
@@ -69,6 +126,10 @@ public class supervisorInfoDoctor {
 
     public List<Citas> getCitas() {
         return citas;
+    }
+
+    public ObservacionesDoctor getObservacionesDoctor() {
+        return observacionesDoctor;
     }
 
 }

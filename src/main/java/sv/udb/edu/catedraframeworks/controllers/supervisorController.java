@@ -7,13 +7,11 @@ import org.ocpsoft.rewrite.faces.annotation.Deferred;
 import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import sv.udb.edu.catedraframeworks.entities.Area;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Scope(value = "session")
@@ -27,6 +25,8 @@ public class supervisorController {
      private List<Doctor> doctorList;
      Area area = new Area();
 
+
+
      @Deferred
     @RequestAction
     @IgnorePostback
@@ -34,6 +34,9 @@ public class supervisorController {
          area.setAreaId(1);
          doctorList = doctorRepository.findByIdArea(area);
      }
+
+
+
 
 
     public List<Doctor> getDoctorList() {

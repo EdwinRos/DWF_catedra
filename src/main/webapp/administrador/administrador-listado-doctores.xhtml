@@ -18,7 +18,15 @@
 	
 	<h:form>
 		<p:panel header="Listado de Doctores">
-			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}">
+			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}" rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+				<p:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{doc.doctorId}" />
+				</p:column>
 				<p:column>
 					<f:facet name="header">Nombre</f:facet>
 					<h:outputText value="#{doc.nombreDoctor}" />
