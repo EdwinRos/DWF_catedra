@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 
 	<title></title>
@@ -11,7 +12,11 @@
 <h:body>
 	<h:form id="formArea">
 		<p:panel header="Listado de Areas">
-			<p:dataTable id="tabla" var="are" value="#{AdminListArea.areaList}">
+			<p:dataTable id="tabla" var="are" value="#{AdminListArea.areaList}" rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="5,10,{ShowAll|'All'}">
 
 				<p:column>
 					<f:facet name="header">Nombre de Area</f:facet>
