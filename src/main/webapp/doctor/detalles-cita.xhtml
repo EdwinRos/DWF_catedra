@@ -90,7 +90,9 @@
       				<div class="row">
       					<div class="col-12">
       						<center>
-      							<p:button href="#" value="Ver diagnosticos previos del paciente" styleClass="rounded-button width-max-content" />
+      							<p:button href="/doctor/paciente" value="Ver diagnosticos previos del paciente" styleClass="rounded-button width-max-content" >
+      								<f:param value="#{citaDetallesController.cita.idPaciente.pacienteId}" name="pacienteId" />
+      							</p:button>
       						</center>
       					</div>
       				</div>
