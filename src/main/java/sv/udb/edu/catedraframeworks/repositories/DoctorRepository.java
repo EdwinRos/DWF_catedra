@@ -12,7 +12,9 @@ public interface DoctorRepository extends JpaRepository <Doctor, Integer> {
 
     //metodos para el area supervisora
     List<Doctor> findByIdAreaAndEstado(Area idArea, Integer estado);
+
    Doctor findByEstadoAndUsuarioAndPassword(Integer estado, String usuario, String password);
+
    Doctor findByPasswordAndDoctorId(String password, Integer doctorId);
 
 }

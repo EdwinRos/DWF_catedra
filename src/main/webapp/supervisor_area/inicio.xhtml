@@ -56,7 +56,8 @@
                 <p:menuitem value="Inicio" action="#{doctoresAreaList.inicio}" icon="pi pi-home"/>
 
                 <f:facet name="options">
-                    <p:commandButton type="submit" action="#{administradorInicio.logOut}" value="Logout"  icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                    <p:commandButton type="submit" action="#{administradorInicio.logOut}" value="Logout"
+                                     icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
                 </f:facet>
             </p:menubar>
         </h:form>
@@ -69,7 +70,9 @@
 -webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
                     <f:facet name="header">
-                        <p:avatar style="background-color: lightcoral; color: white;" label="#{doctoresAreaList.doctor.nombreDoctor.substring(0,1)} #{doctoresAreaList.doctor.apellidoDoctor.substring(0,1)}" styleClass="p-mr-2"
+                        <p:avatar style="background-color: lightcoral; color: white;"
+                                  label="#{doctoresAreaList.doctor.nombreDoctor.substring(0,1)} #{doctoresAreaList.doctor.apellidoDoctor.substring(0,1)}"
+                                  styleClass="p-mr-2"
                                   size="xlarge"/>
                     </f:facet>
                     <f:facet name="title">
@@ -82,20 +85,26 @@
                     </f:facet>
                     <p>Al lado se muestran la lista de doctor@s correspondientes a su area <i
                             class="pi pi-arrow-circle-right"/></p>
-                    <p:accordionPanel widgetVar="basic" activeIndex="null">
-                        <p:tab title="Cambiar contraseña" >
+                    <p:accordionPanel widgetVar="basic">
+                        <p:tab title="Cambiar contraseña">
                             <p class="p-m-0">
-                               <h:form>
+                                <h:form>
+                                    <p>
+                                        <p:outputLabel value="ingrese su contraseña actual"/>
+                                        <p:password value="#{doctoresAreaList.oldPassword}"/>
+                                    </p>
+                                    <p>
+                                        <p:outputLabel value="Ingrese la nueva contraseña"/>
+                                        <p:password value="#{doctoresAreaList.newPassword}" required="true"
+                                                    requiredMessage="Este campo es obligatorio"/>
 
-                                   <p:outputLabel value="ingrese su contraseña actual" />
-                                   <p:password value="#{doctoresAreaList.oldPassword}" />
-                                   <p:outputLabel value="Ingrese la nueva contraseña" />
-                                   <p:password value="#{doctoresAreaList.newPassword}" required="true" requiredMessage="Este campo es obligatorio" />
-                                   <p:commandButton ajax="false" type="submit" value="Guardar" action="#{doctoresAreaList.changePassswrodRequest}" />
-                                   <p:messages id="upPass" showDetail="true" closable="true">
-                                       <p:autoUpdate/>
-                                   </p:messages>
-                               </h:form>
+                                    </p>
+                                    <p:commandButton ajax="false" type="submit" value="Guardar"
+                                                     action="#{doctoresAreaList.changePassswrodRequest}"/>
+                                    <p:messages id="upPass" showDetail="true" closable="true">
+                                        <p:autoUpdate/>
+                                    </p:messages>
+                                </h:form>
                             </p>
                         </p:tab>
                     </p:accordionPanel>

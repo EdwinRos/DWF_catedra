@@ -45,7 +45,6 @@ public class supervisorController {
     public void loadData(){
          int id = (int) session.getAttribute("id");
          Optional<Doctor> miDoctor = doctorRepository.findById(id);
-
          doctor.setDoctorId(miDoctor.get().getDoctorId());
          doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
          doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());

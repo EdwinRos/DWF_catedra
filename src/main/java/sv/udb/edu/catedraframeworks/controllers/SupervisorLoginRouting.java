@@ -35,20 +35,19 @@ public class SupervisorLoginRouting {
 
     @Autowired
     private DoctorRepository doctorRepository;
-    Doctor getdoctor = new Doctor();
+    Doctor doctor = new Doctor();
     String password;
 
     public String iniciarSession() throws NoSuchAlgorithmException {
-        Doctor doctor = new Doctor();
         HashSha1 sha1 = new HashSha1();
 
-        doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(3, getdoctor.getUsuario(), sha1.hashPassword(getPassword()));
+        doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(3, doctor.getUsuario(), sha1.hashPassword(getPassword()));
         if(doctor != null) {
 
             session.setAttribute("id", doctor.getDoctorId());
             return "/supervisor_area/inicio.xhtml?faces-redirect=true";
         }else{
-            getdoctor = null;
+            doctor = null;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
             return "/supervisor_area/supervisorlogin.xhtml?faces-redirect=true";
         }
@@ -62,7 +61,7 @@ public class SupervisorLoginRouting {
     }
 
     public Doctor getDoctor() {
-        return getdoctor;
+        return doctor;
     }
 
     public String getPassword() {
