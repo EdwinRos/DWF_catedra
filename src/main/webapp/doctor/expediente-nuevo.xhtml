@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="../layouts/layout-doctor.xhtml">
+     	<ui:define name="content">
+     		<div class="row">
+     			<div class="col-12">
+     				<p:card styleClass="w-100">
+     					<f:facet name="title">
+     						Nuevo registro médico
+     					</f:facet>
+     					<div class="row">
+     						<div class="col-12">
+     							<div class="ui-fluid">
+     								<div class="d-flex justify-content-center">
+     									<h:form>
+											<div class="row mb-3">
+												<div class="col-12">
+													<p:outputLabel value="Registro:" for="@next" styleClass="mb-2" />
+													<p:inputTextarea id="registro"  required="true" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="w-100 d-flex justify-content-end">
+														<p:button value="Agregar" styleClass="rounded-button ui-button-success width-max-content" />
+													</div>
+												</div>
+											</div>
+										</h:form>
+     								</div>
+     							</div>
+     						</div>
+     					</div>
+     					<h:outputText value="#{param['pacienteId']}" />
+     				</p:card>
+     			</div>
+     		</div>
+     	</ui:define>
+     </ui:composition>
+</html>
