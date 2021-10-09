@@ -11,6 +11,9 @@
      	<ui:define name="content">
      		<div class="row">
      			<div class="col-12">
+     				<!-- <p:message id="mensaje" showDetail="true" closable="true">
+     					<p:autoUpdate />
+     				</p:message> -->
      				<p:card styleClass="w-100">
      					<f:facet name="title">
      						Nuevo registro médico
@@ -23,13 +26,13 @@
 											<div class="row mb-3">
 												<div class="col-12">
 													<p:outputLabel value="Registro:" for="@next" styleClass="mb-2" />
-													<p:inputTextarea id="registro"  required="true" />
+													<p:inputTextarea  required="true" value="#{nuevoExpedienteController.expediente.registros}" />
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-12">
 													<div class="w-100 d-flex justify-content-end">
-														<p:button value="Agregar" styleClass="rounded-button ui-button-success width-max-content" />
+														<h:commandButton value="Agregar" action="#{nuevoExpedienteController.newRecord}" styleClass="rounded-button ui-button-success width-max-content" />
 													</div>
 												</div>
 											</div>
@@ -38,7 +41,6 @@
      							</div>
      						</div>
      					</div>
-     					<h:outputText value="#{param['pacienteId']}" />
      				</p:card>
      			</div>
      		</div>
