@@ -24,8 +24,6 @@ public class RecepcionistaRegistroPacienteController {
     private PacienteRepository pacienteRepository;
     Paciente paciente = new Paciente();
 
-
-
     public String nuevoPaciente() throws NoSuchAlgorithmException, MessagingException {
         HashSha1 hasSha1 = new HashSha1();
 
@@ -43,7 +41,7 @@ public class RecepcionistaRegistroPacienteController {
 
         paciente = new Paciente();
 
-        return "/inicio";
+        return "/registropaciente.xhtml?faces-redirect=true";
     }
 
     protected void SendMail(Paciente pac, String password) throws MessagingException{

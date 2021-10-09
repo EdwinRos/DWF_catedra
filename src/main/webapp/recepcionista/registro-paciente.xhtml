@@ -70,7 +70,7 @@
                                              value="#{PacienteController.paciente.correoPaciente}" />
 
                                 <p:outputLabel value="DUI: " />
-                                <p:inputText value="#{PacienteController.paciente.duiPaciente}" />
+                                <p:inputText id="dui" value="#{PacienteController.paciente.duiPaciente}" />
 
                                 <p:outputLabel value="Fecha de Nacimiento" />
                                 <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
@@ -85,7 +85,7 @@
 
 
                                 <p:outputLabel value="Telefono: " />
-                                <p:inputText value="#{PacienteController.paciente.telefono}" />
+                                <p:inputText id="telefono" value="#{PacienteController.paciente.telefono}" />
 
                                 <p:outputLabel value="Usuario: " />
                                 <p:inputText value="#{PacienteController.paciente.usuario}" />
@@ -108,7 +108,6 @@
 <script>
     $(document).ready(function(){
         $('#dui').mask('00000000-0');
-        $('#fechanacimiento').mask('00/00/0000');
         $('#telefono').mask('0000-0000');
     })
 </script>
