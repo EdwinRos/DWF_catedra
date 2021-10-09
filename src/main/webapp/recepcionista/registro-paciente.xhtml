@@ -70,12 +70,12 @@
                                              value="#{PacienteController.paciente.correoPaciente}" />
 
                                 <p:outputLabel value="DUI: " />
-                                <p:inputText id="dui" value="#{PacienteController.paciente.duiPaciente}" />
+                                <p:inputText class="dui" value="#{PacienteController.paciente.duiPaciente}" />
 
-                                <p:outputLabel value="Fecha de Nacimiento" />
+                                <p:outputLabel value="Fecha de nacimiento" />
                                 <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
                                             pattern="yyyy-mm-dd" effect="explode" locale="es"
-                                            navigator="true" />
+                                            navigator="true" class="fechanacimiento"/>
 
                                 <p:outputLabel for="sexo" value="Sexo"/>
                                 <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
@@ -85,7 +85,7 @@
 
 
                                 <p:outputLabel value="Telefono: " />
-                                <p:inputText id="telefono" value="#{PacienteController.paciente.telefono}" />
+                                <p:inputText class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
 
                                 <p:outputLabel value="Usuario: " />
                                 <p:inputText value="#{PacienteController.paciente.usuario}" />
@@ -107,8 +107,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#dui').mask('00000000-0');
-        $('#telefono').mask('0000-0000');
+        $('.dui').mask('00000000-0');
+        $('.telefono').mask('0000-0000');
     })
 </script>
 
