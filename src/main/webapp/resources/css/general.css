@@ -9,3 +9,8 @@ html, body {
 .width-max-content {
 	max-width: max-content !important;
 }
+
+.visibility-hidden {
+	visibility: hidden !important;
+}
+

@@ -61,6 +61,14 @@ public class Citas {
             nullable = false
     )
     private Paciente idPaciente;
+    
+    @Column(
+            name = "estado",
+            nullable = false,
+            columnDefinition = "INT default 1"
+    )
+    private Integer estado;
+    
    //getters/setters/constructors
 
 
@@ -140,6 +148,14 @@ public class Citas {
     public void setIdPaciente(Paciente idPaciente) {
         this.idPaciente = idPaciente;
     }
+    
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
 
     @Override
     public String toString() {
@@ -150,6 +166,7 @@ public class Citas {
                 ", fechaCita=" + fechaCita +
                 ", horaCita=" + horaCita +
                 ", extras='" + extras + '\'' +
+                ", estado='" + estado + '\'' +
                 ", idDoctor=" + idDoctor +
                 ", idPaciente=" + idPaciente +
                 '}';
