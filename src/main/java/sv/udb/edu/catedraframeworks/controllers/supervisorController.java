@@ -12,6 +12,8 @@ import sv.udb.edu.catedraframeworks.entities.Area;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Scope(value = "session")
@@ -20,10 +22,16 @@ import java.util.List;
 @Join(path = "/administradorInicio.do", to = "/supervisor_area/inicio.jsf")
 public class supervisorController {
 
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+    HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+
+
     @Autowired
      private DoctorRepository doctorRepository;
      private List<Doctor> doctorList;
      Area area = new Area();
+
+     int prueba = 0;
 
 
 
@@ -31,8 +39,10 @@ public class supervisorController {
     @RequestAction
     @IgnorePostback
     public void loadData(){
+         prueba = (int) session.getAttribute("id");
          area.setAreaId(1);
          doctorList = doctorRepository.findByIdArea(area);
+
      }
 
 
@@ -41,5 +51,13 @@ public class supervisorController {
 
     public List<Doctor> getDoctorList() {
         return doctorList;
+    }
+
+    public String inicio(){
+         return "/supervisor_area/inicio.xhtml?faces-redirect=true";
+    }
+
+    public int getPrueba() {
+        return prueba;
     }
 }

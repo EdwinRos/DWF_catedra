@@ -93,15 +93,17 @@ public class supervisorInfoDoctor {
     protected void loadRating(Doctor dr){
         int total =0;
         observacionPacienteDoctorList = observacionPacienteDoctorRepository.getObservacionPacienteDoctorByIdDoctor(dr);
+        if(observacionPacienteDoctorList.isEmpty()){
+            nota = 1;
+        }else{
+            for (ObservacionPacienteDoctor items: observacionPacienteDoctorList
+            ) {
+                total += items.getRecordDoctor();
+            }
 
-        for (ObservacionPacienteDoctor items: observacionPacienteDoctorList
-             ) {
-             total += items.getRecordDoctor();
+            nota = total/observacionPacienteDoctorList.size();
+
         }
-
-        nota = total/observacionPacienteDoctorList.size();
-
-
     }
 
     public List<ObservacionPacienteDoctor> getObservacionPacienteDoctorList() {

@@ -101,6 +101,16 @@
     }
 </style>
 <h:body>
+    <div class="card">
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Inicio" action="#{doctoresAreaList.inicio}" icon="pi pi-home"/>
+                <f:facet name="options">
+                    <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+    </div>
     <div class="contenedor">
         <div class="vertical-content">
             <h:panelGrid columns="2" id="panelgrif" styleClass="showcase-text-align-center"
