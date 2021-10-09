@@ -9,21 +9,15 @@
 	<title>Ingresar Nuevo Supervisor de Area</title>
 </h:head>
 <h:body>
-<p>Como decia mi abuelo</p>
-<!-- <h:form>
-		<div class="p-field p-col-12 p-md-4">
-			<p:outputLabel value="Eliga supervisor de Area: "/>
-			<p:selectOneMenu id="option"
-				value="#{AdminAreaDoctorControler.doctor.doctorId}">
-				<f:selectItems value="#{AdminAreaDoctorControler.doctores}"
-					var="aredoc" itemLabel="#{aredoc.nombreDoctor}" itemValue="#{aredoc.doctorId}" />
+<p:menubar>
+		            <p:menuitem value="Inicio" icon="pi pi-home" url="/doctor/home" />
+		            <p:menuitem value="Pacientes" icon="pi pi-users" url="/doctor/pacientes" />
+		
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
 
-			</p:selectOneMenu>
-		</div>
-		<p:commandButton value="Ingresar"
-			action="#{AdminAreaDoctorControler.NuevoAreaDoctor}" />
-
-	</h:form>   -->
 	
 </h:body>
 </html>

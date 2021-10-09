@@ -15,7 +15,13 @@
 	<title>Registro de Doctores</title>
 </h:head>
 <h:body>
-	
+	<p:menubar style="margin-bottom:15px;">
+		            <p:menuitem value="Registro Doctores" icon="pi pi-list" url="/listadodoctor" />
+		          	<p:menuitem value="Ingresar Nuevo Doctor" icon="pi pi-user" url="/administradoringresardoctor"/>
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
 	<h:form>
 		<p:panel header="Listado de Doctores">
 			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}" rows="10"
@@ -70,7 +76,7 @@
 
 				<p:column>
 					<f:facet name="header">Operaciones</f:facet>
-					<p:commandButton value="Eliminar" styleClass="ui-button-danger"
+					<p:commandButton value="Eliminar" styleClass="ui-button-danger" icon="pi pi-trash"
 						action="#{AdminDoctorControler.deleteDoctor}">
 						<f:param name="idDoctor" value="#{doc.doctorId}" />
 					</p:commandButton>
@@ -79,7 +85,7 @@
 				</p:column>
 				<p:column>
 					<p:button value="Actualizar" href="/updatedoctor"
-						styleClass="ui-button-warning">
+						styleClass="ui-button-warning" icon="pi pi-check">
 						<f:param name="IdDoctor" value="#{doc.doctorId}" />
 					</p:button>
 				</p:column>

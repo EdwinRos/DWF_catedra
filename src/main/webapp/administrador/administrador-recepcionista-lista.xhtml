@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	
+<h:head>
+<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+		crossorigin="anonymous" />
+
+	<title>Registro de Recepcionista</title>
+</h:head>
+<h:body>
+<p:menubar style="margin-bottom:15px;">
+		            <p:menuitem value="Ingresar Recepcionista Nuevo" icon="pi pi-user" url="/administradorrecepcionista" />
+		           
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
+
+	<h:form id="formRecepcionista">
+		<p:panel header="Listado de Recepcionistas">
+			<p:dataTable id="tabla" var="rece"
+				value="#{AdminrecepcionistaList.recepcionistalist}" rows="10"
+				paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				rowsPerPageTemplate="5,10,{ShowAll|'All'}">
+
+				<p:column>
+					<f:facet name="header">Nombre:</f:facet>
+					<h:outputText value="#{rece.nombreRecepcionista}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Apellido:</f:facet>
+					<h:outputText value="#{rece.apellidoRecepcionista}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Usuario:</f:facet>
+					<h:outputText value="#{rece.usuario}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Estado:</f:facet>
+					<h:outputText value="#{rece.estado}" />
+				</p:column>
+				<!--<p:column>
+			<f:facet name="header">Area:</f:facet>
+			<h:outputText value="#{rece.areaId.nombreArea}"/>
+			</p:column>  -->
+
+
+				<p:column>
+					<f:facet name="header">Operaciones</f:facet>
+					<p:commandButton value="Eliminar" styleClass="ui-button-danger"
+						action="#{AdminRepecionistaControler.deleteRecepcionista}">
+						<f:param name="Idrecepcionista" value="#{rece.recepcionistaId}"></f:param>
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

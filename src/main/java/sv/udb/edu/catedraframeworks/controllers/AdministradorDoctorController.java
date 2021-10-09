@@ -19,6 +19,8 @@ import sv.udb.edu.catedraframeworks.utils.HashSha1;
 import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.mail.MessagingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -33,7 +35,7 @@ public class AdministradorDoctorController {
     @Autowired
     private DoctorRepository doctorRepository;
     Doctor doctor = new Doctor();
-
+ 
     @Autowired
     private AreaRepository areaRepository;
     private List<Area> areas;
@@ -46,7 +48,8 @@ public class AdministradorDoctorController {
         RamdomString ramdomString = new RamdomString();
 
         String contraRamdom = ramdomString.password();
-
+       
+       
         doctor.setEstado(1);
         doctor.setIdArea(area);
         doctor.setPassword(hasSha1.hashPassword(contraRamdom));
@@ -56,11 +59,24 @@ public class AdministradorDoctorController {
         doctorRepository.save(doctor);
 
 
-        doctor = new Doctor();
-
-        return "/ingresardoctor.xhtml?faces-redirect=true";
-
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito","Doctor Ingresado Correctamente"));
+           
+        doctor.setNombreDoctor("");
+        doctor.setApellidoDoctor("");
+        doctor.setUsuario("");
+        doctor.setDuiDoctor("");
+        doctor.setCorreoDoctor("");
+        doctor.setFechaNacimiento(null);
+               
+            
+        
+        return "/administrador-listado-doctores.xhtml?faces-redirect=true";
+        
+     
     }
+    
+    
+    
 
     protected void SendMail(Doctor doc, String password) throws MessagingException{
         Emails emails = new Emails();
@@ -78,11 +94,17 @@ public class AdministradorDoctorController {
     public String deleteDoctor() {
 		  int id = Integer.valueOf(JsfUtil.getRequest().getParameter("idDoctor"));
 		  doctorRepository.deleteById(id);
+		
 		  doctor = new Doctor();
 		  
-		  return "/administrador-listado-doctores.xhtml?faces-redirect=true";
+		  return "/administrador/administrador-listado-doctores.xhtml?faces-redirect=true";
 	  }
 	  
+    
+    
+    public void EnviarMesaje() {
+    	
+    }
 
 
     public Doctor getDoctor() {

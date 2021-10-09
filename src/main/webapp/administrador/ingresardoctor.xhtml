@@ -53,10 +53,21 @@
 
 </h:head>
 <h:body>
+	<p:menubar style="margin-bottom:15px;">
+		<p:menuitem value="Registro Doctores" icon="pi pi-list"
+			url="/listadodoctor" />
+
+		<f:facet name="options">
+			<p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out"
+				styleClass="ui-button-info" />
+		</f:facet>
+	</p:menubar>
 	<div class="d-flex justify-content-center align-items-center">
 		<h:form class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
-			<h5 style="text-align: center;">Ingrese sus Datos</h5>
-			<h:panelGrid columns="4" cellpadding="4">
+			<h5 style="text-align: center;">Ingrese sus Datos Personales</h5>
+
+
+			<h:panelGrid columns="4" cellpadding="6">
 				<p:outputLabel value="Nombre: " />
 				<p:inputText value="#{AdminDoctorControler.doctor.nombreDoctor}" />
 
@@ -68,16 +79,21 @@
 
 				<p:outputLabel value="Correo: " />
 				<p:inputText type="email"
-					value="#{AdminDoctorControler.doctor.correoDoctor}" />
+					value="#{AdminDoctorControler.doctor.correoDoctor}" requiredMessage="Por favor ingresar Correo."
+		validatorMessage="formato invalido" >
+		<f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+		</p:inputText>
 
-				<p:outputLabel value="DUI: " />
-				<p:inputText value="#{AdminDoctorControler.doctor.duiDoctor}" />
+				<p:outputLabel for="dui" value="DUI: " />
+				<p:inputMask id="dui" value="#{AdminDoctorControler.doctor.duiDoctor}" mask="99999999-9"
+				 requiredMessage="Por favor ingresar Correo."
+		validatorMessage="formato invalido" validateMask="true" />
 
-					
+
 				<p:outputLabel value="Fecha de Nacimiento" />
 				<p:calendar value="#{AdminDoctorControler.doctor.fechaNacimiento}"
-					pattern="dd/MM/yyyy" effect="explode" locale="es"
-					navigator="true" />
+					pattern="dd/MM/yyyy" effect="explode" locale="es" navigator="true" />
 
 
 				<p:outputLabel for="@next" value="Area:" />
@@ -96,10 +112,11 @@
 
 			</h:panelGrid>
 			<div class="d-flex justify-content-center align-items-center">
-				<p:commandButton value="Ingresar"
-					action="#{AdminDoctorControler.nuevoDoctor}" styleClass="p-mt-3"
-					style="margin-left:50px;" />
+				<h:commandButton value="Ingresar" action="#{AdminDoctorControler.nuevoDoctor}" styleClass="btn btn-info"/>
 			</div>
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
 
 
 

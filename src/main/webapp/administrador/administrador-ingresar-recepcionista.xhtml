@@ -5,50 +5,77 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+		crossorigin="anonymous" />
+
 
 	<title>Registro de Recepcionistas</title>
 </h:head>
 <h:body>
+	<p:menubar style="margin-bottom:15px;">
+		<p:menuitem value="Registro Recepcionista" icon="pi pi-list"
+			url="/recepcionistalista" />
+		<p:menuitem value="Ingresar Nuevo Recepcionista" icon="pi pi-user"
+			url="/administradorrecepcionista" />
+		<f:facet name="options">
+			<p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out"
+				styleClass="ui-button-info" />
+		</f:facet>
+	</p:menubar>
+	<div class="d-flex justify-content-center align-items-center">
+		<h:form class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
+			<h5 style="text-align: center;">Ingrese Datos Personales</h5>
+			<h:panelGrid columns="4" cellpadding="4">
+				<p:outputLabel value="Nombre" />
+				<p:inputText
+					value="#{AdminRepecionistaControler.recepcionista.nombreRecepcionista}" />
 
-	<h:form>
-		<h:panelGrid columns="4" cellpadding="4">
-			<p:outputLabel value="Nombre" />
-			<p:inputText
-				value="#{AdminRepecionistaControler.recepcionista.nombreRecepcionista}" />
+				<p:outputLabel value="Apellido" />
+				<p:inputText
+					value="#{AdminRepecionistaControler.recepcionista.apellidoRecepcionista}" />
 
-		<p:outputLabel value="Apellido" />
-			<p:inputText
-				value="#{AdminRepecionistaControler.recepcionista.apellidoRecepcionista}" />
-
-			<p:outputLabel value="Usuario" />
-			<p:inputText value="#{AdminRepecionistaControler.recepcionista.usuario}" />
+				<p:outputLabel value="Usuario" />
+				<p:inputText
+					value="#{AdminRepecionistaControler.recepcionista.usuario}" />
 
 
-			<p:outputLabel value="Area" />
-			<p:selectOneMenu id="opciones"
-				value="#{AdminRepecionistaControler.area.areaId}">
-				<f:selectItems value="#{AdminRepecionistaControler.areas}" var="are"
-					itemLabel="#{are.nombreArea}" itemValue="#{are.areaId}" />
-						
-			</p:selectOneMenu>
-			
-			<p:outputLabel value="Contraseña" />
-			<p:inputText value="#{AdminRepecionistaControler.recepcionista.password}" />
-			
- 			<p:outputLabel value="Estado" />
-			<p:selectOneMenu id="option"
-				value="#{AdminRepecionistaControler.recepcionista.estado}">
-				<f:selectItem itemValue="1" itemLabel="Activo" />
-				<f:selectItem itemValue="2" itemLabel="Inactivo" />
-			</p:selectOneMenu>
-<p>HOLA MUNDO</p>
-			
-		</h:panelGrid>
-		<p:commandButton value="Guardar" action="#{AdminRepecionistaControler.saveRecepcionista}"/>
-		
-		
-		
-	</h:form>
+				<p:outputLabel value="Area" />
+				<p:selectOneMenu id="opciones"
+					value="#{AdminRepecionistaControler.area.areaId}">
+					<f:selectItems value="#{AdminRepecionistaControler.areas}"
+						var="are" itemLabel="#{are.nombreArea}" itemValue="#{are.areaId}" />
+
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Contraseña" />
+
+				<p:password
+					value="#{AdminRepecionistaControler.recepcionista.password}" />
+
+				<p:outputLabel value="Estado" />
+				<p:selectOneMenu id="option"
+					value="#{AdminRepecionistaControler.recepcionista.estado}">
+					<f:selectItem itemValue="1" itemLabel="Activo" />
+					<f:selectItem itemValue="2" itemLabel="Inactivo" />
+				</p:selectOneMenu>
+
+
+			</h:panelGrid>
+			<div class="d-flex justify-content-center align-items-center">
+				<h:commandButton value="Guardar"
+					action="#{AdminRepecionistaControler.saveRecepcionista}"
+					styleClass="btn btn-primary"/>
+			</div>
+
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
+		</h:form>
+	</div>
 
 
 </h:body>

@@ -2,6 +2,9 @@ package sv.udb.edu.catedraframeworks.controllers;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -41,6 +44,10 @@ public class AdministradorAreaController {
 	public String nuevaArea() {
 		areaRepository.save(area);
 		area = new Area();
+		
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito","Area Ingresada Correctamente"));
+		
+		area.setNombreArea("");
 		
 		
 		return "/administrador-area-ingresararea.xhtml?faces-redirect=true";

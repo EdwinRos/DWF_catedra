@@ -7,9 +7,16 @@
 	 xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 
-	<title></title>
+	<title>Registro de Areas</title>
 </h:head>
 <h:body>
+<p:menubar style="margin-bottom:15px;">
+		            <p:menuitem value="Ingresar Nueva Area" icon="pi pi-user" url="/administradorareaingresar" />
+		           
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
 	<h:form id="formArea">
 		<p:panel header="Listado de Areas">
 			<p:dataTable id="tabla" var="are" value="#{AdminListArea.areaList}" rows="10"
