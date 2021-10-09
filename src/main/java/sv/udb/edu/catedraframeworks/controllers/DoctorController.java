@@ -55,11 +55,11 @@ public class DoctorController {
          doctor.setIdArea(miDoctor.get().getIdArea());         
          edad = edadActual.getActualDate(miDoctor.get().getFechaNacimiento());
     	
-    	citasDoctor();
+    	citasDoctor(doctor);
     }
     
-    protected void citasDoctor() {
-    	citas = citasRepository.findAll(); 
+    protected void citasDoctor(Doctor d) {
+    	citas = citasRepository.findCitasByIdDoctor(d);
     }
 	
     public Doctor getDoctor() {

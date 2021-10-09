@@ -62,6 +62,14 @@
 										    </div>
 										    
 										    <div class="w-100">
+										    	<c:choose>
+										    		<c:when test="${cita.estado eq 1}">
+										    			Estado 1
+										    		</c:when>
+										    		<c:when test="${cita.estado eq 2}">
+										    			Estado 2
+										    		</c:when>
+										    	</c:choose>
 										    	<p:button icon="pi pi-eye" href="/cita/detalles" value="Ver detalles" styleClass="rounded-button" >
 										    		<f:param value="#{cita.citasId}" name="citaId" />
 										    	</p:button>
