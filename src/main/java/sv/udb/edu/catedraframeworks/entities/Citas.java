@@ -61,6 +61,14 @@ public class Citas {
             nullable = false
     )
     private Paciente idPaciente;
+    
+    @Column(
+            name = "estado",
+            nullable = false,
+            columnDefinition = "INT default 1"
+    )
+    private Integer estado;
+    
    //getters/setters/constructors
 
 
