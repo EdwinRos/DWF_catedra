@@ -69,11 +69,11 @@
 -webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
                     <f:facet name="header">
-                        <p:avatar style="background-color: lightcoral; color: white;" label="Dr" styleClass="p-mr-2"
+                        <p:avatar style="background-color: lightcoral; color: white;" label="#{doctoresAreaList.doctor.nombreDoctor.substring(0,1)} #{doctoresAreaList.doctor.apellidoDoctor.substring(0,1)}" styleClass="p-mr-2"
                                   size="xlarge"/>
                     </f:facet>
                     <f:facet name="title">
-                        Bienvenid@ "Nombre y apellido del doctor" #{doctoresAreaList.prueba}
+                        Bienvenid@ #{doctoresAreaList.doctor.nombreDoctor} #{doctoresAreaList.doctor.apellidoDoctor}
                     </f:facet>
                     <f:facet name="subtitle">
                         Puede obtener mas informacion de los doctores asignados a su area haciendo click en el icono
@@ -82,6 +82,23 @@
                     </f:facet>
                     <p>Al lado se muestran la lista de doctor@s correspondientes a su area <i
                             class="pi pi-arrow-circle-right"/></p>
+                    <p:accordionPanel widgetVar="basic" activeIndex="null">
+                        <p:tab title="Cambiar contraseña" >
+                            <p class="p-m-0">
+                               <h:form>
+
+                                   <p:outputLabel value="ingrese su contraseña actual" />
+                                   <p:password value="#{doctoresAreaList.oldPassword}" />
+                                   <p:outputLabel value="Ingrese la nueva contraseña" />
+                                   <p:password value="#{doctoresAreaList.newPassword}" required="true" requiredMessage="Este campo es obligatorio" />
+                                   <p:commandButton ajax="false" type="submit" value="Guardar" action="#{doctoresAreaList.changePassswrodRequest}" />
+                                   <p:messages id="upPass" showDetail="true" closable="true">
+                                       <p:autoUpdate/>
+                                   </p:messages>
+                               </h:form>
+                            </p>
+                        </p:tab>
+                    </p:accordionPanel>
                 </p:card>
             </h:panelGrid>
         </div>

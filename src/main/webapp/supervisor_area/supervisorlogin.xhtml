@@ -40,18 +40,15 @@
                 </div>
                 <div class="inputs">
                     <p:outputLabel value="Ingrese su usuario"/>
-                    <p:inputText value=""/>
+                    <p:inputText value="#{administradorInicio.doctor.usuario}"/>
                     <p:separator/>
                     <p:outputLabel value="Ingrese su contraseña"/>
-                    <p:password value="" toggleMask="true" redisplay="true"/>
+                    <p:password value="#{administradorInicio.password}" toggleMask="true" redisplay="true"/>
                     <br/>
-                    <p:commandButton type="submit" value="Primary" action="#{administradorInicio.iniciarSession}"
+                    <p:commandButton ajax="false" value="Ingresar" action="#{administradorInicio.iniciarSession}"
                                      styleClass="rounded-button"/>
                 </div>
                 <div class="footer-content">
-                    <p:messages id="messages" showDetail="true" closable="true">
-                        <p:autoUpdate/>
-                    </p:messages>
                 </div>
             </div>
         </div>
