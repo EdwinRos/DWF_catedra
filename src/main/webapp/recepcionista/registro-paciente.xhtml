@@ -57,7 +57,7 @@
                 <div class="w-75 shadow p-3 mb-5 bg-white rounded">
                     <h:form>
                         <div class="container">
-                            <h4 class="text-center mt-3 mb-3">Registrar paciente</h4>
+                            <h4 class="text-center mt-5 mb-5">Registrar paciente</h4>
                             <h:panelGrid columns="4" cellpadding="4">
                                 <p:outputLabel value="Nombre: " />
                                 <p:inputText value="#{PacienteController.paciente.nombrePaciente}" />
@@ -70,12 +70,12 @@
                                              value="#{PacienteController.paciente.correoPaciente}" />
 
                                 <p:outputLabel value="DUI: " />
-                                <p:inputText value="#{PacienteController.paciente.duiPaciente}" />
+                                <p:inputText class="dui" value="#{PacienteController.paciente.duiPaciente}" />
 
-                                <p:outputLabel value="Fecha de Nacimiento" />
+                                <p:outputLabel value="Fecha de nacimiento" />
                                 <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
                                             pattern="yyyy-mm-dd" effect="explode" locale="es"
-                                            navigator="true" />
+                                            navigator="true" class="fechanacimiento"/>
 
                                 <p:outputLabel for="sexo" value="Sexo"/>
                                 <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
@@ -85,17 +85,17 @@
 
 
                                 <p:outputLabel value="Telefono: " />
-                                <p:inputText value="#{PacienteController.paciente.telefono}" />
+                                <p:inputText class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
 
                                 <p:outputLabel value="Usuario: " />
                                 <p:inputText value="#{PacienteController.paciente.usuario}" />
 
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <p:commandButton value="Ingresar"
-                                                     action="#{PacienteController.nuevoPaciente}" styleClass="p-mt-3"
-                                                     style="margin-left:50px;" />
-                                </div>
+
                             </h:panelGrid>
+                            <div class="d-flex justify-content-center align-items-center text-center mt-5 mb-5">
+                                <p:commandButton value="Ingresar"
+                                                 action="#{PacienteController.nuevoPaciente}"/>
+                            </div>
                         </div>
                     </h:form>
                 </div>
@@ -107,9 +107,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#dui').mask('00000000-0');
-        $('#fechanacimiento').mask('00/00/0000');
-        $('#telefono').mask('0000-0000');
+        $('.dui').mask('00000000-0');
+        $('.telefono').mask('0000-0000');
     })
 </script>
 

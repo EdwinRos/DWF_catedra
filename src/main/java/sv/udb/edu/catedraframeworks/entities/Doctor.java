@@ -87,6 +87,7 @@ public class Doctor {
     @ManyToOne
     @JoinColumn(
             name = "id_area"
+            
     )
     private Area idArea;
 

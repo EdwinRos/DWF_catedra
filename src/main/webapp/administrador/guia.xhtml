@@ -9,6 +9,18 @@
     <title></title>
 </h:head>
 <h:body>
-
+	<div class="card">
+		    <h:form>
+		        <p:growl id="messages"/>
+		        <p:menubar>
+		            <p:menuitem value="Inicio" icon="pi pi-home" url="/doctor/home" />
+		            <p:menuitem value="Pacientes" icon="pi pi-users" url="/doctor/pacientes" />
+		
+		            <f:facet name="options">
+		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		            </f:facet>
+		        </p:menubar>
+		    </h:form>
+		</div>
 </h:body>
 </html>

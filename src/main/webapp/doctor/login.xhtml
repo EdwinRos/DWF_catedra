@@ -6,8 +6,64 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:body>
-
-</h:body>
-
+	<h:head>
+	    <title>Doctor</title>
+	    <link rel="shortcut icon" type="image/png" href="https://th.bing.com/th/id/R.b72899abe5a66ad2f32d1ba682590a87?rik=IRpRO6prIiKk0w&amp;pid=ImgRaw&amp;r=0"/>
+		<h:outputStylesheet library="css" name="login.css" />
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	</h:head>
+	<h:body>
+		<div class="container h-100">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<p:card styleClass="">
+					<div class="row">
+						<div class="col-12">
+							<center>
+								<h2>Iniciar sesión</h2>
+							</center>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<div class="container">
+										<div class="mx-3 my-2">
+											<div class="ui-fluid">
+												<h:form>
+													<div class="row mb-3">
+														<div class="col-12">
+															<p:outputLabel value="Ingrese su usuario" styleClass="mb-2" />
+															<p:inputText value=""/>
+														</div>
+													</div>
+													<div class="row mb-3">
+														<div class="col-12">
+															<p:outputLabel value="Ingrese su contraseña" styleClass="mb-2" />
+                    										<p:password value="" toggleMask="true" redisplay="true" styleClass="w-100" />		
+														</div>
+													</div>
+													<div class="row mb-3">
+														<div class="col-12">
+															<p:commandButton type="submit" value="Ingresar" action="#{administradorInicio.iniciarSession}" styleClass="rounded-button"/>	
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-12">
+															<p:messages id="messages" showDetail="true" closable="true">
+										                        <p:autoUpdate/>
+										                    </p:messages>
+														</div>
+													</div>
+												</h:form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:card>
+			</div>
+		</div>
+	</h:body>
 </html>
+
