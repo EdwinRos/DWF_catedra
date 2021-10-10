@@ -19,9 +19,14 @@
       					</div>
       					<div class="col-6">
       						<div class="d-flex justify-content-end">
-      							<div class="row">
+      							<div class="row w-100">
       								<div class="col-6">
-      									Botón de finalizar cita
+      									<div class="d-flex justify-content-end">
+      										<h:form>
+      											<p:inputText value="#{citaDetallesController.cita.citasId}" type="hidden" />
+	      										<h:commandButton action="#{citaDetallesController.finishAppointment}" value="Finalizar cita" styleClass="rounded-button ui-button-warning width-max-content" />
+	      									</h:form>
+      									</div>
       								</div>
       								<div class="col-6">
       									<p:button href="#" value="Agendar proxima cita" styleClass="rounded-button" />

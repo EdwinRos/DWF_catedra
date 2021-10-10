@@ -43,6 +43,17 @@ public class CitaDetallesController {
     	edad = edadPaciente.getActualDate(miCita.get().getIdPaciente().getFechaNacimiento());
     }
     
+    public String finishAppointment() { 	
+    	Citas miCita = new Citas();
+    	
+    	miCita = citaRepository.getById(cita.getCitasId());
+    	
+    	miCita.setEstado(2);
+    	citaRepository.save(miCita);
+    	
+    	return "/doctor/dashboard.xhtml?faces-redirect=true";
+    }
+    
     public Citas getCita() {
         return cita;
     }
