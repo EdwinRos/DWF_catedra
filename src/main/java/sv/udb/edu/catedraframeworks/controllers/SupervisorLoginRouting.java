@@ -24,6 +24,7 @@ import java.util.Optional;
 @Join(path = "/supervisor.do", to = "/supervisor_area/supervisorlogin.jsf")
 public class SupervisorLoginRouting {
 
+    //setiamos lo que nesecitamos para poder utilizar httpSession
     FacesContext facesContext = FacesContext.getCurrentInstance();
     HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
@@ -44,7 +45,7 @@ public class SupervisorLoginRouting {
         doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(3, doctor.getUsuario(), sha1.hashPassword(getPassword()));
         if(doctor != null) {
 
-            session.setAttribute("id", doctor.getDoctorId());
+            session.setAttribute("id", doctor.getDoctorId()); //session.get("identificador", "variable")
             return "/supervisor_area/inicio.xhtml?faces-redirect=true";
         }else{
             doctor = null;

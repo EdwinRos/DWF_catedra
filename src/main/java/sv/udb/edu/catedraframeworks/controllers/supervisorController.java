@@ -43,8 +43,8 @@ public class supervisorController {
     @RequestAction
     @IgnorePostback
     public void loadData(){
-         int id = (int) session.getAttribute("id");
-         Optional<Doctor> miDoctor = doctorRepository.findById(id);
+         int id = (int) session.getAttribute("id");  //session.getAttribute( "el identificador") para poder obtener el valor que se seteo en el obejto session
+         Optional<Doctor> miDoctor = doctorRepository.findById(id); // que despues nos sirve para lo que nesecitemos
          doctor.setDoctorId(miDoctor.get().getDoctorId());
          doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
          doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());

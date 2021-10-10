@@ -608,7 +608,7 @@ public class Emails {
                     "\n" +
                     "<div class=\"u-row-container\" style=\"padding: 0px;background-color: transparent\">\n" +
                     "  <div class=\"u-row\" style=\"Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;\">\n" +
-                    "    <div style=\"border-collapse: collapse;display: table;width: 100%;background-image: url('https://images.pexels.com/photos/7723513/pexels-photo-7723513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');background-repeat: repeat;background-position: center top;background-color: transparent;\">\n" +
+                    "    <div style=\"border-collapse: collapse;display: table;width: 100%;background-image: url('https://wallpapercave.com/wp/wp2503717.jpg');background-repeat: repeat;background-position: center top;background-color: transparent;\">\n" +
                     "      <!--[if (mso)|(IE)]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding: 0px;background-color: transparent;\" align=\"center\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:600px;\"><tr style=\"background-image: url('https://cdn.pixabay.com/photo/2020/12/16/01/04/doctor-5835366_960_720.jpg');background-repeat: repeat;background-position: center top;background-color: transparent;\"><![endif]-->\n" +
                     "      \n" +
                     "<!--[if (mso)|(IE)]><td align=\"center\" width=\"600\" style=\"width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;\" valign=\"top\"><![endif]-->\n" +
