@@ -29,10 +29,24 @@
       									</div>
       								</div>
       								<div class="col-6">
-      									<p:button href="#" value="Agendar proxima cita" styleClass="rounded-button" />
+      									<p:button href="/cita/proxima" value="Agendar proxima cita" styleClass="rounded-button" >
+      										<f:param value="#{citaDetallesController.cita.citasId}" name="citaId" />
+      									</p:button>
       								</div>
       							</div>
       						</div>
+      					</div>
+      				</div>
+      				<div class="row">
+      					<div class="col-6">
+      						<p>
+      							#{citaDetallesController.cita.titulo}
+      						</p>
+      					</div>
+      					<div class="col-6">
+      						<p>
+      							#{citaDetallesController.cita.codigoCita}
+      						</p>
       					</div>
       				</div>
       				<div class="row mb-3">

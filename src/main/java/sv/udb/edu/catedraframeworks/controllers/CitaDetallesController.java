@@ -35,6 +35,8 @@ public class CitaDetallesController {
     	Optional<Citas> miCita = citaRepository.findById(idCita);
     	
     	cita.setCitasId(miCita.get().getCitasId());
+    	cita.setCodigoCita(miCita.get().getCodigoCita());
+    	cita.setTitulo(miCita.get().getTitulo());
     	cita.setExtras(miCita.get().getExtras());
     	cita.setFechaCita(miCita.get().getFechaCita());
     	cita.setHoraCita(miCita.get().getHoraCita());

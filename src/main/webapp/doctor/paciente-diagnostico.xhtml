@@ -19,9 +19,19 @@
      							</div>
      						</div>
      					</div>
+     					<div class="row">
+     						<div class="col-12">
+     							<div classs="d-flex justify-content-end">
+     								<p:button href="/expediente/nuevo" value="Agregar nuevo registro" styleClass="rounded-button width-max-content" >
+     									<f:param value="#{pacienteExpedienteController.paciente.pacienteId}" name="pacienteId" />
+     								</p:button>
+     							</div>
+     						</div>
+     					</div>
 	                    <div class="row">
 	                    	<div class="col-12">
 	                    		<p:dataTable id="tabla" var="exp" value="#{pacienteExpedienteController.expediente}" rows="10"
+	                    			emptyMessage="No se encontraron diagnosticos previos"
 				                     paginator="true"
 				                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
@@ -40,15 +50,6 @@
 								</p:dataTable>
 	                    	</div>
 	                    </div>
-     					<div class="row">
-     						<div class="col-12">
-     							<div classs="d-flex justify-content-end">
-     								<p:button href="/expediente/nuevo" value="Agregar nuevo registro" styleClass="rounded-button width-max-content" >
-     									<f:param value="#{pacienteExpedienteController.paciente.pacienteId}" name="pacienteId" />
-     								</p:button>
-     							</div>
-     						</div>
-     					</div>
      				</p:card>
      			</div>
      			<div class="col-3">
