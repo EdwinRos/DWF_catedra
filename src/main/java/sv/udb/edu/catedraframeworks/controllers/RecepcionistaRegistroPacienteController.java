@@ -41,7 +41,7 @@ public class RecepcionistaRegistroPacienteController {
 
         paciente = new Paciente();
 
-        return "/registropaciente.xhtml?faces-redirect=true";
+        return "/recepcionista/inicio.xhtml?faces-redirect=true";
     }
 
     protected void SendMail(Paciente pac, String password) throws MessagingException{
