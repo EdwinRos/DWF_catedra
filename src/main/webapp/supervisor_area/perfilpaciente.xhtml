@@ -106,6 +106,7 @@
             <p:menubar>
                 <p:menuitem value="Inicio" action="#{doctoresAreaList.inicio}" icon="pi pi-home"/>
                 <f:facet name="options">
+                    <h:outputText value="Bienvenid@: #{administradorInicio.doctor.nombreDoctor} #{administradorInicio.doctor.apellidoDoctor} " />
                     <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
                 </f:facet>
             </p:menubar>
