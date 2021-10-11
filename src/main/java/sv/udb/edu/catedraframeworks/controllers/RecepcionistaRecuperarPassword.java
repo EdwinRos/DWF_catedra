@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Scope(value = "session")
-@Component(value = "RecepcionistaRecuperarContraseña")
-@ELBeanName(value = "RecepcionistaRecuperarContraseña")
-@Join(path = "/recuperarcontraseñapaciente", to="/recepcionista/recuperar-contraseña-paciente.jsf")
-public class RecepcionistaRecuperarContraseña {
+@Component(value = "RecepcionistaRecuperarPassword")
+@ELBeanName(value = "RecepcionistaRecuperarPassword")
+@Join(path = "/recuperarpasswordpaciente", to="/recepcionista/recuperar-password-paciente.jsf")
+public class RecepcionistaRecuperarPassword {
 
 }
