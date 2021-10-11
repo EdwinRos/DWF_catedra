@@ -25,6 +25,13 @@ public class Citas {
             nullable = false,
             columnDefinition = "VARCHAR(50)"
     )
+    private String dui_paciente;
+
+    @Column(
+            name = "dui_paciente",
+            nullable = false,
+            columnDefinition = "VARCHAR(50)"
+    )
     private String titulo;
 
     @Column(
@@ -75,7 +82,7 @@ public class Citas {
     public Citas() {
     }
 
-    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente, String codigoCita, String titulo) {
+    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente, String codigoCita, String titulo, String dui_paciente) {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.extras = extras;
@@ -83,6 +90,7 @@ public class Citas {
         this.idPaciente = idPaciente;
         this.codigoCita = codigoCita;
         this.titulo = titulo;
+        this.dui_paciente = dui_paciente;
     }
 
     public String getTitulo() {
@@ -156,6 +164,10 @@ public class Citas {
     public void setEstado(Integer estado) {
         this.estado = estado;
     }
+
+    public String getDui_paciente() {return dui_paciente;}
+
+    public void setDui_paciente(String dui_paciente) {this.dui_paciente = dui_paciente;}
 
     @Override
     public String toString() {

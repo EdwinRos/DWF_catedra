@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 
-    <title>Consultar cita</title>
+    <title>Detalles de cita</title>
 
     <!-- CSS only -->
     <link
@@ -20,24 +20,30 @@
         <div class="row">
             <div class="col-12 justify-content-center align-items-center d-flex">
                 <div class="w-50 shadow p-3 mb-5 bg-white rounded">
-                    <form>
-                        <div class="container">
-                            <h4 class="text-center mt-3 mb-3">Consultar cita</h4>
-                            <div class="row">
-                                <div class="col-md-12 mt-3 d-flex justify-content-center align-items-center">
-                                    <div class="w-50">
-                                        <div class="form-group">
-                                            <p:outputLabel for="codigo" value="Codigo de cita"/>
-                                            <p:inputText id="codigo"/>
+                    <div class="container">
+                        <h4 class="text-center mt-3 mb-3">Detalles de la cita</h4>
+                        <div class="row">
+                            <div class="col-md-12 mt-3 d-flex justify-content-center align-items-center">
+                                <div class="w-50">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${RecepcionistaDetallesCitaController.cita.titulo}</h5>
                                         </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Codigo de la cita: ${RecepcionistaDetallesCitaController.cita.codigoCita}</li>
+                                            <li class="list-group-item">Extras: ${RecepcionistaDetallesCitaController.cita.extras}</li>
+                                            <li class="list-group-item">Fecha: ${RecepcionistaDetallesCitaController.cita.fechaCita}</li>
+                                            <li class="list-group-item">Hora: ${RecepcionistaDetallesCitaController.cita.horaCita}</li>
+                                            <li class="list-group-item">DUI del paciente: ${RecepcionistaDetallesCitaController.cita.dui_paciente}</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mt-5 mb-5 text-center">
-                                    <a href="" id="btnCita" class="btn btn-primary">Consultar cita</a>
-                                </div>
+                            </div>
+                            <div class="col-md-12 mt-5 mb-5 text-center">
+                                <a href="#" id="btnCita" class="btn btn-primary">Atras</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,4 +10,6 @@ public interface CitasRepository extends JpaRepository <Citas, Integer> {
     //metodo utilizados en el area Supervisora y en el área del doctor UwU
     List<Citas> findCitasByIdDoctor(Doctor a);
 
+    Citas findByCodigoCita(String codigoCita);
+
 }

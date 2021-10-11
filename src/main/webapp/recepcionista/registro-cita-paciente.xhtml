@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+    <title>Registrar paciente</title>
+
+    <!-- CSS only -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+            crossorigin="anonymous" />
+    <script type="text/javascript">
+        PrimeFaces.locales['es'] = {
+            closeText : 'Cerrar',
+            prevText : 'Anterior',
+            nextText : 'Siguiente',
+            monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
+                'Diciembre' ],
+            monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+                'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+            dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+                'Viernes', 'Sábado' ],
+            dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+            dayNamesMin : [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+            weekHeader : 'Semana',
+            firstDay : 1,
+            isRTL : false,
+            showMonthAfterYear : false,
+            yearSuffix : '',
+            timeOnlyTitle : 'Sólo hora',
+            timeText : 'Tiempo',
+            hourText : 'Hora',
+            minuteText : 'Minuto',
+            secondText : 'Segundo',
+            millisecondText : 'Milisegundo',
+            currentText : 'Fecha actual',
+            ampm : false,
+            month : 'Mes',
+            week : 'Semana',
+            day : 'Día',
+            allDayText : 'Todo el día',
+            today : 'Hoy',
+            clear : 'Claro'
+        };
+    </script>
+</h:head>
+<h:body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 justify-content-center align-items-center d-flex">
+                <div class="w-75 shadow p-3 mb-5 bg-white rounded">
+                    <h:form>
+                        <div class="container">
+                            <h4 class="text-center mt-5 mb-5">Registrar paciente</h4>
+                            <h:panelGrid columns="4" cellpadding="4">
+                                <p:outputLabel value="Nombre: " />
+                                <p:inputText value="#{PacienteController.paciente.nombrePaciente}" />
+
+                                <p:outputLabel value="Apellido: " />
+                                <p:inputText value="#{PacienteController.paciente.apellidoPaciente}" />
+
+                                <p:outputLabel value="Correo: " />
+                                <p:inputText type="email"
+                                             value="#{PacienteController.paciente.correoPaciente}" />
+
+                                <p:outputLabel value="DUI: " />
+                                <p:inputText class="dui" value="#{PacienteController.paciente.duiPaciente}" />
+
+                                <p:outputLabel value="Fecha de nacimiento" />
+                                <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
+                                            pattern="yyyy-mm-dd" effect="explode" locale="es"
+                                            navigator="true" class="fechanacimiento"/>
+
+                                <p:outputLabel for="sexo" value="Sexo"/>
+                                <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
+                                    <f:selectItem itemLabel="Hombre" itemValue="H"/><f:selectItems/>
+                                    <f:selectItem itemLabel="Mujer" itemValue="M"/><f:selectItems/>
+                                </p:selectOneMenu>
+
+
+                                <p:outputLabel value="Telefono: " />
+                                <p:inputText class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
+
+                                <p:outputLabel value="Usuario: " />
+                                <p:inputText value="#{PacienteController.paciente.usuario}" />
+
+
+                            </h:panelGrid>
+                            <div class="d-flex justify-content-center align-items-center text-center mt-5 mb-5">
+                                <p:commandButton value="Ingresar"
+                                                 action="#{PacienteController.nuevoPaciente}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dui').mask('00000000-0');
+        $('.telefono').mask('0000-0000');
+    })
+</script>
+
+</html>
