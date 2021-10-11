@@ -158,10 +158,6 @@ public class Citas {
         this.estado = estado;
     }
 
-    public String getDui_paciente() {return dui_paciente;}
-
-    public void setDui_paciente(String dui_paciente) {this.dui_paciente = dui_paciente;}
-
     @Override
     public String toString() {
         return "Citas{" +
