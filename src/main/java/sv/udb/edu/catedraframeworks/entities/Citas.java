@@ -75,7 +75,7 @@ public class Citas {
     public Citas() {
     }
 
-    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente, String codigoCita, String titulo, String dui_paciente) {
+    public Citas(Date fechaCita, LocalTime horaCita, String extras, Doctor idDoctor, Paciente idPaciente, String codigoCita, String titulo) {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.extras = extras;
@@ -83,7 +83,6 @@ public class Citas {
         this.idPaciente = idPaciente;
         this.codigoCita = codigoCita;
         this.titulo = titulo;
-        this.dui_paciente = dui_paciente;
     }
 
     public String getTitulo() {
