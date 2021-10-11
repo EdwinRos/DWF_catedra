@@ -107,12 +107,12 @@
 -webkit-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 26px -10px rgba(0,0,0,0.75);">
                     <h:form>
-                        <div>
-                            <f:facet name="header">
-                                Ingresar observaciones al doctor
-                            </f:facet>
-                        </div>
-                        <p:inputTextarea rows="6" cols="33" value="#{doctorInfo.observacionesDoctor.observacion}"/>
+                        <P>
+                            <p:outputLabel value="Ingrese la observacion al doctor #{doctorInfo.doctor.apellidoDoctor}" />
+                        </P>
+                        <p>
+                            <p:inputTextarea rows="6" cols="33" value="#{doctorInfo.observacionesDoctor.observacion}"/>
+                        </p>
                         <p:separator/>
                         <p:commandButton icon="pi pi-send" action="#{doctorInfo.enviarMensaje}" type="submit"
                                          value="Enviar" styleClass="rounded-button ui-button-help"/>
@@ -140,6 +140,11 @@
                     <p:column headerText="Sexo">
                         <h:outputText value="#{cts.idPaciente.sexo == 'M'?'Masculino':'Femenino'}"/>
                     </p:column>
+
+                    <p:column headerText="Titulo">
+                        <h:outputText value="#{cts.titulo}" />
+                    </p:column>
+
                     <p:column headerText="extras consulta">
                         <h:outputText value="#{cts.extras}"/>
                     </p:column>
