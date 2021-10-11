@@ -9,5 +9,5 @@ import java.util.List;
 public interface ObservacionPacienteDoctorRepository extends JpaRepository<ObservacionPacienteDoctor, Integer> {
 
     List<ObservacionPacienteDoctor> getObservacionPacienteDoctorByIdDoctor(Doctor id);
-
+    List<ObservacionPacienteDoctor> findObservacionPacienteDoctorByIdDoctorOrderByFechaRegistroDesc(Doctor doctor);
 }
