@@ -53,7 +53,7 @@ public class RecepcionistaInicio {
         recepcionista.setUsuario(miRecepcionista.get().getUsuario());
         recepcionista.setAreaId(miRecepcionista.get().getAreaId());
 
-        area = (recepcionista.getAreaId());
+        area = recepcionista.getAreaId();
         Optional<Area> miArea = areaRepository.findById(area.getAreaId());
 
         area.setAreaId(miArea.get().getAreaId());
