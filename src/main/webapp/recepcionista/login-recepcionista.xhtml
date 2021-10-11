@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+    <title>Recuperar contraseña</title>
+
+    <!-- CSS only -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+            crossorigin="anonymous" />
+</h:head>
+<h:body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 justify-content-center align-items-center d-flex">
+                <div class="w-50 shadow p-3 mb-5 bg-white rounded">
+                    <h:form>
+                        <div class="container">
+                            <h4 class="text-center mt-3 mb-3">Iniciar sesion</h4>
+                            <div class="row">
+                                <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center">
+                                    <div class="form-group">
+                                        <p:outputLabel for="inputUsuario" value="Usuario"/>
+                                        <br/>
+                                        <p:inputText id="inputUsuario" class="inputUsuario" value="${RecepcionistaLogin.recepcionista.usuario}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3 d-flex justify-content-center align-items-center">
+                                    <div class="form-group">
+                                        <p:outputLabel for="inputContraseña" value="Contraseña"/>
+                                        <br/>
+                                        <p:password id="inputContraseña" value="#{RecepcionistaLogin.recepcionista.password}" toggleMask="true" redisplay="true"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <p:messages id="messages" showDetail="true" closable="true">
+                                        <p:autoUpdate/>
+                                    </p:messages>
+                                </div>
+                                <div class="col-md-12 mt-5 mb-5 text-center">
+                                    <p:commandButton value="Ingresar" action="#{RecepcionistaLogin.iniciarSesionRecepcionista}" class="btn btn-primary"/>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.inputDui').mask('00000000-0');
+    })
+</script>
+</html>
