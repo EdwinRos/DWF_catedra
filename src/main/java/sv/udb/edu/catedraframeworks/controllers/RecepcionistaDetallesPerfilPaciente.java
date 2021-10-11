@@ -31,7 +31,6 @@ public class RecepcionistaDetallesPerfilPaciente {
         String duiPaciente = JsfUtil.getRequest().getParameter("dui");
         paciente = pacienteRepository.findByDuiPaciente(duiPaciente);
     }
-
     public Paciente getPaciente() {
         return paciente;
     }
