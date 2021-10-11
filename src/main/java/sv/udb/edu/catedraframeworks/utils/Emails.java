@@ -820,7 +820,7 @@ public class Emails {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAcount));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-            message.setSubject("Bienvenido a la familia Hospital la salud: " + nombreapellido);
+            message.setSubject("Hospital la salud");
             message.setContent("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                     "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                     "<head>\n" +

@@ -31,11 +31,9 @@ public class RecepcionistaRecuperarContraseñaPacienteExitoso {
     @Deferred
     @RequestAction
     @IgnorePostback
-    public void recuperarContraseñaPaciente() throws NoSuchAlgorithmException, MessagingException {
+    public String recuperarContraseñaPaciente() throws NoSuchAlgorithmException, MessagingException {
         String duiPaciente = JsfUtil.getRequest().getParameter("dui");
         paciente = pacienteRepository.findByDuiPaciente(duiPaciente);
-
-        String correoPaciente = paciente.getCorreoPaciente();
 
         HashSha1 hasSha1 = new HashSha1();
         RamdomString ramdomString = new RamdomString();
@@ -48,6 +46,8 @@ public class RecepcionistaRecuperarContraseñaPacienteExitoso {
         pacienteRepository.save(paciente);
 
         paciente = new Paciente();
+
+        return "/registropaciente";
 
     }
 
