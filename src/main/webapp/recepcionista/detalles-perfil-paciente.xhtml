@@ -21,26 +21,28 @@
             <div class="col-12 justify-content-center align-items-center d-flex">
                 <div class="w-50 shadow p-3 mb-5 bg-white rounded">
                     <div class="container">
-                        <h4 class="text-center mt-3 mb-3">Detalles de la cita</h4>
+                        <h4 class="text-center mt-3 mb-3">Perfil del paciente</h4>
                         <div class="row">
                             <div class="col-md-12 mt-3 d-flex justify-content-center align-items-center">
                                 <div class="w-50">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">${RecepcionistaDetallesCitaController.cita.titulo}</h5>
+                                            <h5 class="card-title text-justify"><b>Nombre: </b>${RecepcionistaDetallesPerfilPaciente.paciente.nombrePaciente}
+                                                <br/><b>Apellido: </b>${RecepcionistaDetallesPerfilPaciente.paciente.apellidoPaciente}</h5>
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><b>Codigo de la cita:</b><br/>${RecepcionistaDetallesCitaController.cita.codigoCita}</li>
-                                            <li class="list-group-item"><b>Extras:</b><br/>${RecepcionistaDetallesCitaController.cita.extras}</li>
-                                            <li class="list-group-item"><b>Fecha:</b><br/>${RecepcionistaDetallesCitaController.cita.fechaCita}</li>
-                                            <li class="list-group-item"><b>Hora:</b><br/>${RecepcionistaDetallesCitaController.cita.horaCita}</li>
-                                            <li class="list-group-item"><b>DUI del paciente:</b><br/>${RecepcionistaDetallesCitaController.cita.dui_paciente}</li>
+                                            <li class="list-group-item"><b>Correo:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.correoPaciente}</li>
+                                            <li class="list-group-item"><b>DUI:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.duiPaciente}</li>
+                                            <li class="list-group-item"><b>Fecha de nacimiento:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.fechaNacimiento}</li>
+                                            <li class="list-group-item"><b>Sexo:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.sexo}</li>
+                                            <li class="list-group-item"><b>Telefono:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.telefono}</li>
+                                            <li class="list-group-item"><b>Usuario:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.usuario}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12 mt-5 mb-5 text-center">
-                                <a href="#" id="btnCita" class="btn btn-primary">Atras</a>
+                                <a href="#" id="btnPerfil" class="btn btn-primary">Atras</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +63,7 @@
     var inputCodigoCita = document.getElementById("codigo");
 
     //link
-    var linkCita = document.getElementById("btnCita");
+    var linkCita = document.getElementById("btnPerfil");
 
     var codigo = "";
 
