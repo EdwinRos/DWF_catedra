@@ -21,14 +21,14 @@ public class Citas {
     private String codigoCita;
 
     @Column(
-            name = "titulo",
+            name = "dui_paciente",
             nullable = false,
             columnDefinition = "VARCHAR(50)"
     )
     private String dui_paciente;
 
     @Column(
-            name = "dui_paciente",
+            name = "titulo",
             nullable = false,
             columnDefinition = "VARCHAR(50)"
     )

@@ -32,7 +32,7 @@ public class RecepcionistaDetallesCitaPaciente {
     public void cargarDetallesCita() {
         String codigoCita = JsfUtil.getRequest().getParameter("codigo");
 
-        Optional<Citas> miCita = Optional.ofNullable(citaRepository.findByCodigoCita(codigoCita));
+        /*Optional<Citas> miCita = Optional.ofNullable(citaRepository.findByCodigoCita(codigoCita));
 
         cita.setCitasId(miCita.get().getCitasId());
         cita.setCodigoCita(miCita.get().getCodigoCita());
@@ -41,7 +41,9 @@ public class RecepcionistaDetallesCitaPaciente {
         cita.setFechaCita(miCita.get().getFechaCita());
         cita.setHoraCita(miCita.get().getHoraCita());
         cita.setDui_paciente(miCita.get().getDui_paciente());
-        cita.setIdPaciente(miCita.get().getIdPaciente());
+        cita.setIdPaciente(miCita.get().getIdPaciente());*/
+
+        cita = citaRepository.findByCodigoCita(codigoCita);
     }
 
     public Citas getCita() {
