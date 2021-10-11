@@ -1022,7 +1022,7 @@ public class Emails {
                     "        \n" +
                     "  <div class=\"v-text-align\" style=\"color: #ffffff; line-height: 170%; text-align: center; word-wrap: break-word;\">\n" +
                     "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \"" + nombreapellido + "\".<br />Hemos recibido una solicitud de recuperacion de contrase&ntilde;a.</span></p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">A continuacion le adjuntamos su nueva contraseña: <b>" + passwordPac + "</b>.</span></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">A continuacion le adjuntamos su nueva contraseña: <b>" + passwordPac + "</b></span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Para nosotros es un gusto atenderle, que tenga un excelente dia.</span></strong></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +

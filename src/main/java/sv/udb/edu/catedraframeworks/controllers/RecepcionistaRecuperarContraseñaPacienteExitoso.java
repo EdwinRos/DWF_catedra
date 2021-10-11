@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 @Scope(value = "session")
 @Component(value = "RecepcionistaRecuperarContraseñaPacienteExitoso")
 @ELBeanName(value = "RecepcionistaRecuperarContraseñaPacienteExitoso")
-@Join(path = "/recuperarcontraseñapacienteexitoso", to="/recepcionista/recuperar-contraseña-paciente-exitoso.jsf")
+@Join(path = "/recuperarcontraseñapacienteexitoso", to="/recepcionista/recuperar-contraseña-exitoso-paciente.jsf")
 public class RecepcionistaRecuperarContraseñaPacienteExitoso {
 
     @Autowired
@@ -31,7 +31,7 @@ public class RecepcionistaRecuperarContraseñaPacienteExitoso {
     @Deferred
     @RequestAction
     @IgnorePostback
-    public String recuperarContraseñaPaciente() throws NoSuchAlgorithmException, MessagingException {
+    public void recuperarContraseñaPaciente() throws NoSuchAlgorithmException, MessagingException {
         String duiPaciente = JsfUtil.getRequest().getParameter("dui");
         paciente = pacienteRepository.findByDuiPaciente(duiPaciente);
 
@@ -44,10 +44,6 @@ public class RecepcionistaRecuperarContraseñaPacienteExitoso {
         SendMail(paciente, contraRamdom);
 
         pacienteRepository.save(paciente);
-
-        paciente = new Paciente();
-
-        return "/registropaciente";
 
     }
 
