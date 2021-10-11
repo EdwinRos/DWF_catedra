@@ -115,7 +115,7 @@ public class supervisorInfoDoctor {
     }
 
     protected  void loadCitasDelDoctor(Doctor doctor){
-        citas = citasRepository.findCitasByIdDoctor(doctor);
+        citas = citasRepository.findCitasByEstadoAndIdDoctor(1, doctor);
     }
 
     public Doctor getDoctor() {
