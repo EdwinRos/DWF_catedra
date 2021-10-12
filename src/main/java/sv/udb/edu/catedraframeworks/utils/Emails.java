@@ -307,11 +307,11 @@ public class Emails {
                     "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 30px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                     "        \n" +
                     "  <div class=\"v-text-align\" style=\"color: #ffffff; line-height: 170%; text-align: center; word-wrap: break-word;\">\n" +
-                    "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \"nombres y apellidos\"<br />se detallan su usuario y contrase&ntilde;a para poder</span></p>\n" +
+                    "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \""+nombreapellido+"\"<br />se detallan su usuario y contrase&ntilde;a para poder</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">ingresar a su perfil de medico, sera un gusto contar con<br />usted en nuestra familia.</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" \"</span></strong></p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" \"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" "+usuario+"\"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" "+passwordDr+" \"</span></strong></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "  </div>\n" +

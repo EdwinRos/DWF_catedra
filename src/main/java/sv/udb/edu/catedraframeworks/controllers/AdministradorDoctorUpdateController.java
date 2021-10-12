@@ -17,6 +17,8 @@ import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.print.Doc;
 
 @Scope(value = "session")
@@ -63,6 +65,8 @@ public class AdministradorDoctorUpdateController {
     public String updateDoctor() {
         doctor.setIdArea(area);
         doctorRepository.save(doctor);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Exito","Doctor Actualizado Correctamente"));
+        
         return "/administrador-listado-doctores.xhtml?faces-redirect=true";
     }
 

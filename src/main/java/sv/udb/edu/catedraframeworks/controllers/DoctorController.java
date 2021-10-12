@@ -3,6 +3,9 @@ package sv.udb.edu.catedraframeworks.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.faces.context.FacesContext;
+import javax.mail.Session;
+
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -11,6 +14,7 @@ import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import javax.servlet.http.HttpSession;
 
 import sv.udb.edu.catedraframeworks.entities.Citas;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
@@ -24,6 +28,8 @@ import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 @ELBeanName(value = "doctorController")
 @Join(path = "/doctor/home", to="/doctor/dashboard.jsf")
 public class DoctorController {
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+	HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 	
 	@Autowired
     private DoctorRepository doctorRepository;
@@ -41,19 +47,21 @@ public class DoctorController {
     public void loadData() {
     	ActualAge edadActual = new ActualAge();
     	
-    	 Optional<Doctor> miDoctor = doctorRepository.findById(1);
+    	int idDoctor = Integer.parseInt(String.valueOf(session.getAttribute("doctorId")));
+    	
+    	Optional<Doctor> miDoctor = doctorRepository.findById(idDoctor);
     	 
-    	 doctor.setDoctorId(miDoctor.get().getDoctorId());
-    	 doctor.setUsuario(miDoctor.get().getUsuario());
-         doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
-         doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());
-         doctor.setIdArea(miDoctor.get().getIdArea());
-         doctor.setEstado(miDoctor.get().getEstado());
-         doctor.setCorreoDoctor(miDoctor.get().getCorreoDoctor());
-         doctor.setDuiDoctor(miDoctor.get().getDuiDoctor());
-         doctor.setFechaRegistro(miDoctor.get().getFechaRegistro());
-         doctor.setIdArea(miDoctor.get().getIdArea());         
-         edad = edadActual.getActualDate(miDoctor.get().getFechaNacimiento());
+		doctor.setDoctorId(miDoctor.get().getDoctorId());
+		doctor.setUsuario(miDoctor.get().getUsuario());
+		doctor.setNombreDoctor(miDoctor.get().getNombreDoctor());
+		doctor.setApellidoDoctor(miDoctor.get().getApellidoDoctor());
+		doctor.setIdArea(miDoctor.get().getIdArea());
+		doctor.setEstado(miDoctor.get().getEstado());
+		doctor.setCorreoDoctor(miDoctor.get().getCorreoDoctor());
+		doctor.setDuiDoctor(miDoctor.get().getDuiDoctor());
+		doctor.setFechaRegistro(miDoctor.get().getFechaRegistro());
+		doctor.setIdArea(miDoctor.get().getIdArea());         
+		edad = edadActual.getActualDate(miDoctor.get().getFechaNacimiento());
     	
     	citasDoctor(doctor);
     }
