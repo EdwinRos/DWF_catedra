@@ -32,20 +32,23 @@ public class DoctorLoginController {
     
     public String login() throws NoSuchAlgorithmException {
     	HashSha1 sha1 = new HashSha1();
-    	System.out.println(sha1.hashPassword("123456"));
-    	doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(1, doctor.getUsuario(), doctor.getPassword());
+    	
+    	doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(1, doctor.getUsuario(), sha1.hashPassword(doctor.getPassword()));
     	
     	if (doctor != null) {
     		session.setAttribute("doctorId", doctor.getDoctorId());
     		session.setAttribute("areaId", doctor.getIdArea().getAreaId());
     		
-    		return "/doctor/home?faces-redirect=true";
+    		doctor = null;
+    		password = null;
+    		
+    		return "/doctor/dashboard.xhtml?faces-redirect=true";
     	} else {
     		doctor = null;
     		
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
-    		
-    		return "/doctor/login?faces-redirect=true";
+            
+    		return "/doctor/login.xhtml?faces-redirect=true";
     	}
     }
     
@@ -54,7 +57,7 @@ public class DoctorLoginController {
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Logout","Se ha cerrado sesion"));
         
-        return "/doctor/login?faces-redirect=true";
+        return "/doctor/login.xhtml?faces-redirect=true";
     }
 
     

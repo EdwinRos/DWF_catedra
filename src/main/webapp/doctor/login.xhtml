@@ -32,18 +32,18 @@
 													<div class="row mb-3">
 														<div class="col-12">
 															<p:outputLabel value="Ingrese su usuario" styleClass="mb-2" />
-															<p:inputText value=""/>
+															<p:inputText placeholder="Usuario" required="true" requiredMessage="Ingrese su usuario" value="#{doctorLogin.doctor.usuario}" />
 														</div>
 													</div>
 													<div class="row mb-3">
 														<div class="col-12">
 															<p:outputLabel value="Ingrese su contraseña" styleClass="mb-2" />
-                    										<p:password value="" toggleMask="true" redisplay="true" styleClass="w-100" />		
+                    										<p:password placeholder="Contraseña" value="#{doctorLogin.doctor.password}" toggleMask="true" redisplay="true" styleClass="w-100" required="true" requiredMessage="ingrese su contraseña" />		
 														</div>
 													</div>
 													<div class="row mb-3">
 														<div class="col-12">
-															<p:commandButton type="submit" value="Ingresar" action="#{administradorInicio.iniciarSession}" styleClass="rounded-button"/>	
+															<p:commandButton ajax="null" type="submit" value="Ingresar" action="#{doctorLogin.login}" styleClass="rounded-button"/>	
 														</div>
 													</div>
 													<div class="row">
