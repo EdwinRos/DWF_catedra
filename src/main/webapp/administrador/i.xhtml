@@ -7,7 +7,40 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:body>
+<p:menubar>
 
+            <p:submenu label="Doctor" icon="pi pi-fw pi-file">
+                
+                <p:menuitem value="Registro de Doctors" icon="pi pi-fw pi-trash" url="/admin/listdoctor"/>
+              
+                <p:menuitem value="Nuevo Doctor" icon="pi pi-fw pi-external-link" url="/admin/ingresardoctor"/>
+            </p:submenu>
+
+            <p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+                <p:menuitem value="Ingresar Nueva Area" icon="pi pi-fw pi-align-left"/>
+                <p:menuitem value="Listado de Areas" icon="pi pi-fw pi-align-right"/>
+               
+            </p:submenu>
+
+            <p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+                <p:menuitem value="Ingresar Nuevo Recepcionista" icon="pi pi-fw pi-user-plus"/>
+                <p:menuitem value="Listado de Recepcionistas" icon="pi pi-fw pi-user-minus"/>
+                
+            </p:submenu>
+
+
+            <p:divider layout="vertical"/>
+
+            <p:menuitem value="Quit" icon="pi pi-fw pi-power-off"/>
+
+            <f:facet name="options">
+             
+                <p:commandButton type="submit" action="#{AdminLogin.salirSesion}" value="Logout"
+                                     icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                </f:facet>
+            </f:facet>
+        </p:menubar>
+    </h:form>
 </h:body>
 
 </html>

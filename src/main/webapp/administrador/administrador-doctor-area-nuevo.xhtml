@@ -11,14 +11,33 @@
 <h:body>
 	<div class="card">
 		<h:form>
-			<p:menubar style="margin-bottom:15px;">
-				<p:menuitem value="Registro Doctores" icon="pi pi-list"
-					url="/admin/listdoctor" />
-				<f:facet name="options">
+		<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
+
+					<p:menuitem value="Registro de Doctors"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			
 					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
 						value="Logout" icon="pi pi-fw pi-sign-out"
 						styleClass="ui-button-info" />
 				</f:facet>
+
 			</p:menubar>
 		</h:form>
 	</div>
