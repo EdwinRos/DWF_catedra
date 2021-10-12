@@ -69,7 +69,8 @@
                 <p:menuitem value="Inicio" action="#{doctoresAreaList.inicio}" icon="pi pi-home"/>
 
                 <f:facet name="options">
-                    <h:outputText value="Bienvenid@: #{administradorInicio.doctor.nombreDoctor} #{administradorInicio.doctor.apellidoDoctor} " />
+                    <h:outputText
+                            value="Bienvenid@: #{session.getAttribute('nombre')} #{session.getAttribute('apellido')}"/>
                     <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
                 </f:facet>
             </p:menubar>

@@ -6,16 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
-import sv.udb.edu.catedraframeworks.entities.SupervisorArea;
 import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
-import sv.udb.edu.catedraframeworks.repositories.SupervisorAreaRepository;
 import sv.udb.edu.catedraframeworks.utils.HashSha1;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
-import java.util.Optional;
 
 
 @Scope(value = "session")
@@ -28,51 +25,56 @@ public class SupervisorLoginRouting {
     FacesContext facesContext = FacesContext.getCurrentInstance();
     HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
-
-    @Autowired
-    private SupervisorAreaRepository supervisorAreaRepository;
-    SupervisorArea supervisorArea = new SupervisorArea();
-
-
     @Autowired
     private DoctorRepository doctorRepository;
-    Doctor doctor = new Doctor();
+    Doctor loginDoctor = new Doctor();
     String password;
 
     public String iniciarSession() throws NoSuchAlgorithmException {
         HashSha1 sha1 = new HashSha1();
+        loginDoctor = doctorRepository.findByEstadoAndUsuarioAndPassword(3, loginDoctor.getUsuario(), sha1.hashPassword(getPassword()));
+        if(loginDoctor != null) {
 
-
-        doctor = doctorRepository.findByEstadoAndUsuarioAndPassword(3, doctor.getUsuario(), sha1.hashPassword(getPassword()));
-        if(doctor != null) {
-
-            session.setAttribute("id", doctor.getDoctorId()); //session.get("identificador", "variable")
-            session.setAttribute("nombre", doctor.getNombreDoctor());
-            session.setAttribute("apellido", doctor.getApellidoDoctor());
-            doctor = null;
-            password = null;
+            session.setAttribute("id", loginDoctor.getDoctorId()); //session.get("identificador", "variable")
+            session.setAttribute("nombre", loginDoctor.getNombreDoctor());
+            session.setAttribute("apellido", loginDoctor.getApellidoDoctor());
+            loginDoctor = new Doctor();
+            password = "";
             return "/supervisor_area/inicio.xhtml?faces-redirect=true";
         }else{
-            doctor = null;
-            password = null;
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
-            return "/supervisor_area/supervisorlogin.xhtml?faces-redirect=true";
+            loginDoctor = new Doctor();
+            password = "";
+            setloginNullMessage();
+            return null;
         }
-
     }
+
 
     public String logOut() {
         session.invalidate();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Logout","Se ha cerrado sesion"));
+        setLogoutMessage();
         return "/supervisor_area/supervisorlogin.xhtml?faces-redirect=true";
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    //mensajes en area login
+    public void setloginNullMessage(){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
+    }
+
+    public void setLogoutMessage(){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
+    }
+
+    public Doctor getLoginDoctor() {
+        return loginDoctor;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setLoginDoctor(Doctor loginDoctor) {
+        this.loginDoctor = loginDoctor;
     }
 
     public void setPassword(String password) {
