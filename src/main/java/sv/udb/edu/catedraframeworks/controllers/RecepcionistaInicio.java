@@ -14,6 +14,7 @@ import sv.udb.edu.catedraframeworks.entities.Recepcionista;
 import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
 import sv.udb.edu.catedraframeworks.repositories.PacienteRepository;
 import sv.udb.edu.catedraframeworks.repositories.RecepcionistaRepository;
+import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -25,6 +26,8 @@ import java.util.Optional;
 @ELBeanName(value = "RecepcionistaInicio")
 @Join(path = "/recepcioninicio", to="/recepcionista/inicio.jsf")
 public class RecepcionistaInicio {
+
+    String registro = "";
 
     FacesContext facesContext = FacesContext.getCurrentInstance();
     HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
@@ -41,6 +44,9 @@ public class RecepcionistaInicio {
     @RequestAction
     @IgnorePostback
     public void loadData(){
+
+        registro = JsfUtil.getRequest().getParameter("registro");
+
         int id = (int) session.getAttribute("id");
         Optional<Recepcionista> miRecepcionista = recepcionistaRepository.findById(id);
 
@@ -60,6 +66,10 @@ public class RecepcionistaInicio {
         area.setEstado(miArea.get().getEstado());
         area.setFechaRegistro(miArea.get().getFechaRegistro());
         area.setNombreArea(miArea.get().getNombreArea());
+
+        if(registro != null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atencion","Operacion realizada con exito"));
+        }
     }
 
     public Recepcionista getRecepcionista() {

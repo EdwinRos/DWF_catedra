@@ -47,7 +47,7 @@ public class RecepcionistaLogin {
             session.setAttribute("id", recepcionista.getRecepcionistaId());
             return "/recepcionista/inicio.xhtml?faces-redirect=true";
         }else{
-            recepcionista = null;
+            recepcionista = new Recepcionista();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
             return "/recepcionista/login-recepcionista.xhtml?faces-redirect=true";
         }

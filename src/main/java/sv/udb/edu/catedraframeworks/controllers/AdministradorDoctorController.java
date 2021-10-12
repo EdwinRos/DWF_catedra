@@ -54,6 +54,7 @@ public class AdministradorDoctorController {
         doctor.setIdArea(area);
         doctor.setPassword(hasSha1.hashPassword(contraRamdom));
 
+
         SendMail(doctor, contraRamdom);
 
         doctorRepository.save(doctor);

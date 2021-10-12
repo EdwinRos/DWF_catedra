@@ -12,7 +12,9 @@ import sv.udb.edu.catedraframeworks.entities.*;
 import sv.udb.edu.catedraframeworks.repositories.*;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.print.Doc;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -26,9 +28,6 @@ public class RecepcionistaRegistraCitaPaciente {
 
     String dui = "";
 
-    int idpaciente = 0;
-
-
     FacesContext facesContext = FacesContext.getCurrentInstance();
     HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
@@ -38,7 +37,6 @@ public class RecepcionistaRegistraCitaPaciente {
 
     @Autowired
     private RecepcionistaRepository recepcionistaRepository;
-    Recepcionista recepcionista = new Recepcionista();
 
     @Autowired
     private DoctorRepository doctorRepository;
@@ -50,10 +48,8 @@ public class RecepcionistaRegistraCitaPaciente {
 
     Area area = new Area();
 
-    private RamdomString ramdomString;
-    RamdomString stringRandom = new RamdomString();
-
     List<Doctor> misDoctores;
+
 
     @Deferred
     @RequestAction
@@ -69,22 +65,27 @@ public class RecepcionistaRegistraCitaPaciente {
     }
 
     public String registrarCita(){
-        String contraRamdom = ramdomString.codigoCita();
-        cita.setCodigoCita(contraRamdom);
+
+        RamdomString ramdomString = new RamdomString();
+        String contraRandom = ramdomString.codigoCita();
+
+        cita.setCodigoCita(contraRandom);
         cita.setEstado(1);
-        cita.setExtras(cita.getExtras());
-        cita.setFechaCita(cita.getFechaCita());
-        cita.setHoraCita(cita.getHoraCita());
-        cita.setTitulo(cita.getTitulo());
-        cita.setIdDoctor(cita.getIdDoctor());
+
         paciente = pacienteRepository.findByDuiPaciente(getDui());
-        cita.setIdPaciente(paciente);
 
-        citasRepository.save(cita);
+        if(paciente == null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","DUI no encontrado"));
+            return null;
+        }else{
+            cita.setIdDoctor(doctor);
 
-        cita = new Citas();
+            cita.setIdPaciente(paciente);
 
-        return "/recepcionista/inicio.xhtml?faces-redirect=true";
+            citasRepository.save(cita);
+
+            return "/recepcionista/inicio.xhtml?registro=si&faces-redirect=true";
+        }
     }
 
     public String getDui() {
@@ -107,4 +108,11 @@ public class RecepcionistaRegistraCitaPaciente {
         return cita;
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 }

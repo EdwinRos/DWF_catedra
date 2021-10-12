@@ -24,6 +24,11 @@
                         <div class="container">
                             <h4 class="text-center mt-5 mb-5">Registrar cita</h4>
                             <div class="row">
+                                <div class="col-md-12">
+                                    <p:messages id="messages" showDetail="true" closable="true">
+                                        <p:autoUpdate/>
+                                    </p:messages>
+                                </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <h:panelGrid columns="4" cellpadding="4">
                                         <p:outputLabel value="Titulo: " />
@@ -43,11 +48,11 @@
                                         <p:outputLabel value="DUI: " />
                                         <p:inputText mask="99999999-9"
                                                      requiredMessage="Por favor ingresar dui"
-                                                     validatorMessage="Formato invalido" validateMask="true" class="dui" value="${RecepcionistaRegistraCitaPaciente.dui}" />
+                                                     validatorMessage="Formato invalido" validateMask="true" value="${RecepcionistaRegistraCitaPaciente.dui}" />
 
                                         <p:outputLabel for="doctores" value="Doctor: "/>
                                         <p:selectOneMenu id="doctores"
-                                                         value="${RecepcionistaRegistraCitaPaciente.cita.idDoctor}">
+                                                         value="${RecepcionistaRegistraCitaPaciente.doctor.doctorId}">
                                             <f:selectItems value="${RecepcionistaRegistraCitaPaciente.misDoctores}" var="doc"
                                                            itemLabel="${doc.nombreDoctor} ${doc.apellidoDoctor}" itemValue="${doc.doctorId}"/>
                                         </p:selectOneMenu>
@@ -56,8 +61,9 @@
                             </div>
                             <div class="d-flex justify-content-center align-items-center text-center mt-5 mb-5">
                                 <p:commandButton value="Registrar cita"
-                                                 action="${RecepcionistaRegistraCitaPaciente.registrarCita()}"
-                                                 type="submit"/>
+                                                 action="${RecepcionistaRegistraCitaPaciente.registrarCita}"
+                                                 type="submit"
+                                                 ajax="null"/>
                             </div>
                         </div>
                     </h:form>
