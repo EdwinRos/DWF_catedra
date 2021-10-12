@@ -44,7 +44,7 @@ public class DoctorLoginController {
     		
     		return "/doctor/dashboard.xhtml?faces-redirect=true";
     	} else {
-    		doctor = null;
+    		doctor = new Doctor();
     		
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","Usuario o contraseña incorrectos"));
             
