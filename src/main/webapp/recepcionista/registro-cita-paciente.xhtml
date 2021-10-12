@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 
-    <title>Registrar paciente</title>
+    <title>Registrar cita</title>
 
     <!-- CSS only -->
     <link
@@ -14,41 +14,6 @@
             rel="stylesheet"
             integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
             crossorigin="anonymous" />
-    <script type="text/javascript">
-        PrimeFaces.locales['es'] = {
-            closeText : 'Cerrar',
-            prevText : 'Anterior',
-            nextText : 'Siguiente',
-            monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
-                'Diciembre' ],
-            monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
-                'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
-            dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
-                'Viernes', 'Sábado' ],
-            dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
-            dayNamesMin : [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
-            weekHeader : 'Semana',
-            firstDay : 1,
-            isRTL : false,
-            showMonthAfterYear : false,
-            yearSuffix : '',
-            timeOnlyTitle : 'Sólo hora',
-            timeText : 'Tiempo',
-            hourText : 'Hora',
-            minuteText : 'Minuto',
-            secondText : 'Segundo',
-            millisecondText : 'Milisegundo',
-            currentText : 'Fecha actual',
-            ampm : false,
-            month : 'Mes',
-            week : 'Semana',
-            day : 'Día',
-            allDayText : 'Todo el día',
-            today : 'Hoy',
-            clear : 'Claro'
-        };
-    </script>
 </h:head>
 <h:body>
     <div class="container mt-5">
@@ -57,7 +22,7 @@
                 <div class="w-75 shadow p-3 mb-5 bg-white rounded">
                     <h:form>
                         <div class="container">
-                            <h4 class="text-center mt-5 mb-5">Registrar paciente</h4>
+                            <h4 class="text-center mt-5 mb-5">Registrar cita</h4>
                             <h:panelGrid columns="4" cellpadding="4">
                                 <p:outputLabel value="Nombre: " />
                                 <p:inputText value="#{PacienteController.paciente.nombrePaciente}" />

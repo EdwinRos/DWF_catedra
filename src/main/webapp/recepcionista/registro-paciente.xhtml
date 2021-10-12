@@ -71,7 +71,9 @@
                                              value="#{PacienteController.paciente.correoPaciente}" />
 
                                 <p:outputLabel value="DUI: " />
-                                <p:inputText class="dui" value="#{PacienteController.paciente.duiPaciente}" />
+                                <p:inputText class="dui" mask="99999999-9"
+                                             requiredMessage="Por favor ingresar dui"
+                                             validatorMessage="Formato invalido" validateMask="true" value="#{PacienteController.paciente.duiPaciente}" />
 
                                 <p:outputLabel value="Fecha de nacimiento" />
                                 <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
@@ -80,13 +82,15 @@
 
                                 <p:outputLabel for="sexo" value="Sexo"/>
                                 <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
-                                    <f:selectItem itemLabel="Hombre" itemValue="H"/><f:selectItems/>
-                                    <f:selectItem itemLabel="Mujer" itemValue="M"/><f:selectItems/>
+                                    <f:selectItem itemLabel="Masculino" itemValue="M"/><f:selectItems/>
+                                    <f:selectItem itemLabel="Femenino" itemValue="F"/><f:selectItems/>
                                 </p:selectOneMenu>
 
 
                                 <p:outputLabel value="Telefono: " />
-                                <p:inputText class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
+                                <p:inputText mask="9999-9999"
+                                             requiredMessage="Por favor ingresar telefono"
+                                             validatorMessage="Formato invalido" validateMask="true" class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
 
                                 <p:outputLabel value="Usuario: " />
                                 <p:inputText value="#{PacienteController.paciente.usuario}" />
@@ -104,13 +108,4 @@
         </div>
     </div>
 </h:body>
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.dui').mask('00000000-0');
-        $('.telefono').mask('0000-0000');
-    })
-</script>
-
 </html>
