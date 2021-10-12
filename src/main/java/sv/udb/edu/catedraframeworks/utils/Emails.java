@@ -310,8 +310,8 @@ public class Emails {
                     "    <p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Es un gusto saludarle \"nombres y apellidos\"<br />se detallan su usuario y contrase&ntilde;a para poder</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\"><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">ingresar a su perfil de medico, sera un gusto contar con<br />usted en nuestra familia.</span></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" \"</span></strong></p>\n" +
-                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" \"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Usuario: \" "+nombreapellido+"\"</span></strong></p>\n" +
+                    "<p style=\"font-size: 14px; line-height: 170%;\"><strong><span style=\"font-size: 16px; line-height: 27.2px; font-family: 'trebuchet ms', geneva;\">Contrase&ntilde;a: \" "+passwordDr+" \"</span></strong></p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "<p style=\"font-size: 14px; line-height: 170%;\">&nbsp;</p>\n" +
                     "  </div>\n" +
