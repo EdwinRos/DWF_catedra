@@ -17,7 +17,7 @@ import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
 @Scope(value = "session")
 @Component(value = "AdminListArea")
 @ELBeanName(value = "AdminListArea")
-@Join(path = "/administradorarea", to="/administrador/administrador-area-lista.jsf")
+@Join(path = "/admin/listarea", to="/administrador/administrador-area-lista.jsf")
 public class AdministradorAreaListController {
 	
 	

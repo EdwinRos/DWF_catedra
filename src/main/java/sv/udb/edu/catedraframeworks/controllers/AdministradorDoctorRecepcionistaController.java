@@ -23,7 +23,7 @@ import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 @Scope(value = "session")
 @Component(value = "AdminRepecionistaControler")
 @ELBeanName(value = "AdminRepecionistaControler")
-@Join(path = "/administradorrecepcionista", to = "/administrador/administrador-ingresar-recepcionista.jsf")
+@Join(path = "/admin/ingresarrecepcionista", to = "/administrador/administrador-ingresar-recepcionista.jsf")
 public class AdministradorDoctorRecepcionistaController {
 
 	

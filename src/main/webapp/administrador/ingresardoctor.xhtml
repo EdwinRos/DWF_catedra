@@ -53,16 +53,18 @@
 
 </h:head>
 <h:body>
-	<p:menubar style="margin-bottom:15px;">
-		<p:menuitem value="Registro Doctores" icon="pi pi-list"
-			url="/listadodoctor" />
-
-		<f:facet name="options">
-			<p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out"
-				styleClass="ui-button-info" />
-		</f:facet>
-				
-	</p:menubar>
+<div class="card">
+        <h:form>
+            <p:menubar>
+                  <p:menuitem value="Registro Doctores" icon="pi pi-list"
+			url="/admin/listdoctor"/>
+                <f:facet name="options">
+                         <p:commandButton type="submit" action="#{AdminLogin.salirSesion}" value="Logout"
+                                     icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        </div>
 	<div class="d-flex justify-content-center align-items-center">
 		<h:form class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
 			<h5 style="text-align: center;">Ingrese sus Datos Personales</h5>
@@ -80,16 +82,18 @@
 
 				<p:outputLabel value="Correo: " />
 				<p:inputText type="email"
-					value="#{AdminDoctorControler.doctor.correoDoctor}" requiredMessage="Por favor ingresar Correo."
-		validatorMessage="formato invalido" >
-		<f:validateRegex
-		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-		</p:inputText>
+					value="#{AdminDoctorControler.doctor.correoDoctor}"
+					requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</p:inputText>
 
 				<p:outputLabel for="dui" value="DUI: " />
-				<p:inputMask id="dui" value="#{AdminDoctorControler.doctor.duiDoctor}" mask="99999999-9"
-				 requiredMessage="Por favor ingresar Correo."
-		validatorMessage="formato invalido" validateMask="true" />
+				<p:inputMask id="dui"
+					value="#{AdminDoctorControler.doctor.duiDoctor}" mask="99999999-9"
+					requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido" validateMask="true" />
 
 
 				<p:outputLabel value="Fecha de Nacimiento" />
@@ -113,7 +117,9 @@
 
 			</h:panelGrid>
 			<div class="d-flex justify-content-center align-items-center">
-				<h:commandButton value="Ingresar" action="#{AdminDoctorControler.nuevoDoctor}" styleClass="btn btn-info"/>
+				<h:commandButton value="Ingresar"
+					action="#{AdminDoctorControler.nuevoDoctor}"
+					styleClass="btn btn-info" />
 			</div>
 			<p:messages id="messages" showDetail="true" closable="true">
 				<p:autoUpdate />

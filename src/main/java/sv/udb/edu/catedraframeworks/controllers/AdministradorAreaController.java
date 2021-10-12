@@ -22,7 +22,7 @@ import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 @Scope(value = "session")
 @Component(value = "AdminAreaControler")
 @ELBeanName(value = "AdminAreaControler")
-@Join(path = "/administradorareaingresar", to="/administrador/administrador-area-ingresararea.jsf")
+@Join(path = "/admin/ingresararea", to="/administrador/administrador-area-ingresararea.jsf")
 public class AdministradorAreaController {
 	
 	

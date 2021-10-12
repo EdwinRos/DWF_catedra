@@ -15,14 +15,17 @@
 	<title>Registro de Doctores</title>
 </h:head>
 <h:body>
-	<p:menubar style="margin-bottom:15px;">
-		            <p:menuitem value="Registro Doctores" icon="pi pi-list" url="/listadodoctor" />
-		          	<p:menuitem value="Ingresar Nuevo Doctor" icon="pi pi-user" url="/administradoringresardoctor"/>
-		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-		            </f:facet>
-		        </p:menubar>
-	<h:form>
+    <div class="card">
+        <h:form>
+            <p:menubar>
+                <f:facet name="options">
+                             <p:commandButton type="submit" action="#{AdminLogin.salirSesion}" value="Logout"
+                                     icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        </div>
+	<div class="container">
 		<p:panel header="Listado de Doctores">
 			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}" rows="10"
                      paginator="true"
@@ -84,21 +87,29 @@
 
 				</p:column>
 				<p:column>
-					<p:button value="Actualizar" href="/updatedoctor"
+					<p:button value="Actualizar" href="/admin/updatedoctor"
 						styleClass="ui-button-warning" icon="pi pi-check">
 						<f:param name="IdDoctor" value="#{doc.doctorId}" />
 					</p:button>
 				</p:column>
+				
+				<p:column>
+					<p:button value="Añadir Supervisor" href="#"
+						styleClass="ui-button-info" icon="pi pi-plus">
+						<f:param name="IdDoctor" value="#{doc.doctorId}" />
+					</p:button>
+				</p:column>
+				
 			</p:dataTable>
 
 
 
 		</p:panel>
 
-	</h:form>
+	</div>
 <p:toolbar>
 		<f:facet name="left">
-			<p:button style="margin-left:10px;" href="/administradoringresardoctor"
+			<p:button style="margin-left:10px;" href="/admin/ingresardoctor"
 				value="Agregar Nuevo Doctor"/>
 				
 			

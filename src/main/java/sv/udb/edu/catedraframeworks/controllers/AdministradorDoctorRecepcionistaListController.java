@@ -19,7 +19,7 @@ import sv.udb.edu.catedraframeworks.repositories.RecepcionistaRepository;
 @Scope(value = "session")
 @Component(value = "AdminrecepcionistaList")
 @ELBeanName(value = "AdminrecepcionistaList")
-@Join(path = "/recepcionistalista", to = "/administrador/administrador-recepcionista-lista.jsf")
+@Join(path = "/admin/listrecepcionista", to = "/administrador/administrador-recepcionista-lista.jsf")
 
 public class AdministradorDoctorRecepcionistaListController {
 

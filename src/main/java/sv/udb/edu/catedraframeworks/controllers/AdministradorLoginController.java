@@ -19,7 +19,7 @@ import sv.udb.edu.catedraframeworks.utils.HashSha1;
 @Scope(value = "session")
 @Component(value = "AdminLogin")
 @ELBeanName(value = "AdminLogin")
-@Join(path = "/administrador/login", to = "/administrador/admin-login.jsf")
+@Join(path = "/admin/login", to = "/administrador/admin-login.jsf")
 public class AdministradorLoginController {
 
 	
@@ -39,27 +39,29 @@ public class AdministradorLoginController {
    	 if (administrador != null) {
    		 session.setAttribute("id", administrador.getAdministradorId());
    		 session.setAttribute("usuario",administrador.getUsuario());
-   		 passwordAdmin = null;
+   		 passwordAdmin = "";
    		 
    		session.setAttribute("id", administrador.getAdministradorId());
    		
    		return "/administrador/ingresardoctor.xhtml?faces-redirect=true";
 			
 		}else {
-			administrador = null;
+			administrador = new Administrador();
+			passwordAdmin = "";
 			
 			return "/administrador/ingresardoctor.xhtml?faces-redirect=true";
 		}
     	
     }
     
-    public String logOut() {
-    	session.invalidate();
-    	 return "/administrador/admin-login.xhtml?faces-redirect=true";
-    }
+    public String salirSesion() {
+        session.invalidate();
+               return "/administrador/admin-login.xhtml?faces-redirect=true";
+     }
     
     public Administrador getAdministrador() {
     	return administrador;
 	}
+    
 	
 }

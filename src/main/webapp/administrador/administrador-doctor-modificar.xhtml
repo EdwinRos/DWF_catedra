@@ -51,7 +51,11 @@
 					<p:outputLabel value="Correo del doctor" />
 					<div class="p-col-12 p-md-10">
 						<p:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}"
-							type="text" />
+							 requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
 					</div>
 				</div>
 				<div class="p-field p-grid">
@@ -65,7 +69,8 @@
 					<p:outputLabel value="DUI" />
 					<div class="p-col-12 p-md-10">
 						<p:inputText value="#{AdminDoctorUpdate.doctor.duiDoctor}"
-							type="text" />
+							mask="99999999-9" requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido" validateMask="true" />
 					</div>
 				</div>
 				<div class="p-field p-grid">

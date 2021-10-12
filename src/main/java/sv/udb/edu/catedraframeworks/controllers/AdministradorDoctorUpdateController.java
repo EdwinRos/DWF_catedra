@@ -24,7 +24,7 @@ import javax.print.Doc;
 @Scope(value = "session")
 @Component(value = "AdminDoctorUpdate")
 @ELBeanName(value = "AdminDoctorUpdate")
-@Join(path = "/updatedoctor", to = "/administrador/administrador-doctor-modificar.jsf")
+@Join(path = "/admin/updatedoctor", to = "/administrador/administrador-doctor-modificar.jsf")
 public class AdministradorDoctorUpdateController {
 
 
