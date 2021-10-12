@@ -19,7 +19,7 @@
 		            <p:menuitem value="Comentarios" icon="pi pi-comments" url="/doctor/comentarios" />
 		
 		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+		                <p:commandButton value="Cerrar sesión" icon="pi pi-fw pi-sign-out" type="submit" action="#{doctorLogin.logout}" styleClass="ui-button-info"/>
 		            </f:facet>
 		        </p:menubar>
 		    </h:form>

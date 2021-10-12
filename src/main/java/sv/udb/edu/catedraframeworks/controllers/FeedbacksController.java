@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
@@ -27,6 +28,9 @@ import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 @ELBeanName(value = "feedbackController")
 @Join(path = "/doctor/comentarios", to = "/doctor/comentarios.jsf")
 public class FeedbacksController {
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+    HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+	
 	@Autowired
 	private ObservacionesDoctorRepository observacionesDoctorRepository;
 	private List<ObservacionesDoctor> observacionesDoctor;
@@ -43,7 +47,7 @@ public class FeedbacksController {
     @RequestAction
     @IgnorePostback
     public void loadData() {
-		int idDoctor = 1;
+		int idDoctor = Integer.parseInt(String.valueOf(session.getAttribute("doctorId")));
 		
 		Doctor doctor = doctorRepository.getById(idDoctor);
 		
