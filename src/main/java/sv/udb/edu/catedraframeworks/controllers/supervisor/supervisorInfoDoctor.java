@@ -1,4 +1,4 @@
-package sv.udb.edu.catedraframeworks.controllers;
+package sv.udb.edu.catedraframeworks.controllers.supervisor;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.Parameter;
