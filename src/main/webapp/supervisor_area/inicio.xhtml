@@ -57,10 +57,8 @@
 
 
                 <f:facet name="options">
-                    <p>
-                        <h:outputText
-                                value="Bienvenid@: #{session.getAttribute('nombre')} #{session.getAttribute('apellido')}"/>
-                    </p>
+                    <h:outputText
+                            value="Bienvenid@: #{session.getAttribute('nombre')} #{session.getAttribute('apellido')}"/>
                     <p:commandButton type="submit" action="#{administradorInicio.logOut}" value="Logout"
                                      icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
                 </f:facet>

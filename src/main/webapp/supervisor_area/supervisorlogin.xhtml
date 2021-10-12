@@ -2,9 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Doctor</title>
@@ -32,7 +30,7 @@
                                                 <div class="row mb-3">
                                                     <div class="col-12">
                                                         <p:outputLabel value="Ingrese su usuario" styleClass="mb-2" />
-                                                        <p:inputText placeholder="(Usuario)" value="#{administradorInicio.doctor.usuario}" required="true" requiredMessage="Ingrese un usuario"/>
+                                                        <p:inputText placeholder="(Usuario)" value="#{administradorInicio.loginDoctor.usuario}" required="true" requiredMessage="Ingrese un usuario"/>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -43,15 +41,13 @@
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
-                                                        <p:commandButton ajax="null" type="submit" value="Ingresar" action="#{administradorInicio.iniciarSession}" styleClass="rounded-button"/>
+                                                        <p:commandButton ajax="null" value="Ingresar" action="#{administradorInicio.iniciarSession}" styleClass="rounded-button"/>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <p:messages id="supLogMes" showDetail="true" closable="true">
-                                                            <p:autoUpdate/>
-                                                        </p:messages>
-                                                    </div>
+                                                <div class="row-mb-3">
+                                                    <p:messages id="login" showDetail="true" closable="true">
+                                                        <p:autoUpdate/>
+                                                    </p:messages>
                                                 </div>
                                             </h:form>
                                         </div>
