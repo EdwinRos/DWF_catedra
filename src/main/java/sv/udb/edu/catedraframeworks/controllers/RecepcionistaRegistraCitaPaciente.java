@@ -8,32 +8,37 @@ import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import sv.udb.edu.catedraframeworks.entities.Area;
-import sv.udb.edu.catedraframeworks.entities.Citas;
-import sv.udb.edu.catedraframeworks.entities.Doctor;
-import sv.udb.edu.catedraframeworks.entities.Paciente;
-import sv.udb.edu.catedraframeworks.repositories.AreaRepository;
-import sv.udb.edu.catedraframeworks.repositories.CitasRepository;
-import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
-import sv.udb.edu.catedraframeworks.repositories.PacienteRepository;
+import sv.udb.edu.catedraframeworks.entities.*;
+import sv.udb.edu.catedraframeworks.repositories.*;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Optional;
 
 @Scope(value = "session")
 @Component(value = "RecepcionistaRegistraCitaPaciente")
 @ELBeanName(value = "RecepcionistaRegistraCitaPaciente")
-@Join(path = "/recepcion/registrarcita", to="/recepcionista/registro-cita-paciente.jsf")
+@Join(path = "/recepcionista/registrarcita", to="/recepcionista/registro-cita-paciente.jsf")
 public class RecepcionistaRegistraCitaPaciente {
+
     String dui = "";
+
+    int idpaciente = 0;
+
+
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+    HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
     @Autowired
     private PacienteRepository pacienteRepository;
     Paciente paciente = new Paciente();
 
     @Autowired
-    private AreaRepository areaRepository;
-    Area area = new Area();
+    private RecepcionistaRepository recepcionistaRepository;
+    Recepcionista recepcionista = new Recepcionista();
 
     @Autowired
     private DoctorRepository doctorRepository;
@@ -43,21 +48,43 @@ public class RecepcionistaRegistraCitaPaciente {
     private CitasRepository citasRepository;
     Citas cita = new Citas();
 
+    Area area = new Area();
+
     private RamdomString ramdomString;
     RamdomString stringRandom = new RamdomString();
+
+    List<Doctor> misDoctores;
 
     @Deferred
     @RequestAction
     @IgnorePostback
-    public List mostrarDoctores(){
+    public void mostrarDoctores(){
+        int id = (int) session.getAttribute("id");
 
+        Optional<Recepcionista> miRecepcionista = recepcionistaRepository.findById(id);
 
+        area = miRecepcionista.get().getAreaId();
 
-        return mostrarDoctores();
+        misDoctores = doctorRepository.findByIdAreaAndEstado(area, 1);
     }
 
-    public void registrarCita(){
+    public String registrarCita(){
+        String contraRamdom = ramdomString.codigoCita();
+        cita.setCodigoCita(contraRamdom);
+        cita.setEstado(1);
+        cita.setExtras(cita.getExtras());
+        cita.setFechaCita(cita.getFechaCita());
+        cita.setHoraCita(cita.getHoraCita());
+        cita.setTitulo(cita.getTitulo());
+        cita.setIdDoctor(cita.getIdDoctor());
+        paciente = pacienteRepository.findByDuiPaciente(getDui());
+        cita.setIdPaciente(paciente);
 
+        citasRepository.save(cita);
+
+        cita = new Citas();
+
+        return "/recepcionista/inicio.xhtml?faces-redirect=true";
     }
 
     public String getDui() {
@@ -68,5 +95,16 @@ public class RecepcionistaRegistraCitaPaciente {
         this.dui = dui;
     }
 
+    public List<Doctor> getMisDoctores() {
+        return misDoctores;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public Citas getCita() {
+        return cita;
+    }
 
 }

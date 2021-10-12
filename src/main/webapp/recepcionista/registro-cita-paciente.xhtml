@@ -23,43 +23,41 @@
                     <h:form>
                         <div class="container">
                             <h4 class="text-center mt-5 mb-5">Registrar cita</h4>
-                            <h:panelGrid columns="4" cellpadding="4">
-                                <p:outputLabel value="Nombre: " />
-                                <p:inputText value="#{PacienteController.paciente.nombrePaciente}" />
+                            <div class="row">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <h:panelGrid columns="4" cellpadding="4">
+                                        <p:outputLabel value="Titulo: " />
+                                        <p:inputText value="${RecepcionistaRegistraCitaPaciente.cita.titulo}" />
 
-                                <p:outputLabel value="Apellido: " />
-                                <p:inputText value="#{PacienteController.paciente.apellidoPaciente}" />
+                                        <p:outputLabel value="Extras: " />
+                                        <p:inputText value="${RecepcionistaRegistraCitaPaciente.cita.extras}" />
 
-                                <p:outputLabel value="Correo: " />
-                                <p:inputText type="email"
-                                             value="#{PacienteController.paciente.correoPaciente}" />
+                                        <p:outputLabel value="Fecha: " />
+                                        <p:calendar value="${RecepcionistaRegistraCitaPaciente.cita.fechaCita}"
+                                                    pattern="yyyy-mm-dd" effect="explode" locale="es"
+                                                    navigator="true" class="fechanacimiento"/>
 
-                                <p:outputLabel value="DUI: " />
-                                <p:inputText class="dui" value="#{PacienteController.paciente.duiPaciente}" />
+                                        <p:outputLabel for="timeonly" value="Hora: "/>
+                                        <p:datePicker id="timeonly" value="${RecepcionistaRegistraCitaPaciente.cita.horaCita}" timeOnly="true" pattern="hh:mm"/>
 
-                                <p:outputLabel value="Fecha de nacimiento" />
-                                <p:calendar value="#{PacienteController.paciente.fechaNacimiento}"
-                                            pattern="yyyy-mm-dd" effect="explode" locale="es"
-                                            navigator="true" class="fechanacimiento"/>
+                                        <p:outputLabel value="DUI: " />
+                                        <p:inputText mask="99999999-9"
+                                                     requiredMessage="Por favor ingresar dui"
+                                                     validatorMessage="Formato invalido" validateMask="true" class="dui" value="${RecepcionistaRegistraCitaPaciente.dui}" />
 
-                                <p:outputLabel for="sexo" value="Sexo"/>
-                                <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
-                                    <f:selectItem itemLabel="Hombre" itemValue="H"/><f:selectItems/>
-                                    <f:selectItem itemLabel="Mujer" itemValue="M"/><f:selectItems/>
-                                </p:selectOneMenu>
-
-
-                                <p:outputLabel value="Telefono: " />
-                                <p:inputText class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
-
-                                <p:outputLabel value="Usuario: " />
-                                <p:inputText value="#{PacienteController.paciente.usuario}" />
-
-
-                            </h:panelGrid>
+                                        <p:outputLabel for="doctores" value="Doctor: "/>
+                                        <p:selectOneMenu id="doctores"
+                                                         value="${RecepcionistaRegistraCitaPaciente.cita.idDoctor}">
+                                            <f:selectItems value="${RecepcionistaRegistraCitaPaciente.misDoctores}" var="doc"
+                                                           itemLabel="${doc.nombreDoctor} ${doc.apellidoDoctor}" itemValue="${doc.doctorId}"/>
+                                        </p:selectOneMenu>
+                                    </h:panelGrid>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-center align-items-center text-center mt-5 mb-5">
-                                <p:commandButton value="Ingresar"
-                                                 action="#{PacienteController.nuevoPaciente}"/>
+                                <p:commandButton value="Registrar cita"
+                                                 action="${RecepcionistaRegistraCitaPaciente.registrarCita()}"
+                                                 type="submit"/>
                             </div>
                         </div>
                     </h:form>
@@ -68,13 +66,5 @@
         </div>
     </div>
 </h:body>
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.dui').mask('00000000-0');
-        $('.telefono').mask('0000-0000');
-    })
-</script>
 
 </html>
