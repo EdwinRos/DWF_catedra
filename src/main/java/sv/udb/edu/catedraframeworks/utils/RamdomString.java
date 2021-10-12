@@ -18,4 +18,19 @@ public class RamdomString {
         return password;
     }
 
+    public String codigoCita() {
+        String password = "";
+        Random r = new Random();
+
+        String alphabet = "abcdefghijklmnopqrstuvwxyz"
+                + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (int i = 0; i < 5; i++) {
+            password += (alphabet.charAt(r.nextInt(alphabet.length())));
+        }
+
+        return password;
+    }
+
+
 }

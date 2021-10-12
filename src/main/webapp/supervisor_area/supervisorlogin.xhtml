@@ -32,13 +32,13 @@
                                                 <div class="row mb-3">
                                                     <div class="col-12">
                                                         <p:outputLabel value="Ingrese su usuario" styleClass="mb-2" />
-                                                        <p:inputText value="#{administradorInicio.doctor.usuario}"/>
+                                                        <p:inputText placeholder="(Usuario)" value="#{administradorInicio.doctor.usuario}" required="true" requiredMessage="Ingrese un usuario"/>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-12">
                                                         <p:outputLabel value="Ingrese su contraseña" styleClass="mb-2" />
-                                                        <p:password value="#{administradorInicio.password}" toggleMask="true" redisplay="true" styleClass="w-100" />
+                                                        <p:password placeholder="(Contraseña)" value="#{administradorInicio.password}" toggleMask="true" redisplay="true" styleClass="w-100" required="true" requiredMessage="ingrese su contraseña" />
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">

@@ -69,6 +69,7 @@
                 <p:menuitem value="Inicio" action="#{doctoresAreaList.inicio}" icon="pi pi-home"/>
 
                 <f:facet name="options">
+                    <h:outputText value="Bienvenid@: #{administradorInicio.doctor.nombreDoctor} #{administradorInicio.doctor.apellidoDoctor} " />
                     <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
                 </f:facet>
             </p:menubar>
@@ -111,7 +112,7 @@
                             <p:outputLabel value="Ingrese la observacion al doctor #{doctorInfo.doctor.apellidoDoctor}" />
                         </P>
                         <p>
-                            <p:inputTextarea rows="6" cols="33" value="#{doctorInfo.observacionesDoctor.observacion}"/>
+                            <p:inputTextarea rows="6" cols="33" value="#{doctorInfo.observacionesDoctor.observacion}" required="true" requiredMessage="Ingrese un mensaje al doctor"/>
                         </p>
                         <p:separator/>
                         <p:commandButton icon="pi pi-send" action="#{doctorInfo.enviarMensaje}" type="submit"
