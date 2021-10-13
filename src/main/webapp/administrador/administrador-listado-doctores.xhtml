@@ -75,16 +75,10 @@
 
 				<p:column>
 					<f:facet name="header">Estado</f:facet>
-					<c:choose>
-					<c:when test="${doc.estado == 1}">Activo
-					</c:when>
-						<c:when test="${doc.estado == 2}">Inactivo
-					</c:when>
-						<c:when test="${doc.estado == 3}">Supervisor
-					</c:when>
-					
-					
-					</c:choose>
+					<h:outputText value="#{doc.estado == 1?'Activo':''}" />
+					<h:outputText value="#{doc.estado == 2?'Inactivo':''}" />
+					<h:outputText value="#{doc.estado == 3?'Supervisor':''}" />
+
 				</p:column>
 
 				<p:column>
