@@ -8,4 +8,7 @@ import java.util.Optional;
 
 public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
     Paciente findByDuiPaciente(String dui);
+    Paciente findByCorreoPaciente(String correo);
+    Paciente findByTelefono(String telefono);
+    Paciente findByUsuario(String dui);
 }

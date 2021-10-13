@@ -2,10 +2,12 @@ package sv.udb.edu.catedraframeworks.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import sv.udb.edu.catedraframeworks.entities.Area;
+import sv.udb.edu.catedraframeworks.entities.Citas;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
 
 import javax.print.Doc;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface DoctorRepository extends JpaRepository <Doctor, Integer> {
@@ -17,7 +19,4 @@ public interface DoctorRepository extends JpaRepository <Doctor, Integer> {
 
    Doctor findByPasswordAndDoctorId(String password, Integer doctorId);
 
-   
-   
-   
 }

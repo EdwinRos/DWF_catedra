@@ -59,6 +59,11 @@
                         <div class="container">
                             <a href="/recepcioninicio" class="btn btn-primary">Atras</a>
                             <h4 class="text-center mt-5 mb-5">Registrar paciente</h4>
+                            <div class="col-md-12">
+                                <p:messages id="messages" showDetail="true" closable="true">
+                                    <p:autoUpdate/>
+                                </p:messages>
+                            </div>
                             <h:panelGrid columns="4" cellpadding="4">
                                 <p:outputLabel value="Nombre: " />
                                 <p:inputText value="#{PacienteController.paciente.nombrePaciente}" />
@@ -82,8 +87,8 @@
 
                                 <p:outputLabel for="sexo" value="Sexo"/>
                                 <p:selectOneMenu id="sexo" value="${PacienteController.paciente.sexo}">
-                                    <f:selectItem itemLabel="Masculino" itemValue="M"/><f:selectItems/>
-                                    <f:selectItem itemLabel="Femenino" itemValue="F"/><f:selectItems/>
+                                    <f:selectItem itemLabel="Femenino" itemValue="F"/>
+                                    <f:selectItem itemLabel="Masculino" itemValue="M"/>
                                 </p:selectOneMenu>
 
                                 <p:outputLabel value="Telefono: " />
@@ -98,7 +103,10 @@
                             </h:panelGrid>
                             <div class="d-flex justify-content-center align-items-center text-center mt-5 mb-5">
                                 <p:commandButton value="Ingresar"
-                                                 action="#{PacienteController.nuevoPaciente}" class="btn btn-primary"/>
+                                                 action="#{PacienteController.nuevoPaciente}"
+                                                 class="btn btn-primary"
+                                                 type="submit"
+                                                 ajax="null"/>
                             </div>
                         </div>
                     </h:form>

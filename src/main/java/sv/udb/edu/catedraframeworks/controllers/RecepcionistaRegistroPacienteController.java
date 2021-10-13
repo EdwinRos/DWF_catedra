@@ -11,6 +11,8 @@ import sv.udb.edu.catedraframeworks.utils.Emails;
 import sv.udb.edu.catedraframeworks.utils.HashSha1;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.mail.MessagingException;
 import java.security.NoSuchAlgorithmException;
 
@@ -23,25 +25,48 @@ public class RecepcionistaRegistroPacienteController {
     @Autowired
     private PacienteRepository pacienteRepository;
     Paciente paciente = new Paciente();
+    Paciente validacionPacienteDui = new Paciente();
+    Paciente validacionPacienteCorreo = new Paciente();
+    Paciente validacionPacienteTelefono = new Paciente();
+    Paciente validacionPacienteUsuario = new Paciente();
 
-    public String nuevoPaciente() throws NoSuchAlgorithmException, MessagingException {
+    public void nuevoPaciente() throws NoSuchAlgorithmException, MessagingException {
         HashSha1 hasSha1 = new HashSha1();
 
         RamdomString ramdomString = new RamdomString();
 
         String contraRamdom = ramdomString.password();
 
-        paciente.setEstado(1);
+        validacionPacienteDui = pacienteRepository.findByDuiPaciente(paciente.getDuiPaciente());
+        validacionPacienteTelefono = pacienteRepository.findByTelefono(paciente.getTelefono());
+        validacionPacienteCorreo = pacienteRepository.findByCorreoPaciente(paciente.getCorreoPaciente());
+        validacionPacienteUsuario = pacienteRepository.findByUsuario(paciente.getUsuario());
 
-        paciente.setPassword(hasSha1.hashPassword(contraRamdom));
+        if(validacionPacienteDui != null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Ya hay un paciente registrado con ese DUI"));
+            validacionPacienteDui = new Paciente();
+        }else if(validacionPacienteTelefono != null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Ya hay un paciente registrado con ese telefono"));
+            validacionPacienteTelefono = new Paciente();
+        }else if(validacionPacienteCorreo != null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Ya hay un paciente registrado con ese correo"));
+            validacionPacienteCorreo = new Paciente();
+        }else if(validacionPacienteUsuario != null){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Ya hay un paciente registrado con ese usuario"));
+            validacionPacienteUsuario = new Paciente();
+        }else{
+            paciente.setEstado(1);
 
-        SendMail(paciente, contraRamdom);
+            paciente.setPassword(hasSha1.hashPassword(contraRamdom));
 
-        pacienteRepository.save(paciente);
+            SendMail(paciente, contraRamdom);
 
-        paciente = new Paciente();
+            pacienteRepository.save(paciente);
 
-        return "/recepcionista/inicio.xhtml?faces-redirect=true";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Paciente ingresado con exito"));
+
+            paciente = new Paciente();
+        }
     }
 
     protected void SendMail(Paciente pac, String password) throws MessagingException{

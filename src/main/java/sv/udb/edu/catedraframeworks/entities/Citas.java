@@ -1,7 +1,6 @@
 package sv.udb.edu.catedraframeworks.entities;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Date;
 

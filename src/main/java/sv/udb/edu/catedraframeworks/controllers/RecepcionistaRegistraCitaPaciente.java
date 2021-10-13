@@ -19,6 +19,10 @@ import javax.mail.MessagingException;
 import javax.print.Doc;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +52,8 @@ public class RecepcionistaRegistraCitaPaciente {
     private CitasRepository citasRepository;
     Citas cita = new Citas();
 
+    List<Citas> validacionCita;
+
     Area area = new Area();
 
     List<Doctor> misDoctores;
@@ -57,6 +63,11 @@ public class RecepcionistaRegistraCitaPaciente {
     @RequestAction
     @IgnorePostback
     public void mostrarDoctores(){
+        doctor = new Doctor();
+        paciente = new Paciente();
+        cita = new Citas();
+        area = new Area();
+
         int id = (int) session.getAttribute("id");
 
         Optional<Recepcionista> miRecepcionista = recepcionistaRepository.findById(id);
@@ -73,17 +84,22 @@ public class RecepcionistaRegistraCitaPaciente {
 
         cita.setCodigoCita(stringRandom);
         cita.setEstado(1);
+        cita.setIdDoctor(doctor);
+
+        validacionCita = citasRepository.findCitasByFechaCita(cita.getFechaCita());
 
         paciente = pacienteRepository.findByDuiPaciente(getDui());
+
+        cita.setIdPaciente(paciente);
+
 
         if(paciente == null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "","DUI no encontrado"));
             return null;
+        }else if(validacionCita.size() > 0){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "","Ya se encuentra registrada una cita en esa fecha y hora con el mismo doctor"));
+            return null;
         }else{
-            cita.setIdDoctor(doctor);
-
-            cita.setIdPaciente(paciente);
-
             SendMail(paciente, stringRandom);
 
             citasRepository.save(cita);
@@ -94,8 +110,8 @@ public class RecepcionistaRegistraCitaPaciente {
 
             setDui("");
 
-            return null;
         }
+        return null;
     }
 
     protected void SendMail(Paciente pac, String codigoCitaPaciente) throws MessagingException{
