@@ -46,11 +46,11 @@
                                         <p:outputLabel for="timeonly" value="Hora: "/>
                                         <p:datePicker id="timeonly" value="${RecepcionistaRegistraCitaPaciente.cita.horaCita}" timeOnly="true" pattern="hh:mm"/>
 
-                                        <p:outputLabel value="DUI: " />
-                                        <p:inputText mask="99999999-9"
-                                                     requiredMessage="Por favor ingresar dui"
-                                                     validatorMessage="Formato invalido" validateMask="true" value="${RecepcionistaRegistraCitaPaciente.dui}" />
-
+                                        <p:outputLabel for="dui" value="DUI: " />
+                                        <p:inputMask id="dui"
+                                                     value="${RecepcionistaRegistraCitaPaciente.dui}" mask="99999999-9"
+                                                     requiredMessage="Por favor ingresar DUI."
+                                                     validatorMessage="formato invalido" validateMask="true" />
                                         <p:outputLabel for="doctores" value="Doctor: "/>
                                         <p:selectOneMenu id="doctores"
                                                          value="${RecepcionistaRegistraCitaPaciente.doctor.doctorId}">
