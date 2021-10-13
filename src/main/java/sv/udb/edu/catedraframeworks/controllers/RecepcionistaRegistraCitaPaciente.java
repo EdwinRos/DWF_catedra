@@ -77,7 +77,7 @@ public class RecepcionistaRegistraCitaPaciente {
         paciente = pacienteRepository.findByDuiPaciente(getDui());
 
         if(paciente == null){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atencion","DUI no encontrado"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "","DUI no encontrado"));
             return null;
         }else{
             cita.setIdDoctor(doctor);
@@ -88,7 +88,13 @@ public class RecepcionistaRegistraCitaPaciente {
 
             citasRepository.save(cita);
 
-            return "/recepcionista/inicio.xhtml?registro=si&faces-redirect=true";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "","Cita registrada con exito"));
+
+            cita = new Citas();
+
+            setDui("");
+
+            return null;
         }
     }
 

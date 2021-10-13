@@ -11,9 +11,12 @@ import org.springframework.stereotype.Component;
 import sv.udb.edu.catedraframeworks.entities.Area;
 import sv.udb.edu.catedraframeworks.entities.Citas;
 import sv.udb.edu.catedraframeworks.entities.Doctor;
+import sv.udb.edu.catedraframeworks.entities.Recepcionista;
 import sv.udb.edu.catedraframeworks.repositories.CitasRepository;
+import sv.udb.edu.catedraframeworks.repositories.DoctorRepository;
 import sv.udb.edu.catedraframeworks.utils.JsfUtil;
 
+import javax.print.Doc;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,10 +32,15 @@ public class RecepcionistaDetallesCitaPaciente {
     @Deferred
     @RequestAction
     @IgnorePostback
-    public void cargarDetallesCita() {
+    public String cargarDetallesCita() {
         String codigoCita = JsfUtil.getRequest().getParameter("codigo");
 
         cita = citaRepository.findByCodigoCita(codigoCita);
+
+        if(cita == null){
+            return "/recepcionista/consultar-cita-paciente.xhtml?faces-redirect=true";
+        }
+        return null;
     }
 
     public Citas getCita() {
