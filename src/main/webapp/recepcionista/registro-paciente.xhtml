@@ -76,7 +76,7 @@
                                              value="#{PacienteController.paciente.correoPaciente}" />
 
                                 <p:outputLabel value="DUI: " />
-                                <p:inputText class="dui" mask="99999999-9"
+                                <p:inputText styleClass="dui" mask="99999999-9"
                                              requiredMessage="Por favor ingresar dui"
                                              validatorMessage="Formato invalido" validateMask="true" value="#{PacienteController.paciente.duiPaciente}" />
 
@@ -93,6 +93,7 @@
 
                                 <p:outputLabel value="Telefono: " />
                                 <p:inputText mask="9999-9999"
+                                             styleClass="telefono"
                                              requiredMessage="Por favor ingresar telefono"
                                              validatorMessage="Formato invalido" validateMask="true" class="telefono" value="#{PacienteController.paciente.telefono}" id="telefono"/>
 
@@ -115,4 +116,12 @@
         </div>
     </div>
 </h:body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dui').mask('00000000-0');
+        $('.telefono').mask('0000-0000');
+    })
+</script>
 </html>
