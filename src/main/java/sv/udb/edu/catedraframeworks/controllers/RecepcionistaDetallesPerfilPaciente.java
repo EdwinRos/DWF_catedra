@@ -27,9 +27,13 @@ public class RecepcionistaDetallesPerfilPaciente {
     @Deferred
     @RequestAction
     @IgnorePostback
-    public void cargarDetallesPaciente() {
+    public String cargarDetallesPaciente() {
         String duiPaciente = JsfUtil.getRequest().getParameter("dui");
         paciente = pacienteRepository.findByDuiPaciente(duiPaciente);
+        if(paciente == null){
+            return "/recepcionista/consultar-perfil-paciente.xhtml?faces-redirect=true";
+        }
+        return null;
     }
     public Paciente getPaciente() {
         return paciente;

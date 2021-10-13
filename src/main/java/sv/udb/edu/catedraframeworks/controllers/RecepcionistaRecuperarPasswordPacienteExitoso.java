@@ -31,20 +31,24 @@ public class RecepcionistaRecuperarPasswordPacienteExitoso {
     @Deferred
     @RequestAction
     @IgnorePostback
-    public void recuperarPasswordPaciente() throws NoSuchAlgorithmException, MessagingException {
+    public String recuperarPasswordPaciente() throws NoSuchAlgorithmException, MessagingException {
         String duiPaciente = JsfUtil.getRequest().getParameter("dui");
         paciente = pacienteRepository.findByDuiPaciente(duiPaciente);
 
-        HashSha1 hasSha1 = new HashSha1();
-        RamdomString ramdomString = new RamdomString();
-        String contraRamdom = ramdomString.password();
+        if(paciente == null){
+            return "/recepcionista/recuperar-password-paciente.xhtml?faces-redirect=true";
+        }else{
+            HashSha1 hasSha1 = new HashSha1();
+            RamdomString ramdomString = new RamdomString();
+            String contraRamdom = ramdomString.password();
 
-        paciente.setPassword(hasSha1.hashPassword(contraRamdom));
+            paciente.setPassword(hasSha1.hashPassword(contraRamdom));
 
-        SendMail(paciente, contraRamdom);
+            SendMail(paciente, contraRamdom);
 
-        pacienteRepository.save(paciente);
-
+            pacienteRepository.save(paciente);
+        }
+        return null;
     }
 
     protected void SendMail(Paciente pac, String password) throws MessagingException{
