@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import sv.udb.edu.catedraframeworks.entities.*;
 import sv.udb.edu.catedraframeworks.repositories.*;
+import sv.udb.edu.catedraframeworks.utils.Emails;
 import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.mail.MessagingException;
 import javax.print.Doc;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
@@ -64,12 +66,12 @@ public class RecepcionistaRegistraCitaPaciente {
         misDoctores = doctorRepository.findByIdAreaAndEstado(area, 1);
     }
 
-    public String registrarCita(){
+    public String registrarCita() throws NoSuchAlgorithmException, MessagingException{
 
         RamdomString ramdomString = new RamdomString();
-        String contraRandom = ramdomString.codigoCita();
+        String stringRandom = ramdomString.codigoCita();
 
-        cita.setCodigoCita(contraRandom);
+        cita.setCodigoCita(stringRandom);
         cita.setEstado(1);
 
         paciente = pacienteRepository.findByDuiPaciente(getDui());
@@ -82,10 +84,17 @@ public class RecepcionistaRegistraCitaPaciente {
 
             cita.setIdPaciente(paciente);
 
+            SendMail(paciente, stringRandom);
+
             citasRepository.save(cita);
 
             return "/recepcionista/inicio.xhtml?registro=si&faces-redirect=true";
         }
+    }
+
+    protected void SendMail(Paciente pac, String codigoCitaPaciente) throws MessagingException{
+        Emails emails = new Emails();
+        emails.codigoCita(pac.getCorreoPaciente(), pac.getUsuario(), codigoCitaPaciente, pac.getNombrePaciente(), pac.getApellidoPaciente());
     }
 
     public String getDui() {
@@ -115,4 +124,5 @@ public class RecepcionistaRegistraCitaPaciente {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
+
 }
