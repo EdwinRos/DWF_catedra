@@ -9,15 +9,105 @@
 	<title>Ingresar Nuevo Supervisor de Area</title>
 </h:head>
 <h:body>
-<p:menubar>
-		            <p:menuitem value="Inicio" icon="pi pi-home" url="/doctor/home" />
-		            <p:menuitem value="Pacientes" icon="pi pi-users" url="/doctor/pacientes" />
-		
-		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-		            </f:facet>
-		        </p:menubar>
+	<div class="card">
+		<h:form>
+		<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
 
-	
+					<p:menuitem value="Registro de Doctors"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			
+					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
+						value="Logout" icon="pi pi-fw pi-sign-out"
+						styleClass="ui-button-info" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
+
+	<div class="d-flex justify-content-center align-items-center">
+		<h:form id="updateForm" prependId="false"
+			class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
+			<h5 style="text-align: center;">Asignar Supervisor de Area</h5>
+			<div class="ui-fluid">
+				<div class="p-field p-grid">
+					<h:inputHidden value="#{AdminDoctorUpdate.doctor.doctorId}" />
+					<p:outputLabel value="Nombres" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.nombreDoctor}"
+							type="text" readonly="true" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Apellidos" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.apellidoDoctor}"
+							type="text" readonly="true" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Correo del doctor" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}"
+							readonly="true" />
+
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="usuario" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.usuario}"
+							type="text" readonly="true" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="DUI" />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.doctor.duiDoctor}"
+							readonly="true" />
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Area " />
+					<div class="p-col-12 p-md-10">
+						<p:inputText value="#{AdminDoctorUpdate.areas.areaId}"/>
+					</div>
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Fecha de nacimiento" />
+					<p:inputText action="#{AdminDoctorUpdate.doctor.fechaNacimiento}"/> 
+				</div>
+				<div class="p-field p-grid">
+					<p:outputLabel value="Estado " />
+					<div class="p-col-12 p-md-10">
+						<p:inputText action="#{AdminDoctorUpdate.doctor.estado}"/>
+					</div>
+				</div>
+			</div>
+					<p:commandButton value="Asignar" action="#{AdminAreaDoctorControler.nuevoSupervisor}" />
+
+
+		</h:form>
+
+	</div>
+
+
 </h:body>
 </html>

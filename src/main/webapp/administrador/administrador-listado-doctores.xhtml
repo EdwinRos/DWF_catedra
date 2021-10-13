@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<!-- CSS only -->
@@ -15,14 +16,39 @@
 	<title>Registro de Doctores</title>
 </h:head>
 <h:body>
-	<p:menubar style="margin-bottom:15px;">
-		            <p:menuitem value="Registro Doctores" icon="pi pi-list" url="/listadodoctor" />
-		          	<p:menuitem value="Ingresar Nuevo Doctor" icon="pi pi-user" url="/administradoringresardoctor"/>
-		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-		            </f:facet>
-		        </p:menubar>
-	<h:form>
+   <div class="card">
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
+
+					<p:menuitem value="Registro de Doctores"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			<f:facet name="options">
+					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
+						value="Logout" icon="pi pi-fw pi-sign-out"
+						styleClass="ui-button-info" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
+	<div class="container">
 		<p:panel header="Listado de Doctores">
 			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}" rows="10"
                      paginator="true"
@@ -71,7 +97,10 @@
 
 				<p:column>
 					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{doc.estado}" />
+					<h:outputText value="#{doc.estado == 1?'Activo':''}" />
+					<h:outputText value="#{doc.estado == 2?'Inactivo':''}" />
+					<h:outputText value="#{doc.estado == 3?'Supervisor':''}" />
+
 				</p:column>
 
 				<p:column>
@@ -84,21 +113,24 @@
 
 				</p:column>
 				<p:column>
-					<p:button value="Actualizar" href="/updatedoctor"
+					<p:button value="Actualizar" href="/admin/updatedoctor"
 						styleClass="ui-button-warning" icon="pi pi-check">
 						<f:param name="IdDoctor" value="#{doc.doctorId}" />
 					</p:button>
 				</p:column>
+				
+			
+				
 			</p:dataTable>
 
 
 
 		</p:panel>
 
-	</h:form>
+	</div>
 <p:toolbar>
 		<f:facet name="left">
-			<p:button style="margin-left:10px;" href="/administradoringresardoctor"
+			<p:button style="margin-left:10px;" href="/admin/ingresardoctor"
 				value="Agregar Nuevo Doctor"/>
 				
 			

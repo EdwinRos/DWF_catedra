@@ -29,7 +29,7 @@ import java.util.List;
 @Scope(value = "session")
 @Component(value = "AdminDoctorControler")
 @ELBeanName(value = "AdminDoctorControler")
-@Join(path = "/administradoringresardoctor", to = "/administrador/ingresardoctor.jsf")
+@Join(path = "/admin/ingresardoctor", to = "/administrador/ingresardoctor.jsf")
 public class AdministradorDoctorController {
 
     @Autowired

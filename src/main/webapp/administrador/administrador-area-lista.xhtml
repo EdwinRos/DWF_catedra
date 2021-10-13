@@ -10,14 +10,41 @@
 	<title>Registro de Areas</title>
 </h:head>
 <h:body>
-<p:menubar style="margin-bottom:15px;">
-		            <p:menuitem value="Ingresar Nueva Area" icon="pi pi-user" url="/administradorareaingresar" />
-		           
-		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-		            </f:facet>
-		        </p:menubar>
-	<h:form id="formArea">
+<div class="card">
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
+
+					<p:menuitem value="Registro de Doctores"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			<f:facet name="options">
+					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
+						value="Logout" icon="pi pi-fw pi-sign-out"
+						styleClass="ui-button-info" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
+	
+	
+	<div class="container">
 		<p:panel header="Listado de Areas">
 			<p:dataTable id="tabla" var="are" value="#{AdminListArea.areaList}" rows="10"
                      paginator="true"
@@ -32,10 +59,12 @@
 
 				<p:column>
 					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{are.estado}" />
+					<h:outputText value="#{are.estado == 1? 'Activo':''}" />
+					<h:outputText value="#{are.estado == 2? 'Inactivo':''}" />
 				</p:column>
 			</p:dataTable>
 		</p:panel>
-	</h:form>
+		</div>
+	
 </h:body>
 </html>

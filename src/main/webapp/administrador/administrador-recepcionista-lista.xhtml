@@ -16,14 +16,39 @@
 	<title>Registro de Recepcionista</title>
 </h:head>
 <h:body>
-<p:menubar style="margin-bottom:15px;">
-		            <p:menuitem value="Ingresar Recepcionista Nuevo" icon="pi pi-user" url="/administradorrecepcionista" />
-		           
-		            <f:facet name="options">
-		                <p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-		            </f:facet>
-		        </p:menubar>
+<div class="card">
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
 
+					<p:menuitem value="Registro de Doctores"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			<f:facet name="options">
+					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
+						value="Logout" icon="pi pi-fw pi-sign-out"
+						styleClass="ui-button-info" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
+	
 	<h:form id="formRecepcionista">
 		<p:panel header="Listado de Recepcionistas">
 			<p:dataTable id="tabla" var="rece"
@@ -50,14 +75,13 @@
 
 				<p:column>
 					<f:facet name="header">Estado:</f:facet>
-					<h:outputText value="#{rece.estado}" />
+					<h:outputText value="#{rece.estado == 1? 'Activo':''}" />
+					<h:outputText value="#{rece.estado == 2? 'Inactivo':''}" />
 				</p:column>
 				<!--<p:column>
 			<f:facet name="header">Area:</f:facet>
 			<h:outputText value="#{rece.areaId.nombreArea}"/>
 			</p:column>  -->
-
-
 				<p:column>
 					<f:facet name="header">Operaciones</f:facet>
 					<p:commandButton value="Eliminar" styleClass="ui-button-danger"
@@ -68,6 +92,7 @@
 
 			</p:dataTable>
 		</p:panel>
+		
 	</h:form>
 </h:body>
 </html>

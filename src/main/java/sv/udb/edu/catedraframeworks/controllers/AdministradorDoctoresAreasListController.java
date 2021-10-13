@@ -17,7 +17,7 @@ import sv.udb.edu.catedraframeworks.repositories.DoctoresAreaRepository;
 @Scope(value = "session")
 @Component(value = "doctorAreaList")
 @ELBeanName(value = "doctorAreaList")
-@Join(path = "/listadoareadoctor", to = "/administrador/administrador-listado-doctores.jsf")
+@Join(path = "/admin/listareadoctor", to = "/administrador/administrador-listado-doctores.jsf")
 public class AdministradorDoctoresAreasListController {
 
 	@Autowired

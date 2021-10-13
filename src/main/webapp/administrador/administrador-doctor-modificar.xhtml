@@ -16,17 +16,38 @@
 	<title>Actualizar doctor</title>
 </h:head>
 <h:body>
+<div class="card">
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
 
-	<p:menubar style="margin-bottom:15px;">
-		<p:menuitem value="Registro Doctores" icon="pi pi-list"
-			url="/listadodoctor" />
-		<p:menuitem value="Ingresar Nuevo Doctor" icon="pi pi-user"
-			url="/administradoringresardoctor" />
-		<f:facet name="options">
-			<p:button value="Cerrar sesión" icon="pi pi-fw pi-sign-out"
-				styleClass="ui-button-info" />
-		</f:facet>
-	</p:menubar>
+					<p:menuitem value="Registro de Doctores"	url="/admin/listdoctor" />
+
+					<p:menuitem value="Nuevo Doctor" url="/admin/ingresardoctor" />
+				</p:submenu>
+
+				<p:submenu label="Areas" icon="pi pi-fw pi-pencil">
+					<p:menuitem value="Ingresar Nueva Area" url="/admin/ingresararea"	/>
+					<p:menuitem value="Listado de Areas" url="/admin/listarea" />
+
+				</p:submenu>
+
+				<p:submenu label="Recepcionista" icon="pi pi-fw pi-user">
+					<p:menuitem value="Ingresar Nuevo Recepcionista" url="/admin/ingresarrecepcionista"
+						 />
+					<p:menuitem value="Listado de Recepcionistas" url="/admin/listrecepcionista"
+						/>
+
+				</p:submenu>
+			<f:facet name="options">
+					<p:commandButton type="submit" action="#{AdminLogin.salirSesion}"
+						value="Logout" icon="pi pi-fw pi-sign-out"
+						styleClass="ui-button-info" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
 	<div class="d-flex justify-content-center align-items-center">
 		<h:form id="updateForm" prependId="false"
 			class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
@@ -51,7 +72,11 @@
 					<p:outputLabel value="Correo del doctor" />
 					<div class="p-col-12 p-md-10">
 						<p:inputText value="#{AdminDoctorUpdate.doctor.correoDoctor}"
-							type="text" />
+							 requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
 					</div>
 				</div>
 				<div class="p-field p-grid">
@@ -65,7 +90,8 @@
 					<p:outputLabel value="DUI" />
 					<div class="p-col-12 p-md-10">
 						<p:inputText value="#{AdminDoctorUpdate.doctor.duiDoctor}"
-							type="text" />
+							mask="99999999-9" requiredMessage="Por favor ingresar Correo."
+					validatorMessage="formato invalido" validateMask="true" />
 					</div>
 				</div>
 				<div class="p-field p-grid">
@@ -90,7 +116,8 @@
 					<div class="p-col-12 p-md-10">
 						<p:selectOneMenu value="#{AdminDoctorUpdate.doctor.estado}">
 							<f:selectItem itemValue="2" itemLabel="Inactivo" />
-							<f:selectItem itemValue="1" itemLabel="Activo" />
+							<f:selectItem itemValue="1" itemLabel="Activo"/>
+							<f:selectItem itemValue="3" itemLabel="Supervisor" />
 						</p:selectOneMenu>
 					</div>
 				</div>
