@@ -18,6 +18,6 @@ public interface CitasRepository extends JpaRepository <Citas, Integer> {
 
     Citas findByCodigoCita(String codigoCita);
 
-    List<Citas> findCitasByFechaCita(Date fecha);
+    List<Citas> findCitasByFechaCitaAndHoraCitaAndIdDoctor(Date fecha, LocalTime hora, Doctor doctor);
 
 }

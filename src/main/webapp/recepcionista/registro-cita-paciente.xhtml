@@ -39,9 +39,7 @@
                                         <p:inputText value="${RecepcionistaRegistraCitaPaciente.cita.extras}" />
 
                                         <p:outputLabel value="Fecha: " />
-                                        <p:calendar value="${RecepcionistaRegistraCitaPaciente.cita.fechaCita}"
-                                                    pattern="yyyy-mm-dd" effect="explode" locale="es"
-                                                    navigator="true" class="fechanacimiento"/>
+                                        <p:calendar value="${RecepcionistaRegistraCitaPaciente.cita.fechaCita}" pattern="yyyy-MM-dd" mask="true"/>
 
                                         <p:outputLabel for="timeonly" value="Hora: "/>
                                         <p:datePicker id="timeonly" value="${RecepcionistaRegistraCitaPaciente.cita.horaCita}" timeOnly="true" pattern="hh:mm"/>

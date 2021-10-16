@@ -51,8 +51,9 @@ public class RecepcionistaRegistraCitaPaciente {
     @Autowired
     private CitasRepository citasRepository;
     Citas cita = new Citas();
+    Citas validacionCodigoCita = new Citas();
 
-    List<Citas> validacionCita;
+    List<Citas> validacionFechaCita;
 
     Area area = new Area();
 
@@ -86,7 +87,7 @@ public class RecepcionistaRegistraCitaPaciente {
         cita.setEstado(1);
         cita.setIdDoctor(doctor);
 
-        validacionCita = citasRepository.findCitasByFechaCita(cita.getFechaCita());
+        validacionFechaCita = citasRepository.findCitasByFechaCitaAndHoraCitaAndIdDoctor(cita.getFechaCita(), cita.getHoraCita(), doctor);
 
         paciente = pacienteRepository.findByDuiPaciente(getDui());
 
@@ -96,8 +97,8 @@ public class RecepcionistaRegistraCitaPaciente {
         if(paciente == null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "","DUI no encontrado"));
             return null;
-        }else if(validacionCita.size() > 0){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "","Ya se encuentra registrada una cita en esa fecha y hora con el mismo doctor"));
+        }else if(validacionFechaCita.size() > 0) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "", "Ya se encuentra registrada una cita en esa fecha y hora con el mismo doctor"));
             return null;
         }else{
             SendMail(paciente, stringRandom);
@@ -109,7 +110,6 @@ public class RecepcionistaRegistraCitaPaciente {
             cita = new Citas();
 
             setDui("");
-
         }
         return null;
     }
