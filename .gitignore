@@ -164,3 +164,6 @@ $RECYCLE.BIN/
 .idea/
 *.iml
 *.iws
+
+# uwu
+src/main/webapp/WEB-INF/classes
