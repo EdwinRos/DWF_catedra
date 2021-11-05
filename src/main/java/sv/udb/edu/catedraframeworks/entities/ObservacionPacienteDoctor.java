@@ -99,12 +99,12 @@ public class ObservacionPacienteDoctor {
         this.estado = estado;
     }
 
-    public Doctor getIdPaciente() {
-        return idDoctor;
+    public void setIdDoctor(Doctor idDoctor) {
+        this.idDoctor = idDoctor;
     }
 
-    public void setIdPaciente(Doctor idPaciente) {
-        this.idDoctor = idPaciente;
+    public Doctor getIdDoctor() {
+        return idDoctor;
     }
 
     @Override
@@ -115,7 +115,7 @@ public class ObservacionPacienteDoctor {
                 ", observacion='" + observacion + '\'' +
                 ", fechaRegistro=" + fechaRegistro +
                 ", estado=" + estado +
-                ", idPaciente=" + idDoctor +
+                ", idDoctor=" + idDoctor +
                 '}';
     }
 }
