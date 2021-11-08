@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/DWF/v1/paciente")
+@CrossOrigin(origins = "*")
 public class PacienteController {
 
     private final PacienteService pacienteService;
@@ -26,9 +27,9 @@ public class PacienteController {
         return pacienteService.getCitasPaciente(miPaciente);
     }
 
-    @GetMapping(path = "/login/{correo}/{password}")
-    public Paciente loginPaciente(@PathVariable String correo, @PathVariable String password) throws NoSuchAlgorithmException {
-        return pacienteService.getPaciente(password, correo);
+    @PostMapping(path = "/login")
+    public Paciente loginPaciente(@RequestBody Paciente paciente) throws NoSuchAlgorithmException {
+        return pacienteService.getPaciente(paciente.getPassword(), paciente.getCorreoPaciente());
     }
 
     @PostMapping(path = "/registro")
