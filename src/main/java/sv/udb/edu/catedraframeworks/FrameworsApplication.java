@@ -36,6 +36,15 @@ public class FrameworsApplication extends SpringBootServletInitializer {
         
         return rwFilter;
     }
-
-
+    
+    // Error 404 - Despues lo configuro :D
+    /*@Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404.html"));
+            }
+        };
+    }*/
 }

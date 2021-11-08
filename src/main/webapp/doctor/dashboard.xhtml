@@ -61,9 +61,11 @@
 										    	</p>
 										    </div>
 										    <div class="w-100">
-										    	<p:button icon="pi pi-eye" href="/cita/detalles" value="Ver detalles" styleClass="rounded-button #{cita.estado == 1 ? 'visibility' : 'visibility-hidden' }" >
+										    	<p:button icon="pi pi-eye" href="/cita/detalles" value="Ver detalles" styleClass="rounded-button #{cita.estado == 1 ? '' : 'd-none' }" >
 										    		<f:param value="#{cita.citasId}" name="citaId" />
 										    	</p:button>
+										    	<p:button icon="pi pi-eye" href="#" value="Completada" styleClass="rounded-button ui-button-success #{cita.estado == 2 ? '' : 'd-none' }" disabled="#{cita.estado == 2 ? 'true' : '' }" />
+										    	<p:button icon="pi pi-eye" href="#" value="Vencida" styleClass="rounded-button ui-button-danger #{cita.estado == 3 ? '' : 'd-none' }" disabled="#{cita.estado == 3 ? 'true' : '' }" />
 										    </div>									
 										</p:card>
 									</div>
