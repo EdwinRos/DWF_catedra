@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import sv.udb.edu.catedraframeworks.entities.*;
 
 import javax.mail.MessagingException;
+import javax.ws.rs.HeaderParam;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class PacienteController {
 
     @PostMapping(path = "/login")
     public Paciente loginPaciente(@RequestBody Paciente paciente) throws NoSuchAlgorithmException {
-        return pacienteService.getPaciente(paciente.getPassword(), paciente.getCorreoPaciente());
+        return pacienteService.getPaciente(paciente.getPassword(), paciente.getUsuario());
     }
 
     @PostMapping(path = "/registro")

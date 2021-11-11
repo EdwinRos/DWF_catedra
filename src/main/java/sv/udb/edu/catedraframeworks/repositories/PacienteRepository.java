@@ -15,6 +15,6 @@ public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
     Paciente findByUsuario(String dui);
 
 
-    Paciente findByCorreoPacienteAndPassword(String correoPaciente, String password);
+    Paciente findByUsuarioAndPassword(String Usuario, String password);
 
 }

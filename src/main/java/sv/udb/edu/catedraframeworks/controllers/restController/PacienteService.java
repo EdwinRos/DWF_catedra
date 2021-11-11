@@ -40,8 +40,8 @@ public class PacienteService {
         return citasRepository.findCitasByIdPaciente(pacienteId);
     }
 
-    public Paciente getPaciente(String password, String correo) throws NoSuchAlgorithmException {
-        Paciente miPaciente = pacienteRepository.findByCorreoPacienteAndPassword(correo, hashString(password));
+    public Paciente getPaciente(String password, String usuario) throws NoSuchAlgorithmException {
+        Paciente miPaciente = pacienteRepository.findByUsuarioAndPassword(usuario, hashString(password));
         if (miPaciente != null) {
             return miPaciente;
         } else {
