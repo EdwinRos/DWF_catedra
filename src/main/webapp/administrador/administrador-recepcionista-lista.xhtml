@@ -15,7 +15,7 @@
 
 	<title>Registro de Recepcionista</title>
 </h:head>
-<h:body>
+<h:body  style="background-color: #25cff2">
 <div class="card">
 		<h:form>
 			<p:menubar>
@@ -50,7 +50,7 @@
 	</div>
 	
 	<h:form id="formRecepcionista">
-		<p:panel header="Listado de Recepcionistas">
+		<p:panel header="Listado de Recepcionistas" style="margin-top: 25px;">
 			<p:dataTable id="tabla" var="rece"
 				value="#{AdminrecepcionistaList.recepcionistalist}" rows="10"
 				paginator="true"

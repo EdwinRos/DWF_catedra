@@ -14,10 +14,10 @@
 
     <title>Ingresar Nueva Area</title>
 </h:head>
-<h:body>
+<h:body  style="background-color: #25cff2">
 <div class="card">
 		<h:form>
-			<p:menubar style="margin-bottom:25px;">
+			<p:menubar>
 				<p:submenu label="Doctor" icon="pi pi-fw pi-file">
 
 					<p:menuitem value="Registro de Doctores"	url="/admin/listdoctor" />
@@ -47,8 +47,9 @@
 			</p:menubar>
 		</h:form>
 	</div>
+	<div class="container" style="margin-top: 15px;">
    <div class="d-flex justify-content-center align-items-center">
-   <h:form class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5">
+   <h:form class="w-50 shadow-lg p-3 mb-5 bg-white rounded p-5" >
    <h5 style="text-align: center;">Ingrese una nueva Area</h5>
    <h:panelGrid columns="2" cellpadding="4">
        <p:outputLabel value="Nombre de Area: "/>
@@ -70,5 +71,6 @@
            
             </h:form>
            </div>
+	</div>
   </h:body>
 </html>

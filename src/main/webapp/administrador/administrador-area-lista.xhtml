@@ -9,7 +9,7 @@
 
 	<title>Registro de Areas</title>
 </h:head>
-<h:body>
+<h:body  style="background-color: #25cff2">
 <div class="card">
 		<h:form>
 			<p:menubar>
@@ -45,7 +45,7 @@
 	
 	
 	<div class="container">
-		<p:panel header="Listado de Areas">
+		<p:panel header="Listado de Areas" style="margin-top: 25px;">
 			<p:dataTable id="tabla" var="are" value="#{AdminListArea.areaList}" rows="10"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

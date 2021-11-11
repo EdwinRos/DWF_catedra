@@ -15,7 +15,7 @@
 		
 	<title>Registro de Doctores</title>
 </h:head>
-<h:body>
+<h:body  style="background-color: #25cff2">
    <div class="card">
 		<h:form>
 			<p:menubar>
@@ -49,7 +49,8 @@
 		</h:form>
 	</div>
 	<div class="container">
-		<p:panel header="Listado de Doctores">
+
+		<p:panel header="Listado de Doctores"  style="margin-top: 25px;">
 			<p:dataTable id="tabladoctor" var="doc" value="#{doctorList.doctors}" rows="10"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -126,15 +127,16 @@
 
 
 		</p:panel>
+		<p:toolbar>
+			<f:facet name="left">
+				<p:button style="margin-left:10px;" href="/admin/ingresardoctor"
+						  value="Agregar Nuevo Doctor"/>
+
+
+			</f:facet>
+		</p:toolbar>
 
 	</div>
-<p:toolbar>
-		<f:facet name="left">
-			<p:button style="margin-left:10px;" href="/admin/ingresardoctor"
-				value="Agregar Nuevo Doctor"/>
-				
-			
-		</f:facet>
-	</p:toolbar>
+
 </h:body>
 </html>
