@@ -100,7 +100,7 @@ public class AgendarCitaController {
 			
 			Citas citaAnterior = citasRepository.getById(idCita);
 			
-			citaAnterior.setEstado(2);
+			citaAnterior.setEstado(2); 
 			
 			/*RamdomString ramdomString = new RamdomString();
 	        String stringRandom = ramdomString.codigoCita();

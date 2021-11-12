@@ -1,4 +1,9 @@
-html, body {
+html {
+	background-color: rgba(8, 24, 57, .95) !important;
 	height: 100% !important;
-	background: #d5d5d5 !important;
+}
+
+body {
+	background: transparent !important;
+	height: 100% !important;
 }

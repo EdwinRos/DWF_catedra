@@ -13,7 +13,7 @@
 						<h:panelGrid columns="1" id="panelgrif" >
 							<p:card>
 								<f:facet name="header">
-			                        <p:avatar style="background-color: lightseagreen; color: white;" label="#{doctorController.doctor.nombreDoctor.substring(0,1)} #{doctorController.doctor.apellidoDoctor.substring(0,1)}"  size="xlarge"/>
+			                        <p:avatar style="background-color: #0B31AE; color: white;" label="#{doctorController.doctor.nombreDoctor.substring(0,1)} #{doctorController.doctor.apellidoDoctor.substring(0,1)}"  size="xlarge"/>
 			                    </f:facet>
 			                    <f:facet name="title">
 			                    	<center>
@@ -42,7 +42,7 @@
 					<div class="col-9">
 						<div class="container">
 							<div class="mb-4">
-								<h2 class="text-center text-base">Citas de hoy</h2>
+								<h2 class="text-center text-white">Citas de hoy</h2>
 							</div>
 							<div class="row">
 								<ui:repeat value="#{doctorController.citas}" var="cita" >

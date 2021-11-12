@@ -1,5 +1,9 @@
-html, body {
-	background: #d5d5d5;
+html {
+	background-color: rgba(8, 24, 57, .95);
+}
+
+body {
+	background: transparent;
 }
 
 .text-base {
@@ -16,5 +20,51 @@ html, body {
 
 .text-blue {
 	color: #0288D1 !important;
+}
+
+.navbar-doctor {
+	background-color: #0D1537 !important;
+	border: 0px !important;
+}
+
+.navbar-doctor .ui-menu.ui-menubar {
+    background-color: #0D1537 !important;
+}
+
+.navbar-doctor .ui-menu {
+	border: 0px !important;
+	border-radius: 0 !important;
+}
+
+.navbar-doctor .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-icon,
+.navbar-doctor .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-text {
+	color: #21BFE5 !important;
+}
+
+.navbar-doctor .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-state-hover .ui-menuitem-text {
+	color: #6c757d !important;
+}
+
+.navbar-doctor .ui-button.ui-button-info {
+	background-color: #1BBDE4 !important;
+}
+
+.navbar-doctor .ui-button.ui-button-info.ui-state-hover {
+	background-color: #0098BD !important;
+}
+
+.btn-send {
+	border-radius: 2rem !important;
+	background: #2196F3 !important;
+    color: #ffffff !important;
+    border: 1px solid #2196F3 !important;
+    margin: 0 !important;
+    outline: 0 none !important;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.btn-send:hover {
+	background-color: #0d89ec !important;
 }
 

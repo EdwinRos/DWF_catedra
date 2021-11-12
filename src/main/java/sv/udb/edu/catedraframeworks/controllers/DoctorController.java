@@ -38,13 +38,13 @@ public class DoctorController {
 	@Autowired
     private DoctorRepository doctorRepository;
     Doctor doctor = new Doctor();
-	
-	int edad = 0;
+    
+	int edad = 0; 
 	
 	@Autowired
     private CitasRepository citasRepository;
     private List<Citas> citas;
-	
+
     @Deferred
     @RequestAction
     @IgnorePostback
