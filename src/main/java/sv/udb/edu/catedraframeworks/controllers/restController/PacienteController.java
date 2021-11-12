@@ -73,4 +73,9 @@ public class PacienteController {
         return pacienteService.getExpedientesByPacienteId(id);
     }
 
+        @PostMapping(path = "/cita/revisada")
+    public void citaRevisadaPorPaciente(@RequestBody Citas cita){
+        pacienteService.citaRevisadaPorPaciente(cita);
+    }
+
 }

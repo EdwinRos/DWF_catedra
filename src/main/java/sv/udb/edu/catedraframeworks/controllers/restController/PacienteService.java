@@ -85,6 +85,18 @@ public class PacienteService {
         return doctorRepository.findByIdAreaAndEstado(drArea, 1);
     }
 
+    public List<Expediente> getExpedientesByPacienteId(Integer id) {
+        Paciente miPaciente = new Paciente();
+        miPaciente.setPacienteId(id);
+        return  expedienteRepository.findExpedienteByPacienteId(miPaciente);
+    }
+
+    public void citaRevisadaPorPaciente(Citas cita) {
+        Citas citaRevisada = citasRepository.findByCitasId(cita.getCitasId());
+        citaRevisada.setEstado(3);
+        citasRepository.save(citaRevisada);
+    }
+
     protected String hashString(String text) throws NoSuchAlgorithmException {
         HashSha1 sha1 = new HashSha1();
         String hasPassword = sha1.hashPassword(text);
@@ -97,9 +109,5 @@ public class PacienteService {
     }
 
 
-    public List<Expediente> getExpedientesByPacienteId(Integer id) {
-        Paciente miPaciente = new Paciente();
-        miPaciente.setPacienteId(id);
-        return  expedienteRepository.findExpedienteByPacienteId(miPaciente);
-    }
+
 }
