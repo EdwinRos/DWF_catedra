@@ -47,6 +47,12 @@
 										    <f:convertDateTime pattern="yyyy-MM-dd" />
 										</h:outputText>
 									</p:column>
+									<p:column>
+										<f:facet name="header">Fecha de registro</f:facet>
+										<p:button href="/expediente/ver" value="Ver diagnostico" styleClass="rounded-button width-max-content" >
+	     									<f:param value="#{exp.expedienteId}" name="expedienteId" />
+	     								</p:button>
+									</p:column>
 								</p:dataTable>
 	                    	</div>
 	                    </div>

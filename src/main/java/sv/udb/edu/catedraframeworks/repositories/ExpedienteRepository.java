@@ -10,5 +10,6 @@ public interface ExpedienteRepository extends JpaRepository<Expediente, Integer>
 
     //obtener Listado de records(exoediente) para el supervisor
     List<Expediente> findExpedienteByPacienteId(Paciente p);
+    List<Expediente> findExpedienteByPacienteIdOrderByFechaRegistroDesc(Paciente p);
 
 }

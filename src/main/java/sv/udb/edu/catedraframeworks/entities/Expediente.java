@@ -16,6 +16,20 @@ public class Expediente {
             columnDefinition = "VARCHAR(150)"
     )
     private String registros;
+    
+    @Column(
+            name = "detalles",
+            nullable = false,
+            columnDefinition = "text"
+    )
+    private String detalles;
+    
+    @Column(
+            name = "receta",
+            nullable = false,
+            columnDefinition = "text"
+    )
+    private String receta;
 
     @Column(
             name = "fecha_registro",
@@ -36,11 +50,12 @@ public class Expediente {
 //   getters/ setters/ constructors
 
 
-    public Expediente() {
-    }
+    public Expediente() { }
 
-    public Expediente(String registros, Paciente pacienteId) {
+    public Expediente(String registros, String detalles, String receta, Paciente pacienteId) {
         this.registros = registros;
+        this.detalles = detalles;
+        this.receta = receta;
         this.pacienteId = pacienteId;
     }
 
@@ -55,9 +70,25 @@ public class Expediente {
     public String getRegistros() {
         return registros;
     }
-
+    
     public void setRegistros(String registros) {
         this.registros = registros;
+    }
+    
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
+    
+    public String getReceta() {
+        return receta;
+    }
+
+    public void setReceta(String receta) {
+        this.receta = receta;
     }
 
     public Date getFechaRegistro() {

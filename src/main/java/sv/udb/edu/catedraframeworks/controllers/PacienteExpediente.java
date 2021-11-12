@@ -33,8 +33,8 @@ public class PacienteExpediente {
 	List<Expediente> expediente;
 	
 	int edad = 0;
-	
-	@Deferred
+
+	@Deferred 
     @RequestAction
     @IgnorePostback
 	public void loadData() {
@@ -62,7 +62,7 @@ public class PacienteExpediente {
 	}
 	
 	protected void loadRecord(Paciente p) {
-		expediente = expedienteRepository.findExpedienteByPacienteId(p);
+		expediente = expedienteRepository.findExpedienteByPacienteIdOrderByFechaRegistroDesc(p);
 	}
 	
 	public Paciente getPaciente() {

@@ -33,16 +33,21 @@ public class ExpedienteNuevoController {
 	Paciente paciente = new Paciente();
 	
 	public String newRecord() {
-		int idPaciente = Integer.parseInt(JsfUtil.getRequest().getParameter("pacienteId"));
+		try {
+			int idPaciente = Integer.parseInt(JsfUtil.getRequest().getParameter("pacienteId"));
+			
+			paciente = pacienteRepository.getById(idPaciente);
+			
+			expediente.setPacienteId(paciente);
+			expedienteRepository.save(expediente);
+			
+			expediente = new Expediente();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro agregado", "Se agrego un nuevo registro al expediente"));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al agregar registor", "Verifique que ingrese correctamente los datos"));
+		}
 		
-		paciente = pacienteRepository.getById(idPaciente);
-		
-		expediente.setPacienteId(paciente);
-		expedienteRepository.save(expediente);
-		
-		expediente = new Expediente();
-		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro agregado", "Se agrego un nuevo registro al expediente"));
 		
 		return "/doctor/home";
 	}

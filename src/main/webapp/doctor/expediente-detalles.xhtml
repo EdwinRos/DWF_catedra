@@ -16,14 +16,16 @@
      				</p:message> -->
      				<p:card styleClass="w-100">
      					<f:facet name="title">
-     						Nuevo registro médico
+     						<center>
+     							Detalles del diganostico de Nombre Apellido
+     						</center>
      					</f:facet>
      					<div class="container mb-3">
      						<div class="row">
 	     						<div class="col-12">
 	     							<div classs="d-flex justify-content-end">
 	     								<p:button href="/doctor/paciente" value="Regresar" styleClass="rounded-button width-max-content" >
-	     									<f:param value="#{param['pacienteId']}" name="pacienteId" />
+	     									<f:param value="#{detallesExpediente.expediente.pacienteId.pacienteId}" name="pacienteId" />
 	     								</p:button>
 	     							</div>
 	     						</div>
@@ -32,36 +34,33 @@
      					<div class="row">
      						<div class="col-12">
      							<div class="ui-fluid">
-     								<div class="d-flex justify-content-center">
-     									<h:form>
-											<div class="row mb-3">
-												<div class="col-12">
-													<div class="mb-3">
-														<p:outputLabel value="Registro:" for="@next" styleClass="mb-2" />
-														<p:inputText  required="true" value="#{nuevoExpedienteController.expediente.registros}" />
-													</div>
-												</div>
-												<div class="col-12">
-													<div class="mb-3">
-														<p:outputLabel value="Detalles del diagnostico:" for="@next" styleClass="mb-2" />
-														<p:inputTextarea  required="true" value="#{nuevoExpedienteController.expediente.detalles}" />
-													</div>
-												</div>
-												<div class="col-12">
-													<div class="mb-3">
-														<p:outputLabel value="Receta:" for="@next" styleClass="mb-2" />
-														<p:inputTextarea  required="true" value="#{nuevoExpedienteController.expediente.receta}" />
-													</div>
+     								<div class="container">
+										<div class="row mb-3">
+											<div class="col-12">
+												<div class="mb-3">
+													<center>
+														<h5>Registro</h5>
+													</center>
+													<h:outputText value="#{detallesExpediente.expediente.registros}" />
 												</div>
 											</div>
-											<div class="row mb-3">
-												<div class="col-12">
-													<div class="w-100 d-flex justify-content-center">
-														<h:commandButton value="Agregar" action="#{nuevoExpedienteController.newRecord}" styleClass="rounded-button ui-button-success width-max-content" />
-													</div>
+											<div class="col-12">
+												<div class="mb-3">
+													<center>
+														<h5>Detalles</h5>
+													</center>
+													<h:outputText value="#{detallesExpediente.expediente.detalles}" />
 												</div>
 											</div>
-										</h:form>
+											<div class="col-12">
+												<div class="mb-3">
+													<center>
+														<h5>Receta</h5>
+													</center>
+													<h:outputText value="#{detallesExpediente.expediente.receta}" />
+												</div>
+											</div>
+										</div>
      								</div>
      							</div>
      						</div>
