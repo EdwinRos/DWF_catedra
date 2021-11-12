@@ -25,7 +25,14 @@ public class PacienteController {
     public List<Citas> getPacientes(@PathVariable Integer id){
         Paciente miPaciente = new Paciente();
         miPaciente.setPacienteId(id);
-        return pacienteService.getCitasPaciente(miPaciente);
+        return pacienteService.getCitasVigentes(miPaciente);
+    }
+
+    @GetMapping(path = "/citas/tomadas/{id}")
+    public List<Citas> getCitasTomadas(@PathVariable Integer id){
+        Paciente miPaciente = new Paciente();
+        miPaciente.setPacienteId(id);
+        return  pacienteService.getCitasTomadas(miPaciente);
     }
 
     @PostMapping(path = "/login")
@@ -59,6 +66,11 @@ public class PacienteController {
     @GetMapping(path = "/doctores/{idArea}")
     public List<Doctor>getDoctoresByArea(@PathVariable String idArea){
         return pacienteService.getDoctoresByArea(idArea);
+    }
+
+    @GetMapping(path = "/expediente/{id}")
+    public List<Expediente>getExpedientesByPaciente(@PathVariable Integer id){
+        return pacienteService.getExpedientesByPacienteId(id);
     }
 
 }

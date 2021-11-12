@@ -11,6 +11,7 @@ import sv.udb.edu.catedraframeworks.utils.RamdomString;
 
 import javax.mail.MessagingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,17 +28,16 @@ public class PacienteService {
 
     private final DoctorRepository doctorRepository;
 
+    private final ExpedienteRepository expedienteRepository;
+
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository, CitasRepository citasRepository, ObservacionPacienteDoctorRepository observacionPacienteDoctorRepository, AreaRepository areaRepository, DoctorRepository doctorRepository) {
+    public PacienteService(PacienteRepository pacienteRepository, CitasRepository citasRepository, ObservacionPacienteDoctorRepository observacionPacienteDoctorRepository, AreaRepository areaRepository, DoctorRepository doctorRepository, ExpedienteRepository expedienteRepository) {
         this.pacienteRepository = pacienteRepository;
         this.citasRepository = citasRepository;
         this.observacionPacienteDoctorRepository = observacionPacienteDoctorRepository;
         this.areaRepository = areaRepository;
         this.doctorRepository = doctorRepository;
-    }
-
-    public List<Citas> getCitasPaciente(Paciente pacienteId) {
-        return citasRepository.findCitasByIdPaciente(pacienteId);
+        this.expedienteRepository = expedienteRepository;
     }
 
     public Paciente getPaciente(String password, String usuario) throws NoSuchAlgorithmException {
@@ -60,6 +60,14 @@ public class PacienteService {
     public void addNewCita(Citas citas) {
         //faltaria ver lo de las validaciones
         citasRepository.save(citas);
+    }
+
+    public List<Citas> getCitasVigentes(Paciente paciente) {
+        return citasRepository.findCitasByFechaCitaAfterAndEstadoAndIdPaciente(new Date(), 1, paciente);
+    }
+
+    public List<Citas> getCitasTomadas(Paciente miPaciente) {
+        return citasRepository.findCitasByEstadoAndIdPaciente(2,miPaciente);
     }
 
     public void addNewObservacion(ObservacionPacienteDoctor observacionPacienteDoctor) {
@@ -88,4 +96,10 @@ public class PacienteService {
         return ramdomString.password();
     }
 
+
+    public List<Expediente> getExpedientesByPacienteId(Integer id) {
+        Paciente miPaciente = new Paciente();
+        miPaciente.setPacienteId(id);
+        return  expedienteRepository.findExpedienteByPacienteId(miPaciente);
+    }
 }

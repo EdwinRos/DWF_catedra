@@ -17,6 +17,10 @@ public interface CitasRepository extends JpaRepository <Citas, Integer> {
 
     List<Citas> findCitasByIdPaciente(Paciente idPaciente);
 
+    List<Citas> findCitasByFechaCitaAfterAndEstadoAndIdPaciente(Date fechaCita, Integer id, Paciente idPaciente);
+
+    List<Citas> findCitasByEstadoAndIdPaciente(Integer estado, Paciente idPaciente);
+
     List<Citas> findCitasByEstadoAndIdDoctor(Integer estado, Doctor idDoctor);
 
     Citas findByCodigoCita(String codigoCita);
