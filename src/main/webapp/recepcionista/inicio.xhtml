@@ -11,6 +11,7 @@
         rel="stylesheet"
         integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
         crossorigin="anonymous" />
+    <h:outputStylesheet library="css" name="card-recepcionista.css" />
 
 </h:head>
 <style>
@@ -30,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/registropaciente">Registrar paciente</a>
+                        <a class="nav-link" href="/registropaciente">Registrar paciente</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/recepcionista/registrarcita">Agendar cita</a>
@@ -60,17 +61,29 @@
                     <p:autoUpdate/>
                 </p:messages>
             </div>
-            <div class="col-md-12 mt-5 d-flex justify-content-center align-items-center">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                        Recepcionista
+            <div class="col-md-12 mt-5">
+                <div class="profile-card-4 text-center">
+                    <img src="https://512pixels.net/downloads/macos-wallpapers-thumbs/10-14-Night-Thumb.jpg" class="img img-responsive w-100"/>
+                    <div class="profile-content">
+                        <div class="profile-name">
+                            ${RecepcionistaInicio.recepcionista.nombreRecepcionista} ${RecepcionistaInicio.recepcionista.apellidoRecepcionista}
+                            <p>Recepcionista de Hospital la salud</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="profile-overview">
+                                    <p>Usuario</p>
+                                    <h6>${RecepcionistaInicio.recepcionista.usuario}</h6>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="profile-overview">
+                                    <p>Area</p>
+                                    <h6>${RecepcionistaInicio.area.nombreArea}</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Nombre:</b> ${RecepcionistaInicio.recepcionista.nombreRecepcionista}</li>
-                        <li class="list-group-item"><b>Apellido:</b> ${RecepcionistaInicio.recepcionista.apellidoRecepcionista}</li>
-                        <li class="list-group-item"><b>Usuario:</b> ${RecepcionistaInicio.recepcionista.usuario}</li>
-                        <li class="list-group-item"><b>Area:</b> ${RecepcionistaInicio.area.nombreArea}</li>
-                    </ul>
                 </div>
             </div>
         </div>
