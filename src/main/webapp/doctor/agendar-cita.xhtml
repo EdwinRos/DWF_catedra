@@ -44,8 +44,8 @@
 		
 		                                        <p:outputLabel value="Fecha: " />
 		                                        <p:calendar value="${agendarCita.cita.fechaCita}"
-		                                                    pattern="yyyy-mm-dd" effect="explode" locale="es"
-		                                                    navigator="true" class="fechanacimiento"/>
+		                                                    pattern="yyyy-MM-dd" effect="explode" locale="es"
+		                                                    navigator="true" class="fechanacimiento"	/>
 		
 		                                        <p:outputLabel for="timeonly" value="Hora: "/>
 		                                        <p:datePicker id="timeonly" value="${agendarCita.cita.horaCita}" timeOnly="true" pattern="hh:mm"/>

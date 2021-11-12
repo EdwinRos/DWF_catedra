@@ -78,10 +78,9 @@ public class DoctorController {
     		Citas citaActual = cita;    		
     		
     		String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-    		
+        	Date fechaActual = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
     		Date citaFecha = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(citaActual.getFechaCita()));
-    		Date fechaActual = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
-
+    		
     		if (citaFecha.before(fechaActual)) {
     			citaActual.setEstado(3);
     			

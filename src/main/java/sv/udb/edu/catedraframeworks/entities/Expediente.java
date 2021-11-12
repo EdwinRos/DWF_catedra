@@ -47,8 +47,8 @@ public class Expediente {
         nullable = false
     )
     private Paciente pacienteId;
-//   getters/ setters/ constructors
-
+    
+    // getters/ setters/ constructors
 
     public Expediente() { }
 

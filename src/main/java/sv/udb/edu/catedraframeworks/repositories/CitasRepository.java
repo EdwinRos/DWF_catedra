@@ -14,19 +14,12 @@ public interface CitasRepository extends JpaRepository <Citas, Integer> {
 
     //metodo utilizados en el area Supervisora y en el área del doctor UwU
     List<Citas> findCitasByIdDoctor(Doctor a);
-
     List<Citas> findCitasByIdPaciente(Paciente idPaciente);
-
     List<Citas> findCitasByFechaCitaAfterAndEstadoAndIdPaciente(Date fechaCita, Integer id, Paciente idPaciente);
-
     List<Citas> findCitasByEstadoAndIdPaciente(Integer estado, Paciente idPaciente);
-
     List<Citas> findCitasByEstadoAndIdDoctor(Integer estado, Doctor idDoctor);
-
     Citas findByCodigoCita(String codigoCita);
-
     Citas findByCitasId(Integer citasId);
-
     List<Citas> findCitasByFechaCitaAndHoraCitaAndIdDoctor(Date fecha, LocalTime hora, Doctor doctor);
 
 }
