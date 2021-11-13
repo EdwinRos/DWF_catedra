@@ -14,6 +14,7 @@
             rel="stylesheet"
             integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
             crossorigin="anonymous" />
+    <h:outputStylesheet library="css" name="card-recepcionista.css" />
 </h:head>
 <style>
     body{
@@ -22,33 +23,55 @@
     }
 
 </style>
-<h:body>
-    <div class="container mt-5">
+<h:body >
+    <div class="container">
         <div class="row">
-            <div class="col-12 justify-content-center align-items-center d-flex">
-                <div class="w-50 shadow p-3 mb-5 bg-white rounded">
-                    <div class="container">
-                        <h4 class="text-center mt-3 mb-3">Perfil del paciente</h4>
+            <div class="col-md-12">
+                <div class="profile-card-4 text-center">
+                    <img src="https://512pixels.net/downloads/macos-wallpapers-thumbs/10-14-Night-Thumb.jpg" class="img img-responsive w-100"/>
+                    <div class="profile-content">
+                        <div class="profile-name">
+                            ${RecepcionistaDetallesPerfilPaciente.paciente.nombrePaciente} ${RecepcionistaDetallesPerfilPaciente.paciente.apellidoPaciente}
+                            <p>Paciente de Hospital la salud</p>
+                        </div>
                         <div class="row">
-                            <div class="col-md-12 mt-3 d-flex justify-content-center align-items-center">
-                                <div class="w-50">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title text-justify"><b>Nombre: </b>${RecepcionistaDetallesPerfilPaciente.paciente.nombrePaciente}
-                                                <br/><b>Apellido: </b>${RecepcionistaDetallesPerfilPaciente.paciente.apellidoPaciente}</h5>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><b>Correo:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.correoPaciente}</li>
-                                            <li class="list-group-item"><b>DUI:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.duiPaciente}</li>
-                                            <li class="list-group-item"><b>Fecha de nacimiento:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.fechaNacimiento}</li>
-                                            <li class="list-group-item"><b>Sexo:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.sexo == "F"?"Femenino":"Masculino"}</li>
-                                            <li class="list-group-item"><b>Telefono:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.telefono}</li>
-                                            <li class="list-group-item"><b>Usuario:</b><br/>${RecepcionistaDetallesPerfilPaciente.paciente.usuario}</li>
-                                        </ul>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="profile-overview">
+                                    <p>Usuario</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.paciente.usuario}</h6>
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-5 mb-5 text-center">
+                            <div class="col-md-6">
+                                <div class="profile-overview">
+                                    <p>Edad</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.edad}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-overview">
+                                    <p>DUI</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.paciente.duiPaciente}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-overview">
+                                    <p>Sexo</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.paciente.sexo == "F"?"Femenino":"Masculino"}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="profile-overview">
+                                    <p>Telefono</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.paciente.telefono}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="profile-overview">
+                                    <p>Correo</p>
+                                    <h6>${RecepcionistaDetallesPerfilPaciente.paciente.correoPaciente}</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3 mb-3 text-center">
                                 <a href="/recepcioninicio" id="btnPerfil" class="btn btn-primary">Atras</a>
                             </div>
                         </div>
@@ -60,23 +83,4 @@
 </h:body>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#dui').mask('00000000-0');
-        $('#fechanacimiento').mask('00/00/0000');
-        $('#telefono').mask('0000-0000');
-    })
-    //input
-    var inputCodigoCita = document.getElementById("codigo");
-
-    //link
-    var linkCita = document.getElementById("btnPerfil");
-
-    var codigo = "";
-
-    inputCodigoCita.onchange = function (){
-        codigo = inputCodigoCita.value;
-        linkCita.setAttribute("href", "/detallescitapaciente?codigo=" + codigo);
-    }
-</script>
 </html>
